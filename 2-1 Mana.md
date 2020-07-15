@@ -2,7 +2,7 @@
 + Start date: 2020-05-04
 
 # Summary
-This RFC defines the *Mana* calculations.
+This RFC defines the *Mana* calculations. Test
 
 # Motivation
 
@@ -303,3 +303,6 @@ function Update_Mana(t,last_update_time,set_of_transactions):
 ```
 
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQ2ODM0MDg2MV19
+-->
