@@ -1,0 +1,389 @@
++ Feature name:  FPC specifications
++ Start date: 2020-03-16
+
+# FPC specification
+
+> [name=Sebastian Mu] Use CMD+ALT+Shift+F (MAC) to "replace all"
+> [name=Sebastian Mu] comments by Bill Acha are here:https://hackmd.io/1oJWLLMPRmaA-GkgWJPi0Q and have to be included
+
+
+
+This specification is part of [Coordicide](https://coordicide.iota.org/).
+
+The feature/module presented in this specification, FPC, allows nodes to find consensus on whether a transaction is valid or not. 
+
+The content of this specification is based on [FPC - simulation](https://arxiv.org/abs/1911.08787), [manaFPC-simulation](https://www.overleaf.com/project/5e3a96c9ebfeb20001821bb5) and...
+
+The specification will be subdivided into
+
+1. the core FPC protocol: the basic consensus protocol on binary opinions. It may serve on various ontologies as consensus protocol. 
+2. FPC on tangle: opinions on transaction of the tangle become dependent. This parts specifies monotonicity and consistency rules.
+3. message compression of FPC: reducing message complexity through message compression and gossiping of opinions for high mana nodes. This part has to be updated and revised due to the parallel reality approach.
+4. protocol interface: data layer and value layer. This part specifies when FPC is started; it defines how the variables `queryStatus` and `answerStatus` are set. Also function`getInitialOpinion`has to be specified.  -> This part should essentially be covered by Billy.
+5. Resynchronization interface: if protocol does not auto-terminate -> resynchronization
+6. Berserk detection: mechanism that allows the detection of Berserk behavior. This part may be integrated later on. This depends on how we do proceed with reporting malicious behavior etc.
+7. Protocol monitoring: information every node saves for testing of the protocol (in test net, finding optimal parameter sets) and for monitoring in main net
+8. Testing: This section discusses how the protocol is tested. It subdivides into two parts: testing the logic and test behavior in Byzantine infrastructure.
+
+# Motivation
+
+# Dependencies
+The FPC module depends on the following other modules:
+> [name=Sebastian MuFinalizationThresholder, time=Fri, Jun 19, 2020 10:42 AM] wait until respecive specs are available then synronize
+1. Mana (to obtain list of mana)
+2. dRNG (to obtain random number)
+3. Resynchronization  
+4. Finality
+5. Communication Specifications
+6. Payloads and Ontologies 
+7. UTXO and Realities calculations
+8. Autopeering (to obtain a list of nodes)
+9. Rate control (gossiping of high mana nodes, do FPC messages need to pass rate control)
+
+# Remarks
+FPC on tangle is essentially a consensus on "time". At various parts local clocks will be used and compared to timestamps of messages. There are general standing assumption on network latency and clock synchronizations. Mainly they are that the difference in clock synchronization is at least one order of magnitude lower than the network latency. 
+
+
+# 1. The core FPC
+
+The protocol tries to find consensus on the validity of a transaction `objectID`. Every node has an initial opinion `opinion`(boolean) on this transaction. These opinions are updated in rounds until the protocol terminates using a local stopping rule. 
+
+## Protocol variables
+
+We define the type `Opinion`. 
+```
+Opinion: {
+    DISLIKE: 0,
+    LIKE: 1,
+    NULL: NULL  #The node does not know about the object,
+    NA : NA # a node does not receive an answer of the opinion of another node
+}
+```
+
+
+
+* `FinalizationThreshold` integer - number of consecutive rounds before finalisation
+* `FinalizationThreshold2` integer - number of consecutive rounds with non-random threshold
+* `FirstRoundThreshold`  double - threshold in first round
+* `SubsequentRoundsLowerBoundThreshold` double -  lower random threshold bound in subsequent rounds
+*  `SubsequentRoundsUpperBoundThreshold` double -  upper random threshold bound in subsequent rounds
+* `maxRound` integer - maximal number of rounds before querying stops
+* `querySize` integer - quorum size, number of nodes that are queries
+* `roundLength` double - length (in sec) of a round, this has to be synchronized !? For instance, by the DRNG, maybe start with 10s, and FPC only uses DRNG every second round
+* `timeOut` - somehow a timer that is updated periodically, connected to `roundLength` TBD
+
+The above variables can in theory be chosen locally for each node. However, the security of the protocol depends on that they are chosen in a reasonable way. The best is if these variables are chosen the sae for every node. The IF recommends to use the default values.
+
+IF default/recommandation values are:
+
+TO COME
+
+
+
+## Local variables
+
+
+
+
+Every node has the following variables
+* `opinion` Opinion
+* `nodeList` list of all nodes
+* `manaList` list of mana of nodes
+* `mana` double - mana of node
+* `opinion` boolean - transaction true or false
+* `cnt` integer - counter that counts the number of consecutives rounds with unchanged opinion
+* `queryStatus` boolean - status if actively querying
+* `answerStatus` boolean - status if answerying queries, default value here is `TRUE`
+* `round` integer - counts number of rounds in FPC
+* `rn` double - random number from dRNG
+* `rnCycle` double - random number instance (random numbers are produced at a certain period, this variable counts the current cycle) (-> connect to dRNG)
+* `queryList`- list of nodes to query
+* `opinionQuery` - list of opinion of nodes in `queryList`, nonreplies are encoded with `NA`
+* `reachedMaxRound` boolean - indicating whether protocl reached `maxRound` before auto-termination, default calue `FALSE`
+> [name=Sebastian Mueller] Present the above in a table?
+
+
+## Functions that are called
+* `getIninitialOpinion` input: `objectID` output: opinion
+* `getRN` input: `rnCycle` output: `rn`
+* `getNodes` input:   output: `nodeList`
+* `getMana` input: `nodeList` output: `manaList`
+* `getSample` input: `querySize` `nodeList` `manaList` : output `queryList`
+* `getOpinion` input: `objectID` `queryList` output: `opinionQuery`
+* `checkQuerySuccessful` input: `queryList` `opinionQuery` output: `querySuccessful`: c*hecks whether `opinionQuery` from `getOpinion` contains enough answers*
+*  `opinionUpdate` input: queryStatus output: `opinion` 
+> [name=Sebastian Mueller] How do we write functions? Compare to https://hackmd.io/1oJWLLMPRmaA-GkgWJPi0Q.
+## Pseudocode 
+ 
+Note: In the pseudocode at various places global variables are again used as input for the functions. 
+### `getInitialOpinion`
+
+This function depends on the ontology. 
+
+### `getRN(layer, a, b, time)`
+```
+generates a uniform random number between (a,b),
+to come, to be discussed with DRNG, result should be 
+Note: each layer may use a different random number
+
+OUTPUT: randomThreshold, source of randomness
+```
+
+### `getNodes` 
+This function should be defined somewhere in autopeering module?
+
+### `getMana`
+
+This function may be specified in Mana part
+
+
+### `getSample(querySize, nodeList, manaList)`
+```
+queryList = empty
+while (queryList does not contain querySize different element){
+newSample:=Sample(nodeList, weight=mana, replacement=TRUE)
+queryList = concat(queryList, newSample)
+}
+return queryList
+```
+
+### `getOpinion(queryList, timeOut)`
+
+```
+send queries to all nodes of queryList
+wait until time out  #like half of length of rn cycle
+for (node in queryList){
+    if (replied[node]){
+        opinionQuery[node]=reply[node]
+    } else opinionQuery[node]:=NA
+} 
+return opinionQuery
+```
+
+### `checkQuerySuccessful(queryList, opinionQuery)`
+```
+# `manaMin` double - minimal mana of answers that have to arrive before new random number is issued  -> change to function
+manaMin:=0.5 #at least 50% of the queried mana has to reply; this value may be changed
+queriedMana := sum(manaList[queryList])
+answerMana :=  sum(manaList[queryList[replied==TRUE]])/queriedMana
+querySuccessful := ifElse( answerMana>= manaMin, TRUE, False)
+return querySuccessful
+```
+
+### `sendOpinion(timeOut)`
+
+```
+answer queries that arrive before timeOut
+```
+
+
+### `opinionUpdate(layer, opinion, querySize, nodeList, manaList, FirstRoundThreshold, SubsequentRoundsLowerBoundThreshold, SubsequentRoundsUpperBoundThreshold, round, time)`
+```
+Sample :=getSample(querySize, nodeList, manaList)
+opinionQuery := getOpinion(queryList, timeOut)
+if (!checkQuerySuccessful(queryList, opinionQuery)){ #check if sufficiently many nodes replied in time
+    newOpinion := opinion # if not keep old opinion 
+}
+else{ # otherwise update according to FPC rule
+    etaStar := mean(opinionQuery, NA.remove=TRUE)
+    totalMana := sum(listMana, NA.remove=TRUE) # remove nodes that did not answer
+    eta := opinion*mana + etaStar*(totalMana-mana)/totalMana
+    if (round == 1){ #first FPC round uses different threshold
+        if (eta < FirstRoundThreshold){
+            newOpinion <-0
+        }
+        else newOpinion <-1
+    }
+    else #the subsequent rounds (before the FinalizationThreshold2 confirming) use random threshold
+        rn := getRN(layer, SubsequentRoundsLowerBoundThreshold, SubsequentRoundsUpperBoundThreshold, time)  # here we have to synchronize/wait for random number
+        if (eta < rn){
+            newOpinion <-0
+        }
+        else newOpinion <-1       
+}
+
+return newOpinion 
+```
+
+
+### `mainFPC(objectId, queryStatus)`
+```
+if (queryStatus turns TRUE ){ 
+    opinion := getInitialOpinion(objectID)
+    listMana := getMana()
+    listNode := getNodes()
+    cnt := 1
+}
+wait for new FPC round # next random number from dRNG
+#start the first FPC round
+round := 1 
+opinionNew <- opinionUpdate(opinion, querySize, nodeList, manaList, FirstRoundThreshold, ubsequentRoundsLowerBoundThreshold, SubsequentRoundsUpperBoundThreshold, round, time)
+if (opinion==opinionNew) cnt++
+else cnt:=0
+opinion := opinionNew
+round++
+
+#continue FPC, subsequent rounds 
+while queryStatus {
+    if (cnt <= FinalizationThreshold-FinalizationThreshold2) # we use random threshold{
+        opinionNew <- opinionUpdate(opinion, querySize, nodeList, manaList, FirstRoundThreshold, SubsequentRoundsLowerBoundThreshold, SubsequentRoundsUpperBoundThreshold, round, time)
+        if (opinion==opinionNew) cnt++
+        else cnt:=0
+        opinion := opinionNew
+    }
+    else {  # we use deterministic threshold for FinalizationThreshold2 "confirming" rounds
+    opinionNew <- opinionUpdate(opinion, querySize, nodeList, manaList, 0.5, SubsequentRoundsLowerBoundThreshold, SubsequentRoundsUpperBoundThreshold, 1, time)
+        if (opinion==opinionNew) cnt++
+        else cnt:=0
+        opinion := opinionNew      
+    }
+    round++
+    if (cnt==FinalizationThreshold) queryStatus:=FALSE
+    if (round>=MaxRound) {
+        queryStatus:=FALSE
+        reachedMaxRound:=TRUE
+    }
+}
+return(opinion)
+```
+
+## Message/transaction layout
+
+
+### Querying message
+
+### Answering message
+This is done in the next section.
+
+# 2. FPC on tangle
+In the tangle reality FPC may have to be applied to various messages simultaneously. Moreover, the tangle (the local view of every node) has to be monotone and consistent. We have to address the three following points:
+* **Parallelity:** Many ongoing votings at the same time 
+* **Consistency:** Layer should not contain contradicting messages
+* **Monotinicty:** Liked  messages should not refer to disliked messages
+
+## Parallelity
+At every round FPC decides on possibly several opinions. Howver, the every node will only query other nodes once (!). This is done for scalability. 
+
+The local variable `opinions` records the vector of all opinions under vote. 
+
+### `getInitialOpinions`
+
+This function depends on the ontology and uses `getInitialOpinions` in a straightforward way.
+
+
+### `getOpinions(queryList, timeOut)`
+```
+send queries to all nodes of queryList
+wait until time out  #like half of length of rn cycle
+for (node in queryList){
+    if (replied[node]){
+        opinionQuery[node]=reply[node]
+    } else opinionQuery[node]:=NA
+} 
+return opinionsQuery
+```
+
+FPC is now applied for each opinion separately. This may not be optimal, but this is addressed in Section 3. It may that the outcome is not consistent or monotone. 
+
+
+
+### single vs. multiple dRNG in each round
+TO DISCUSS
+Discussion: using a different threshold for every opinion (e.g. hash(objectID) X hash(rn)) may lead to the following attack vector. If the number of votings is large then with high probability some of the will always have a random threshold close to 0.5, in other words for a random subset of tx there is no random threshold and hence the protocol is unsafe. 
+
+Advantage of using the same random threshold is also that the two following functions have less to do.
+
+
+It may be good to use different random thresholds for the voting on different layers! (-> `getRN()`)
+
+## Consistency and Monotonicty
+
+### `applyMonotonicityRule()`
+```
+functions that make temporary ledger state monoton, past cone of liked tx are like, future cones of disliked tx dislike, generalize these rules to level of knowledge -> Billy
+```
+
+### `applyConsistencyRule()`
+```
+functions that make temporary ledger state consistent
+if two contradiction transaction are liked, choose the one with the higher mana (?)/ the previous favorite/ hash?
+```
+## Data layer
+FPC is used in the data layer to decide on the validity of the timestamp of a message. We can use here a symmetric range of the random threshold, `a=beta, b=1-beta`
+
+
+
+## Value layer
+FPC decides in particular between two conflicting transaction, thresholds below 0.5 may lead to liking both transaction after voting. TO DISCUSS: asymmetric random threshold `a=0.5, b=1-beta`. Since there are no simulations yet, it lay be good to run some to check performances. 
+
+
+# 3. Message compression of FPC
+
+
+## Compression in query messages
+**Query:** reduce message identifier, e.g., Prefix trie or Cuckoo filter
+**Answer:** Bitmask, respond in same order with 1bit per message
+
+## Gossiping
+High mana nodes will be queried too often. They have the possibility to gossip their opinion. However, it is yet not clear who will  be allowed to gossip. 
+
+### Everybody can gossip
+This solution follows the idea that IOTA is all but freedom. Every node can decide on his own whether to gossip or not. Nevertheless, IF has to propose a reference implementation.
+
+Advantages:
+* if not in place, high mana nodes may be spammed by querries. But is this a reasonable concern for Coordicide 1.0?
+
+Disadvantages: 
+* local optimmum may not be global optimum
+* if all nodes gossip, network may reach congestion. But is this a reasonable concern for Coordicide 1.0?
+
+### Threshold for gossiping
+
+There is a global threshold, like the 100 top mana holders can gossip, the others are querying. However, mana perception is local and hence the threshold can't be sharp. 
+
+
+### Proposal
+TO DISCUSS
+* every node is free to gossip
+* nodes who gossip, close the port corresponding to queries, this allows other nodes to see whether this node gossips
+* in IF reference implementation: if own mana perception is above a certain threshold, that would lead to overquery, then gossip
+
+### Changes in the FPC protocol
+
+Warning: the code may depend on the above decision who is going to gossip their opinion. 
+### `getOpinions(queryList, timeOut)`
+```
+send queries to all nodes of queryList that do not gossip
+wait until time out  #like half of length of rn cycle
+for (node in queryList){
+    if (replied[node]){
+        opinionQuery[node]=reply[node]
+    } else opinionQuery[node]:=NA
+} 
+read opinions from tangle of all to all nodes of queryList that do gossip
+
+return opinionsQuery
+```
+
+
+Edge cases: what happens if gossiping node is queried? (Angelo: not reply at all, you even don t listen (close ports), Seb: be kind if possible).
+
+
+ 
+
+If node has to gossip but is not?
+# 4.
+
+# 7. Protocol monitoring
+
+
+
+
+# 8. Testing
+
+## Edge cases
+
+## Spamming
+
+## Adversarial strategies
+
