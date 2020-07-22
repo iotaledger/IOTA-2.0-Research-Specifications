@@ -67,11 +67,11 @@ The Duplicate detector is triggered each time a message arrives in the gossip po
 ![](https://i.imgur.com/5Ke3jId.png)
 
 2. **Node Signature Validator**
-The Node Signature Validator will timely get messages from the Message Inbox and check in its signarute is valid. Messages that fail this verification are deleted from the Message Inbox.
+The Node Signature Validator will timely get messages from the Message Inbox and check in its signature is valid. Messages that fail this verification are deleted from the Message Inbox.
 ![](https://i.imgur.com/mOrfhqz.png)
 
 3. **Timestamp Opinion and Filter**
-This process will compare the ariival time of the message with its declared timestamp in order to define the proper Level of Knowledge of the timestamp of the message. Messages that receive a rating of "Level 3 Bad Timestamp" will be deleted from the Message Inbox. 
+This process will compare the arrival time of the message with its declared timestamp in order to define the proper Level of Knowledge of the timestamp of the message. Messages that receive a rating of "Level 3 Bad Timestamp" will be deleted from the Message Inbox. 
 ![](https://i.imgur.com/lVa7H5L.png)
 
 4. **Proof of Work Check**
@@ -130,5 +130,5 @@ N0YXJ0IjoyNDQ1LCJlbmQiOjI0NDksInRleHQiOiJtYWlzIn19
 LCJjb21tZW50cyI6eyJqV3BGMTBKaU83TTB3dzhaIjp7ImRpc2
 N1c3Npb25JZCI6ImpsaTlTbldHZVJSMUhXZ00iLCJzdWIiOiJn
 aDo1MTExMjYxOCIsInRleHQiOiI/IiwiY3JlYXRlZCI6MTU5NT
-QyMDQwNDU1Nn19LCJoaXN0b3J5IjpbMjA1MjI4MTE5OV19
+QyMDQwNDU1Nn19LCJoaXN0b3J5IjpbMTYxNzU1MDUyMF19
 -->
