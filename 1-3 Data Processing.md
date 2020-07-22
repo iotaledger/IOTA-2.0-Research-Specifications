@@ -63,7 +63,7 @@ Ignoring the possible data sets and ports used, the processes are ordered as:
 
 
 1. **Duplicate Detector**
-The Duplicate detector is trigered each time a message arrives in the gossip port. It will look if there if the exact same message has already arrived before, beng either on the Message Tangle or in the Message Inbox. The message will only be added to the Message Inbox in  case it is not found in both data sets.
+The Duplicate detector is triggered each time a message arrives in the gossip port. It will look if there if the exact same message has already arrived before, being either on the Message Tangle or in the Message Inbox. The message will only be added to the Message Inbox in  case it is not found in both data sets.
 ![](https://i.imgur.com/5Ke3jId.png)
 
 2. **Node Signature Validator**
@@ -124,3 +124,11 @@ The Finalization Tracker update the Finality level of transaction according to t
 
 
 
+<!--stackedit_data:
+eyJkaXNjdXNzaW9ucyI6eyJqbGk5U25XR2VSUjFIV2dNIjp7In
+N0YXJ0IjoyNDQ1LCJlbmQiOjI0NDksInRleHQiOiJtYWlzIn19
+LCJjb21tZW50cyI6eyJqV3BGMTBKaU83TTB3dzhaIjp7ImRpc2
+N1c3Npb25JZCI6ImpsaTlTbldHZVJSMUhXZ00iLCJzdWIiOiJn
+aDo1MTExMjYxOCIsInRleHQiOiI/IiwiY3JlYXRlZCI6MTU5NT
+QyMDQwNDU1Nn19LCJoaXN0b3J5IjpbMjA1MjI4MTE5OV19
+-->
