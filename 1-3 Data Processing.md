@@ -1,4 +1,4 @@
-# Specification on Data Processing
+# Specification on Data Processing (WIP)
 
 This section objective is to describe the functionality of a node, as well to determine how the Coordicide modules work and interact with each other. 
 
@@ -35,11 +35,11 @@ For each process we will give a resumed description of its functionality and lin
 
 The following ports will be used in the processes:
 
-* **Autopeering Request Port:** The port responsible for nodes to send and receive packets related to the Autopeering mechanism. 
-* **Gossip Port:** The port responsible for the exchange of messages and notifications between neighbor nodes.
+* **Autopeering Request Port:** The port used by nodes to send and receive packets related to the Autopeering mechanism. 
+* **Gossip Port:** The port by nodes for the exchange of messages and notifications between neighbor nodes.
 * **FPC Voting Port:** The port nodes will use to send and receive FPC votes.
-* **Message Creation Port:** the port where Users will be able to send transactions to nodes to create their messages. 
-* **Finality Inquiry Port:** the port where both Users and Nodes will be able to check the status of their transaction. 
+* **Message Creation Port:** The port where Users will be able to send transactions to nodes to create their messages. 
+* **Finality Inquiry Port:** The port where both Users and Nodes will be able to check the status of their transaction. 
 
 The following message data sets will be used in the processes:
 * **Message inbox:** A data set where non-duplicated messages will stay until processes by the node and added to the Tangle. 
@@ -125,31 +125,21 @@ The Finalization Tracker update the Finality level of transaction according to t
 
 
 <!--stackedit_data:
-eyJkaXNjdXNzaW9ucyI6eyJqbGk5U25XR2VSUjFIV2dNIjp7In
-N0YXJ0IjoyNDA3LCJlbmQiOjI0MTAsInRleHQiOiJtYWlzIn0s
-InVacWxSVnJTdWJIZjFjMDgiOnsic3RhcnQiOjE1MjMsImVuZC
-I6MTYxOSwidGV4dCI6IlRoZSBwb3J0IHJlc3BvbnNpYmxlIGZv
-ciB0aGUgcGFja2V0cyBuZWVkZWQgdG8gbm9kZXMgdG8gdXNlIH
-RoZSBBdXRvcGVlcmluZyBtZWPigKYifSwiVG5tQzcwZW02TzBB
-aGN4SiI6eyJzdGFydCI6MTY0OSwiZW5kIjoxNjYwLCJ0ZXh0Ij
-oicmVzcG9uc2libGUifX0sImNvbW1lbnRzIjp7ImpXcEYxMEpp
-TzdNMHd3OFoiOnsiZGlzY3Vzc2lvbklkIjoiamxpOVNuV0dlUl
-IxSFdnTSIsInN1YiI6ImdoOjUxMTEyNjE4IiwidGV4dCI6Ij8i
-LCJjcmVhdGVkIjoxNTk1NDIwNDA0NTU2fSwiME9jMllmYXVpeH
-Y4U0NyUCI6eyJkaXNjdXNzaW9uSWQiOiJ1WnFsUlZyU3ViSGYx
-YzA4Iiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZXh0IjoidGhlIH
-BvcnQgZm9yIGF1dG9wZWVyaW5nIHByb3RvY29sL3JlcXVlc3Rz
-PyBEb24gdCB1bmRlcnN0YW5kIHdoYXQgdGhlIGRlY2lzaW9uIG
-9uICB3aG8gdG8gY29ubmVjdCBoYXMgdG8gdG8gd2l0aCB0aGUg
-cG9ydC4iLCJjcmVhdGVkIjoxNTk1NDIwOTc3NTU0fSwiVXVBSm
-4zT08wQktSMGhTRiI6eyJkaXNjdXNzaW9uSWQiOiJUbm1DNzBl
-bTZPMEFoY3hKIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZXh0Ij
-oidXNlZD8gc2VlIHBvaW50cyBiZWxvdyIsImNyZWF0ZWQiOjE1
-OTU0MjEwMzgwNjF9LCIzY0FFVzJmcHR0VUZxbzBOIjp7ImRpc2
-N1c3Npb25JZCI6InVacWxSVnJTdWJIZjFjMDgiLCJzdWIiOiJn
-aDo2ODI1MDM1MCIsInRleHQiOiJJIHRyaWVkIHRvIGdpdmUgYS
-BiZXR0ZXIgd29yZGluZywgdGhlIG9sZCBvbmUgd2FzIGF3ZnVs
-LiIsImNyZWF0ZWQiOjE1OTU0NDQxMTExNDJ9fSwiaGlzdG9yeS
-I6Wzk2Mzc5OTk0MCwtMTc1MjQ3Njc3LDg5MDM1NjM0OSwtNjc2
-NjQ1MjE5XX0=
+eyJkaXNjdXNzaW9ucyI6eyJ1WnFsUlZyU3ViSGYxYzA4Ijp7In
+N0YXJ0IjoxNTI5LCJlbmQiOjE2MTcsInRleHQiOiJUaGUgcG9y
+dCByZXNwb25zaWJsZSBmb3IgdGhlIHBhY2tldHMgbmVlZGVkIH
+RvIG5vZGVzIHRvIHVzZSB0aGUgQXV0b3BlZXJpbmcgbWVj4oCm
+In19LCJjb21tZW50cyI6eyIwT2MyWWZhdWl4djhTQ3JQIjp7Im
+Rpc2N1c3Npb25JZCI6InVacWxSVnJTdWJIZjFjMDgiLCJzdWIi
+OiJnaDo1MTExMjYxOCIsInRleHQiOiJ0aGUgcG9ydCBmb3IgYX
+V0b3BlZXJpbmcgcHJvdG9jb2wvcmVxdWVzdHM/IERvbiB0IHVu
+ZGVyc3RhbmQgd2hhdCB0aGUgZGVjaXNpb24gb24gIHdobyB0by
+Bjb25uZWN0IGhhcyB0byB0byB3aXRoIHRoZSBwb3J0LiIsImNy
+ZWF0ZWQiOjE1OTU0MjA5Nzc1NTR9LCIzY0FFVzJmcHR0VUZxbz
+BOIjp7ImRpc2N1c3Npb25JZCI6InVacWxSVnJTdWJIZjFjMDgi
+LCJzdWIiOiJnaDo2ODI1MDM1MCIsInRleHQiOiJJIHRyaWVkIH
+RvIGdpdmUgYSBiZXR0ZXIgd29yZGluZywgdGhlIG9sZCBvbmUg
+d2FzIGF3ZnVsLiIsImNyZWF0ZWQiOjE1OTU0NDQxMTExNDJ9fS
+wiaGlzdG9yeSI6Wy02NDQyMDI4MjgsLTE3NTI0NzY3Nyw4OTAz
+NTYzNDksLTY3NjY0NTIxOV19
 -->
