@@ -37,7 +37,7 @@ The following ports will be used in the processes:
 
 * **Autopeering Request Port:** The port responsible for the packets needed to nodes to use the Autopeering mechanism and decide who to connect to in the Nodes Network. 
 * **Gossip Port:** The port responsible for the exchange of messages and notifications between neighbor nodes.
-* **FPC Voting Port:** The Port nodes will use to send and receive FPC votes.
+* **FPC Voting Port:** The port nodes will use to send and receive FPC votes.
 * **Message Creation Port:** the port where Users will be able to send tarnsactions to nodes to create their messages. 
 * **Finality Inquiry Port:** the port where both Users and Nodes will be able to check the status of their transaction. 
 
@@ -130,6 +130,5 @@ N0YXJ0IjoyNDQ3LCJlbmQiOjI0NTEsInRleHQiOiJtYWlzIn19
 LCJjb21tZW50cyI6eyJqV3BGMTBKaU83TTB3dzhaIjp7ImRpc2
 N1c3Npb25JZCI6ImpsaTlTbldHZVJSMUhXZ00iLCJzdWIiOiJn
 aDo1MTExMjYxOCIsInRleHQiOiI/IiwiY3JlYXRlZCI6MTU5NT
-QyMDQwNDU1Nn19LCJoaXN0b3J5IjpbLTEwOTQ1NTkwNDNdfQ==
-
+QyMDQwNDU1Nn19LCJoaXN0b3J5IjpbLTY3NjY0NTIxOV19
 -->
