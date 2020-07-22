@@ -44,7 +44,7 @@ The following ports will be used in the processes:
 The following message data sets will be used in the processes:
 * **Message inbox:** A data set where non-duplicated messages will stay until processes by the node and added to the Tangle. 
 * **Solidification Buffer:** A data set where messages that were not able to quick-solidify will be kept until the missing messages arrive.
-* **Message Tangle:** The mais data set where all the non-snapshotted messages are kept. 
+* **Message Tangle:** The main data set where all the non-snapshotted messages are kept. 
 * **Rate Manager Outbox:** A data set where messages that were processed are kept until they are gossiped further. 
 
 The following other data sets will be used in the processes:
@@ -126,7 +126,7 @@ The Finalization Tracker update the Finality level of transaction according to t
 
 <!--stackedit_data:
 eyJkaXNjdXNzaW9ucyI6eyJqbGk5U25XR2VSUjFIV2dNIjp7In
-N0YXJ0IjoyNDQ3LCJlbmQiOjI0NTEsInRleHQiOiJtYWlzIn0s
+N0YXJ0IjoyNDQ3LCJlbmQiOjI0NTAsInRleHQiOiJtYWlzIn0s
 InVacWxSVnJTdWJIZjFjMDgiOnsic3RhcnQiOjE1MjMsImVuZC
 I6MTY1OSwidGV4dCI6IlRoZSBwb3J0IHJlc3BvbnNpYmxlIGZv
 ciB0aGUgcGFja2V0cyBuZWVkZWQgdG8gbm9kZXMgdG8gdXNlIH
@@ -145,6 +145,6 @@ cG9ydC4iLCJjcmVhdGVkIjoxNTk1NDIwOTc3NTU0fSwiVXVBSm
 4zT08wQktSMGhTRiI6eyJkaXNjdXNzaW9uSWQiOiJUbm1DNzBl
 bTZPMEFoY3hKIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZXh0Ij
 oidXNlZD8gc2VlIHBvaW50cyBiZWxvdyIsImNyZWF0ZWQiOjE1
-OTU0MjEwMzgwNjF9fSwiaGlzdG9yeSI6Wzg5MDM1NjM0OSwtNj
-c2NjQ1MjE5XX0=
+OTU0MjEwMzgwNjF9fSwiaGlzdG9yeSI6Wy0xNzUyNDc2NzcsOD
+kwMzU2MzQ5LC02NzY2NDUyMTldfQ==
 -->
