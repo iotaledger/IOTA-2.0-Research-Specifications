@@ -1,4 +1,4 @@
-# Specifications For Iota 2.0
+# Coordicide-Specifications For Iota 2.0
 
 These specifications are not stable
 
@@ -177,5 +177,6 @@ Core Consensus Applications
     
 -   [https://hackmd.io/mWAfO7ckRbGWcaO7ksi27w](https://slack-redir.net/link?url=https%3A%2F%2Fhackmd.io%2FmWAfO7ckRbGWcaO7ksi27w)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTE4MDQ2NThdfQ==
+eyJoaXN0b3J5IjpbLTE5MDM3NjU2NTQsLTE0NTE4MDQ2NThdfQ
+==
 -->
