@@ -34,15 +34,10 @@ Several core applications provide consensus and regulate timestamps in the messa
 Each specification is authored by a researcher and has been reviewed by an engineer.
 
 Structure
-
 -   Data Models
-    
 -   Communication Specifications
     
--   Payloads and Layers
-    
-
--   Author: Darcy
+-   Payloads and Layers   Author: Darcy
     
 
 Network Layer
@@ -182,5 +177,5 @@ Core Consensus Applications
     
 -   [https://hackmd.io/mWAfO7ckRbGWcaO7ksi27w](https://slack-redir.net/link?url=https%3A%2F%2Fhackmd.io%2FmWAfO7ckRbGWcaO7ksi27w)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDY1ODg0NTNdfQ==
+eyJoaXN0b3J5IjpbLTE0NTE4MDQ2NThdfQ==
 -->
