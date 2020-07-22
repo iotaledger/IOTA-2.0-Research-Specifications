@@ -35,7 +35,7 @@ For each process we will give a resumed description of its functionality and lin
 
 The following ports will be used in the processes:
 
-* **Autopeering Request Port:** The port responsible for nodes to send and receive packets re use the Autopeering mechanism and decide who to connect to in the Nodes Network. 
+* **Autopeering Request Port:** The port responsible for nodes to send and receive packets related to the Autopeering mechanism. 
 * **Gossip Port:** The port responsible for the exchange of messages and notifications between neighbor nodes.
 * **FPC Voting Port:** The port nodes will use to send and receive FPC votes.
 * **Message Creation Port:** the port where Users will be able to send transactions to nodes to create their messages. 
@@ -126,12 +126,12 @@ The Finalization Tracker update the Finality level of transaction according to t
 
 <!--stackedit_data:
 eyJkaXNjdXNzaW9ucyI6eyJqbGk5U25XR2VSUjFIV2dNIjp7In
-N0YXJ0IjoyNDUzLCJlbmQiOjI0NTYsInRleHQiOiJtYWlzIn0s
+N0YXJ0IjoyNDA3LCJlbmQiOjI0MTAsInRleHQiOiJtYWlzIn0s
 InVacWxSVnJTdWJIZjFjMDgiOnsic3RhcnQiOjE1MjMsImVuZC
-I6MTY2NSwidGV4dCI6IlRoZSBwb3J0IHJlc3BvbnNpYmxlIGZv
+I6MTYxOSwidGV4dCI6IlRoZSBwb3J0IHJlc3BvbnNpYmxlIGZv
 ciB0aGUgcGFja2V0cyBuZWVkZWQgdG8gbm9kZXMgdG8gdXNlIH
 RoZSBBdXRvcGVlcmluZyBtZWPigKYifSwiVG5tQzcwZW02TzBB
-aGN4SiI6eyJzdGFydCI6MTY5NSwiZW5kIjoxNzA2LCJ0ZXh0Ij
+aGN4SiI6eyJzdGFydCI6MTY0OSwiZW5kIjoxNjYwLCJ0ZXh0Ij
 oicmVzcG9uc2libGUifX0sImNvbW1lbnRzIjp7ImpXcEYxMEpp
 TzdNMHd3OFoiOnsiZGlzY3Vzc2lvbklkIjoiamxpOVNuV0dlUl
 IxSFdnTSIsInN1YiI6ImdoOjUxMTEyNjE4IiwidGV4dCI6Ij8i
@@ -145,6 +145,11 @@ cG9ydC4iLCJjcmVhdGVkIjoxNTk1NDIwOTc3NTU0fSwiVXVBSm
 4zT08wQktSMGhTRiI6eyJkaXNjdXNzaW9uSWQiOiJUbm1DNzBl
 bTZPMEFoY3hKIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZXh0Ij
 oidXNlZD8gc2VlIHBvaW50cyBiZWxvdyIsImNyZWF0ZWQiOjE1
-OTU0MjEwMzgwNjF9fSwiaGlzdG9yeSI6WzE4MzYxOTk2OCwtMT
-c1MjQ3Njc3LDg5MDM1NjM0OSwtNjc2NjQ1MjE5XX0=
+OTU0MjEwMzgwNjF9LCIzY0FFVzJmcHR0VUZxbzBOIjp7ImRpc2
+N1c3Npb25JZCI6InVacWxSVnJTdWJIZjFjMDgiLCJzdWIiOiJn
+aDo2ODI1MDM1MCIsInRleHQiOiJJIHRyaWVkIHRvIGdpdmUgYS
+BiZXR0ZXIgd29yZGluZywgdGhlIG9sZCBvbmUgd2FzIGF3ZnVs
+LiIsImNyZWF0ZWQiOjE1OTU0NDQxMTExNDJ9fSwiaGlzdG9yeS
+I6Wzk2Mzc5OTk0MCwtMTc1MjQ3Njc3LDg5MDM1NjM0OSwtNjc2
+NjQ1MjE5XX0=
 -->
