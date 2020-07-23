@@ -42,14 +42,14 @@ The following ports will be used in the processes:
 * **Finality Inquiry Port:** The port where both Users and Nodes will be able to check the status of their transaction. 
 
 The following message data sets will be used in the processes:
-* **Message inbox:** A data set where non-duplicated messages will stay until processed by the node and added to the Tangle. 
+* **Message Inbox:** A data set where non-duplicated messages will stay until processed by the node and added to the Tangle. 
 * **Solidification Buffer:** A data set where messages that were not able to quick-solidify will be kept until the missing messages arrive.
 * **Message Tangle:** The main data set where all the non-snapshotted messages are kept. 
 * **Rate Manager Outbox:** A data set where messages that were processed are kept until they are gossiped further. 
 
 The following other data sets will be used in the processes:
 * **Node List:** The list of nodes known by the current Node. 
-* **Nodes Informations Database:** A database of quantities related to the nodes that are used for the protocol, such as "Mana Value", "Effective Mana", "Recent transactions arrivals", etc. 
+* **Nodes Information Database:** A database of quantities related to the nodes that are used for the protocol, such as "Mana Value", "Effective Mana", "Recent transactions arrivals", etc. 
 * **Ledger State:** A list with the current balance on each address and node. 
 
 
@@ -130,27 +130,33 @@ RleHQiOiJUaGUgcG9ydCByZXNwb25zaWJsZSBmb3IgdGhlIHBh
 Y2tldHMgbmVlZGVkIHRvIG5vZGVzIHRvIHVzZSB0aGUgQXV0b3
 BlZXJpbmcgbWVj4oCmIiwic3RhcnQiOjE1MzUsImVuZCI6MTYx
 Nn0sInVIcEs0akRGZG1nUVVYUXgiOnsic3RhcnQiOjI0MzAsIm
-VuZCI6MjQ0NSwidGV4dCI6Im5vbi1zbmFwc2hvdHRlZCJ9fSwi
-Y29tbWVudHMiOnsiME9jMllmYXVpeHY4U0NyUCI6eyJkaXNjdX
-NzaW9uSWQiOiJ1WnFsUlZyU3ViSGYxYzA4Iiwic3ViIjoiZ2g6
-NTExMTI2MTgiLCJ0ZXh0IjoidGhlIHBvcnQgZm9yIGF1dG9wZW
-VyaW5nIHByb3RvY29sL3JlcXVlc3RzPyBEb24gdCB1bmRlcnN0
-YW5kIHdoYXQgdGhlIGRlY2lzaW9uIG9uICB3aG8gdG8gY29ubm
-VjdCBoYXMgdG8gdG8gd2l0aCB0aGUgcG9ydC4iLCJjcmVhdGVk
-IjoxNTk1NDIwOTc3NTU0fSwiM2NBRVcyZnB0dFVGcW8wTiI6ey
+VuZCI6MjQ0NSwidGV4dCI6Im5vbi1zbmFwc2hvdHRlZCJ9LCJz
+N1BuQmQ0aVpvOFByaEhTIjp7InN0YXJ0IjoyNzExLCJlbmQiOj
+I3MzcsInRleHQiOiJOb2RlcyBJbmZvcm1hdGlvbiBEYXRhYmFz
+ZSJ9fSwiY29tbWVudHMiOnsiME9jMllmYXVpeHY4U0NyUCI6ey
 JkaXNjdXNzaW9uSWQiOiJ1WnFsUlZyU3ViSGYxYzA4Iiwic3Vi
-IjoiZ2g6NjgyNTAzNTAiLCJ0ZXh0IjoiSSB0cmllZCB0byBnaX
-ZlIGEgYmV0dGVyIHdvcmRpbmcsIHRoZSBvbGQgb25lIHdhcyBh
-d2Z1bC4iLCJjcmVhdGVkIjoxNTk1NDQ0MTExMTQyfSwidTJXUH
-YwTlpPVDRqUk9jaCI6eyJkaXNjdXNzaW9uSWQiOiJ1WnFsUlZy
-U3ViSGYxYzA4Iiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZXh0Ij
-oic28gaXRzIHRoZSBzYW1lIHBvcnQgZm9yIHNlbmRpbmcgYW5k
-IHJlcXVlc3RpbmcuIElmIHllcyBwZXJoYXBzIGp1c3QgY2FsbC
-Bpc3QgQXV0b3BlZXJpbmcgUG9ydCIsImNyZWF0ZWQiOjE1OTU1
-MDA1ODYxMjJ9LCJoNk51QkRJNHBObjZKakRDIjp7ImRpc2N1c3
-Npb25JZCI6InVIcEs0akRGZG1nUVVYUXgiLCJzdWIiOiJnaDo1
-MTExMjYxOCIsInRleHQiOiJkZWZpbmUgc25hcHNob3Qgc29tZX
-doZXJlIiwiY3JlYXRlZCI6MTU5NTUwMDcwMjk1NX19LCJoaXN0
-b3J5IjpbLTExMjE1MTI4MTQsLTY0NDIwMjgyOCwtMTc1MjQ3Nj
-c3LDg5MDM1NjM0OSwtNjc2NjQ1MjE5XX0=
+IjoiZ2g6NTExMTI2MTgiLCJ0ZXh0IjoidGhlIHBvcnQgZm9yIG
+F1dG9wZWVyaW5nIHByb3RvY29sL3JlcXVlc3RzPyBEb24gdCB1
+bmRlcnN0YW5kIHdoYXQgdGhlIGRlY2lzaW9uIG9uICB3aG8gdG
+8gY29ubmVjdCBoYXMgdG8gdG8gd2l0aCB0aGUgcG9ydC4iLCJj
+cmVhdGVkIjoxNTk1NDIwOTc3NTU0fSwiM2NBRVcyZnB0dFVGcW
+8wTiI6eyJkaXNjdXNzaW9uSWQiOiJ1WnFsUlZyU3ViSGYxYzA4
+Iiwic3ViIjoiZ2g6NjgyNTAzNTAiLCJ0ZXh0IjoiSSB0cmllZC
+B0byBnaXZlIGEgYmV0dGVyIHdvcmRpbmcsIHRoZSBvbGQgb25l
+IHdhcyBhd2Z1bC4iLCJjcmVhdGVkIjoxNTk1NDQ0MTExMTQyfS
+widTJXUHYwTlpPVDRqUk9jaCI6eyJkaXNjdXNzaW9uSWQiOiJ1
+WnFsUlZyU3ViSGYxYzA4Iiwic3ViIjoiZ2g6NTExMTI2MTgiLC
+J0ZXh0Ijoic28gaXRzIHRoZSBzYW1lIHBvcnQgZm9yIHNlbmRp
+bmcgYW5kIHJlcXVlc3RpbmcuIElmIHllcyBwZXJoYXBzIGp1c3
+QgY2FsbCBpc3QgQXV0b3BlZXJpbmcgUG9ydCIsImNyZWF0ZWQi
+OjE1OTU1MDA1ODYxMjJ9LCJoNk51QkRJNHBObjZKakRDIjp7Im
+Rpc2N1c3Npb25JZCI6InVIcEs0akRGZG1nUVVYUXgiLCJzdWIi
+OiJnaDo1MTExMjYxOCIsInRleHQiOiJkZWZpbmUgc25hcHNob3
+Qgc29tZXdoZXJlIiwiY3JlYXRlZCI6MTU5NTUwMDcwMjk1NX0s
+ImlUNlVPNEVVdHA0dXBhZ1ciOnsiZGlzY3Vzc2lvbklkIjoicz
+dQbkJkNGlabzhQcmhIUyIsInN1YiI6ImdoOjUxMTEyNjE4Iiwi
+dGV4dCI6Imp1c3QgXCJOb2RlIERhdGFiYXNlXCI/IiwiY3JlYX
+RlZCI6MTU5NTUwMDgxMDUzNX19LCJoaXN0b3J5IjpbMTE3NDU5
+NzY2MSwtNjQ0MjAyODI4LC0xNzUyNDc2NzcsODkwMzU2MzQ5LC
+02NzY2NDUyMTldfQ==
 -->
