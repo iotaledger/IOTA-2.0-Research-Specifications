@@ -63,7 +63,7 @@ Ignoring the possible data sets and ports used, the processes are ordered as:
 
 
 1. **Duplicate Detector**
-The Duplicate Detector is triggered each time a message arrives in the gossip port. It will look if there if the exact same message has already arrived before, being either on the Message Tangle or in the Message Inbox. The message will only be added to the Message Inbox in  case it is not found in both data sets.
+The Duplicate Detector is triggered each time a message arrives in the gossip port. It will look if there if the exact same message has already arrived before, being either on the Message Tangle or in the Message Inbox. The message will only be added to the Message Inbox in case it is not found in both data sets.
 ![](https://i.imgur.com/5Ke3jId.png)
 
 2. **Node Signature Validator**
@@ -180,6 +180,7 @@ NoZWNrPyIsImNyZWF0ZWQiOjE1OTU1MDEwMzEyODd9LCJYN1Vk
 VUdodHVBOFRmT3pyIjp7ImRpc2N1c3Npb25JZCI6ImY0dEg4ej
 FHMTJhZnRPMHgiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQi
 OiJvciBNVCBTb2xpZGlmaWVyPyIsImNyZWF0ZWQiOjE1OTU1MD
-EwNTY0MjR9fSwiaGlzdG9yeSI6WzE2NDU0OTI2LC02NDQyMDI4
-MjgsLTE3NTI0NzY3Nyw4OTAzNTYzNDksLTY3NjY0NTIxOV19
+EwNTY0MjR9fSwiaGlzdG9yeSI6Wy0xMjYxNDA2MDI0LC02NDQy
+MDI4MjgsLTE3NTI0NzY3Nyw4OTAzNTYzNDksLTY3NjY0NTIxOV
+19
 -->
