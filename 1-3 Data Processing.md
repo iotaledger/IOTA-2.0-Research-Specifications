@@ -110,13 +110,13 @@ Here we will set the status of the transaction according to the existence of con
 The Processes that are not part of the main message processing are
 
 * **Mana Updater**
-The Mana Updater is called when a messages enter Level 3 Finality, updating the Mana accordingly in the Nodes Information Database. 
+The Mana Updater is called when a message enters Level 3 Finality, updating the Mana accordingly in the Nodes Information Database. 
 * **Tip Selector**
 Following the Weighted Tip Selection described in XXX, the Tip Selector when called will return two messages chosen independently from the Eligible list (potentially the same), where the selection follows the mentioned algorithm. 
 * **Snapshotter**
-The Snappshotter will erase all appropriatte information from the Message Tangle of old enough transactions that are considered confirmed and Level 3 Final. This process may be automated. 
+The Snapshotter will erase all appropriate information from the Message Tangle of old enough transactions that are considered confirmed and Level 3 Final. This process may be automated. 
 * **Payload Parser**
-The Payload Parser is the process that identify the payload the message carries, see if the node has the capability to process it and call the approppriate processes for it. 
+The Payload Parser is the process that identifies the payload the message carries, see if the node has the capability to process it and call the approppriate processes for it. 
 * **Value Tip Selector**
 The Value Tip Selector works similarly to the Tip Selection, but it changes the eligibility for a value message to be a tip since it needs to be solid.
 * **Finalization Tracker**
@@ -267,8 +267,8 @@ OTU1MDI1ODU5MTR9LCJMbDNVamswd25heVpOT0MwIjp7ImRpc2
 N1c3Npb25JZCI6IkVabERwUFJONGU2SGdXazkiLCJzdWIiOiJn
 aDo1MTExMjYxOCIsInRleHQiOiJpbiBnZW5lcmFsIHRoZXJlIG
 1pZ2h0IGJlIG1vcmUgdGhhbiAxIGNvbmZsaWN0aW5nIHR4Iiwi
-Y3JlYXRlZCI6MTU5NTUwMjYzMzQ1M319LCJoaXN0b3J5IjpbLT
-EwMzkzMTc0NSwxOTczMTgxMDYzLC0xNTgxOTUxODExLC02NDQy
-MDI4MjgsLTE3NTI0NzY3Nyw4OTAzNTYzNDksLTY3NjY0NTIxOV
-19
+Y3JlYXRlZCI6MTU5NTUwMjYzMzQ1M319LCJoaXN0b3J5IjpbNj
+QzMzYxNjAxLC0xMDM5MzE3NDUsMTk3MzE4MTA2MywtMTU4MTk1
+MTgxMSwtNjQ0MjAyODI4LC0xNzUyNDc2NzcsODkwMzU2MzQ5LC
+02NzY2NDUyMTldfQ==
 -->
