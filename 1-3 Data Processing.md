@@ -42,7 +42,7 @@ The following ports will be used in the processes:
 * **Finality Inquiry Port:** The port where both Users and Nodes will be able to check the status of their transaction. 
 
 The following message data sets will be used in the processes:
-* **Message inbox:** A data set where non-duplicated messages will stay until processes by the node and added to the Tangle. 
+* **Message inbox:** A data set where non-duplicated messages will stay until processed by the node and added to the Tangle. 
 * **Solidification Buffer:** A data set where messages that were not able to quick-solidify will be kept until the missing messages arrive.
 * **Message Tangle:** The main data set where all the non-snapshotted messages are kept. 
 * **Rate Manager Outbox:** A data set where messages that were processed are kept until they are gossiped further. 
@@ -126,10 +126,10 @@ The Finalization Tracker update the Finality level of transaction according to t
 
 <!--stackedit_data:
 eyJkaXNjdXNzaW9ucyI6eyJ1WnFsUlZyU3ViSGYxYzA4Ijp7In
-N0YXJ0IjoxNTI5LCJlbmQiOjE2MTcsInRleHQiOiJUaGUgcG9y
-dCByZXNwb25zaWJsZSBmb3IgdGhlIHBhY2tldHMgbmVlZGVkIH
-RvIG5vZGVzIHRvIHVzZSB0aGUgQXV0b3BlZXJpbmcgbWVj4oCm
-In19LCJjb21tZW50cyI6eyIwT2MyWWZhdWl4djhTQ3JQIjp7Im
+RleHQiOiJUaGUgcG9ydCByZXNwb25zaWJsZSBmb3IgdGhlIHBh
+Y2tldHMgbmVlZGVkIHRvIG5vZGVzIHRvIHVzZSB0aGUgQXV0b3
+BlZXJpbmcgbWVj4oCmIiwic3RhcnQiOjE1MzUsImVuZCI6MTYx
+Nn19LCJjb21tZW50cyI6eyIwT2MyWWZhdWl4djhTQ3JQIjp7Im
 Rpc2N1c3Npb25JZCI6InVacWxSVnJTdWJIZjFjMDgiLCJzdWIi
 OiJnaDo1MTExMjYxOCIsInRleHQiOiJ0aGUgcG9ydCBmb3IgYX
 V0b3BlZXJpbmcgcHJvdG9jb2wvcmVxdWVzdHM/IERvbiB0IHVu
@@ -139,7 +139,13 @@ ZWF0ZWQiOjE1OTU0MjA5Nzc1NTR9LCIzY0FFVzJmcHR0VUZxbz
 BOIjp7ImRpc2N1c3Npb25JZCI6InVacWxSVnJTdWJIZjFjMDgi
 LCJzdWIiOiJnaDo2ODI1MDM1MCIsInRleHQiOiJJIHRyaWVkIH
 RvIGdpdmUgYSBiZXR0ZXIgd29yZGluZywgdGhlIG9sZCBvbmUg
-d2FzIGF3ZnVsLiIsImNyZWF0ZWQiOjE1OTU0NDQxMTExNDJ9fS
-wiaGlzdG9yeSI6Wy02NDQyMDI4MjgsLTE3NTI0NzY3Nyw4OTAz
-NTYzNDksLTY3NjY0NTIxOV19
+d2FzIGF3ZnVsLiIsImNyZWF0ZWQiOjE1OTU0NDQxMTExNDJ9LC
+J1MldQdjBOWk9UNGpST2NoIjp7ImRpc2N1c3Npb25JZCI6InVa
+cWxSVnJTdWJIZjFjMDgiLCJzdWIiOiJnaDo1MTExMjYxOCIsIn
+RleHQiOiJzbyBpdHMgdGhlIHNhbWUgcG9ydCBmb3Igc2VuZGlu
+ZyBhbmQgcmVxdWVzdGluZy4gSWYgeWVzIHBlcmhhcHMganVzdC
+BjYWxsIGlzdCBBdXRvcGVlcmluZyBQb3J0IiwiY3JlYXRlZCI6
+MTU5NTUwMDU4NjEyMn19LCJoaXN0b3J5IjpbLTEyNDEwNTIyNj
+EsLTY0NDIwMjgyOCwtMTc1MjQ3Njc3LDg5MDM1NjM0OSwtNjc2
+NjQ1MjE5XX0=
 -->
