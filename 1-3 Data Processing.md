@@ -55,7 +55,7 @@ The following other data sets will be used in the processes:
 
 # Main Message Processing Diagram 
 
-The Main Message processor constitutes of 7 processes that constitutes of all actions the node do with a message from the moment it is received until it is included on its Tangle and further gossiped. The 8 processes are: "Duplicate Detector, "Node Signature Validator", "Timestamp Opinion and Filter", "Proof of Work Check", "Solidifier", "Rate Manager" and "Gossip Scheduler".
+The Main Message processor constitutes of 7 processes that constitutes of all actions the node do with a message from the moment it is received until it is included on its Tangle and further gossiped. The 8 processes are: "Duplicate Detector", "Node Signature Validator", "Timestamp Opinion and Filter", "Proof of Work Check", "Solidifier", "Rate Manager" and "Gossip Scheduler".
 
 Ignoring the possible data sets and ports used, the processes are ordered as:
 
@@ -156,7 +156,7 @@ Qgc29tZXdoZXJlIiwiY3JlYXRlZCI6MTU5NTUwMDcwMjk1NX0s
 ImlUNlVPNEVVdHA0dXBhZ1ciOnsiZGlzY3Vzc2lvbklkIjoicz
 dQbkJkNGlabzhQcmhIUyIsInN1YiI6ImdoOjUxMTEyNjE4Iiwi
 dGV4dCI6Imp1c3QgXCJOb2RlIERhdGFiYXNlXCI/IiwiY3JlYX
-RlZCI6MTU5NTUwMDgxMDUzNX19LCJoaXN0b3J5IjpbMTE3NDU5
-NzY2MSwtNjQ0MjAyODI4LC0xNzUyNDc2NzcsODkwMzU2MzQ5LC
-02NzY2NDUyMTldfQ==
+RlZCI6MTU5NTUwMDgxMDUzNX19LCJoaXN0b3J5IjpbLTEyNTI0
+OTcwMDEsLTY0NDIwMjgyOCwtMTc1MjQ3Njc3LDg5MDM1NjM0OS
+wtNjc2NjQ1MjE5XX0=
 -->
