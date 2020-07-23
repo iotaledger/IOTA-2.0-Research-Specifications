@@ -95,7 +95,7 @@ The Gossip Scheduler will take messages in the Processor Outbox following priori
 The processes of the Value Tangle are 
 
 1. **Duplicate Detector**
-This Duplicator Detector will check if the transaction is already included in the Value Tangle. This will also define the Epoch of the transaction. If two duplicate transactions are sent in the same Epoch, they are considered the same, while under different epochs one is considered an reattachment. 
+This Duplicator Detector will check if the transaction is already included in the Value Tangle. This will also define the Epoch of the transaction. If two duplicate transactions are sent in the same Epoch, they are considered the same, while under different Epochs one is considered an reattachment. 
 
 2. **Validator**
 The Validator will check the UTXO inputs to see if the funds being transfered exists and will also remove value messages with no funds veing moved. 
@@ -242,8 +242,7 @@ I2MTgiLCJ0ZXh0IjoiQWRkIEZpZ3VyZSIsImNyZWF0ZWQiOjE1
 OTU1MDIwMjI1NTB9LCIxYVZpQ0JyTUNEWUNFb3VmIjp7ImRpc2
 N1c3Npb25JZCI6IkcxT3dadUIzYnR4NXJmcVYiLCJzdWIiOiJn
 aDo1MTExMjYxOCIsInRleHQiOiJBZGQgRmlndXJlIiwiY3JlYX
-RlZCI6MTU5NTUwMjA1MDA0OX19LCJoaXN0b3J5IjpbLTE4NjU5
-NTUzMzAsMTk3MzE4MTA2MywtMTU4MTk1MTgxMSwtNjQ0MjAyOD
-I4LC0xNzUyNDc2NzcsODkwMzU2MzQ5LC02NzY2NDUyMTldfQ==
-
+RlZCI6MTU5NTUwMjA1MDA0OX19LCJoaXN0b3J5IjpbLTIxMzU3
+NjY3NCwxOTczMTgxMDYzLC0xNTgxOTUxODExLC02NDQyMDI4Mj
+gsLTE3NTI0NzY3Nyw4OTAzNTYzNDksLTY3NjY0NTIxOV19
 -->
