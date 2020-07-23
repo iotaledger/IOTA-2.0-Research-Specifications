@@ -98,7 +98,7 @@ The processes of the Value Tangle are
 The Duplicator Detector will check if the transaction is already included in the Value Tangle. This will also define the Epoch of the transaction. If two duplicate transactions are sent in the same Epoch, they are considered the same, while under different Epochs one is considered a reattachment. 
 
 2. **Validator**
-The Validator will check the UTXO inputs to see if the funds being transfered exists and will also remove value messages with no funds veing moved. 
+The Validator will check the UTXO inputs to see if the funds being transferred exists and will also remove value messages with no funds being moved. 
 
 
 3. **Conflict Check**
@@ -249,7 +249,7 @@ SWQiOiJ0RklLdWk5eTBmNXJFcnZYIiwic3ViIjoiZ2g6NTExMT
 I2MTgiLCJ0ZXh0IjoiQWxsIHRoaXMgY29tZSBhZnRlciB0aGUg
 TWFpbiBNZXNzYWdlIFByb2MgRGlhZy4gVGhpcyBzaG91bGQgYm
 Ugc2FpZCBleHBsaWN0bHkiLCJjcmVhdGVkIjoxNTk1NTAyMjg2
-MTI4fX0sImhpc3RvcnkiOlsxNjIxODMxMzQ3LDE5NzMxODEwNj
-MsLTE1ODE5NTE4MTEsLTY0NDIwMjgyOCwtMTc1MjQ3Njc3LDg5
-MDM1NjM0OSwtNjc2NjQ1MjE5XX0=
+MTI4fX0sImhpc3RvcnkiOlstMTA3NjEyNzQyNSwxOTczMTgxMD
+YzLC0xNTgxOTUxODExLC02NDQyMDI4MjgsLTE3NTI0NzY3Nyw4
+OTAzNTYzNDksLTY3NjY0NTIxOV19
 -->
