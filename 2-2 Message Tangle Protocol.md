@@ -61,7 +61,7 @@ Messages of course have other information, but they are not relevant for this sp
 
 Messages will be stored with the following fields:
 * `arrivalTime` The time that the message first arrived to the node.  
-* `opinionField` Contains the opinion on the timestamp of a message.  As specified [here](https://hackmd.io/xBfQ04NkRi6IrwhEQm7aJQ), this field is a triple `(opinion,level,timeFormed)` where `opinion` is a Boolean value, `level` is in the set {1,2,3}, and `timeFormed` is a time. This `opinionField` is also manipulated by FPC.
+* `opinionField` Contains the nodes' opinion on the timestamp of a message.  As specified [here](https://hackmd.io/xBfQ04NkRi6IrwhEQm7aJQ), this field is a triple `(opinion,level,timeFormed)` where `opinion` is a Boolean value, `level` is in the set {1,2,3}, and `timeFormed` is a time. This `opinionField` is also manipulated by FPC.
 * `eligible` is a Boolean value, denoting if the message was ever eligible for tip selection. 
 
 # Main Components
@@ -357,6 +357,6 @@ pUeE4iLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQiOiJJIHN1
 Z2dlc3QgdG8gYWx3eWFzIHdyaXRlIFwibG9jYWwgdGltZVwiIG
 lmIGl0IGlzIHRoZSBsb2NhbCB0aW1lIG9mIGEgcGFydGljdWxh
 ciBub2RlIiwiY3JlYXRlZCI6MTU5NTU3Mzc3OTMxOX19LCJoaX
-N0b3J5IjpbNDIxMjY1MzgyLDEwMTI1MjgyNjgsLTEyMzA0ODIw
+N0b3J5IjpbODEzNTg1ODY0LDEwMTI1MjgyNjgsLTEyMzA0ODIw
 MzgsLTEzNDE4OTMzMjksLTUyNDA1ODkzNF19
 -->
