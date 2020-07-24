@@ -231,16 +231,13 @@ A message is "final" if we are sure that it wont be orphaned. Recall that we cal
 
 To not be orphaned, a message must be eligible for tip selection, hence Grade 1.  Once eligible, it is possible, though unlikely, that it will be orphaned.  This probability decreases quickly as the message gains more approvers.  Hence a message with say 10% confirmation confidence is very unlikely to be orphaned. Thus we have Grade 2.  
 
-There is a small probability that a grade 2 message might be orpahned. This would happen if other nodes did not choose the approving tips before they expired. This is highly unlikely even in the face of an attack.
-
-
-
+There is a small probability that a grade 2 message might be orphaned. This would happen if other nodes did not choose the approving tips before they expired. This is highly unlikely even in the face of an attack.
 
 Moreover, it is exponentially less likely that an old grade 2 message will be orphaned, hence the definition of grade 3.  Let us explain.  Because of the below max depth check, in order for an old message `M` to have grade level 2, `M` must belong to a chain of grade 2 messages whose length is proportional to its age. If  `M` is orphaned, then the whole chain must be orphaned. Thus, the situation described in the previous paragraph would have to repeat several times.
 
 ### Open questions
 
-We need to understand the probabilities of orphanage associated with each level of finality.  As discussed earlier, these probabilites should be small, but it would be useful to know how small.  In studying these questions, we may also find that two of these finalities are essentially the same.  
+We need to understand the probabilities of orphanage associated with each level of finality.  As discussed earlier, these probabilities should be small, but it would be useful to know how small.  In studying these questions, we may also find that two of these finalities are essentially the same.  
 
 ## 5. Snapshotting
 
@@ -447,7 +444,7 @@ ZSBsZXZlbD8iLCJjcmVhdGVkIjoxNTk1NTc3OTY1MzMxfSwiZU
 tDSUVvU3cyOHFwVUtYTiI6eyJkaXNjdXNzaW9uSWQiOiJnMk1G
 eDljQlpvaFNFd1FlIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZX
 h0Ijoid2hlcmUgaXMgdGhpcyBkZWZpbmVkPyIsImNyZWF0ZWQi
-OjE1OTU1NzgwMjg3MDF9fSwiaGlzdG9yeSI6WzM2NjExMTU1Ni
+OjE1OTU1NzgwMjg3MDF9fSwiaGlzdG9yeSI6WzU3OTA1ODc0OS
 wxMzc3ODcyODA0LC0yNjE0MTQwODUsLTEzNzc5MDg3NjMsMTE4
 OTIxOTcyMiwtOTc2NzY1NjA0LC00MTMzMjMyMzcsNjYxNDQ3ND
 U5LC0xMDgxMjk1MTc2LC0xNDg3MDY4MDAwLDgxMzU4NTg2NCwx
