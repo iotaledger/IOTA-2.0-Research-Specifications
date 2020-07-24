@@ -210,7 +210,7 @@ We do not specify any algorithms for computing which messages have these degrees
 ### Detailed Design
 
 There are three grades of finality for a message.
-* Grade 1: The message and every message in its history satisfy the following: the opinon is `TRUE` and the level is either 2 or 3.  In other words, the message has the `eligible` flag set to `True`.
+* Grade 1: The message and every message in its history satisfy the following: the opinion is `TRUE` and the level is either 2 or 3.  In other words, the message has the `eligible` flag set to `True`.
 * Grade 2: The message has Grade 1 finality, and the confidence level is greater than `theta` for some parameter.
 * Grade 3: The message has Grade 2 finality and the timestamp is older than `T`.
 
@@ -436,9 +436,9 @@ IiOiJnaDo1MTExMjYxOCIsInRleHQiOiJUaGlzIHNob3VsZCBi
 ZSBjYWxjdWxhYmxlLiBVbmRlciBzb21lIGFzc3VtcHRpb25zIG
 9mIG1hbGljaW91cyBtcHMgYW5kIGhvbmVzdCBtcHMgZXZlbiB0
 aGVvcmV0aWNhbGx5LiIsImNyZWF0ZWQiOjE1OTU1Nzc2MzE3NT
-Z9fSwiaGlzdG9yeSI6Wy0yNjE0MTQwODUsLTEzNzc5MDg3NjMs
-MTE4OTIxOTcyMiwtOTc2NzY1NjA0LC00MTMzMjMyMzcsNjYxND
-Q3NDU5LC0xMDgxMjk1MTc2LC0xNDg3MDY4MDAwLDgxMzU4NTg2
-NCwxMDEyNTI4MjY4LC0xMjMwNDgyMDM4LC0xMzQxODkzMzI5LC
-01MjQwNTg5MzRdfQ==
+Z9fSwiaGlzdG9yeSI6WzEzNzc4NzI4MDQsLTI2MTQxNDA4NSwt
+MTM3NzkwODc2MywxMTg5MjE5NzIyLC05NzY3NjU2MDQsLTQxMz
+MyMzIzNyw2NjE0NDc0NTksLTEwODEyOTUxNzYsLTE0ODcwNjgw
+MDAsODEzNTg1ODY0LDEwMTI1MjgyNjgsLTEyMzA0ODIwMzgsLT
+EzNDE4OTMzMjksLTUyNDA1ODkzNF19
 -->
