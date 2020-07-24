@@ -243,7 +243,7 @@ We need to understand the probabilities of orphanage associated with each level 
 
 Snapshotting may be viewed as merely an optimization. However, since it is critical for nodes, particularly in the IoT setting, we enable it at the protocol level.
 
- Essentially, a message can be snapshotted when we are sure that all incoming messages directly referencing it will be orphaned. This determination can be made using timestamps. 
+Essentially, a message can be snapshotted when we are sure that all incoming messages directly referencing it will be orphaned. This determination can be made using timestamps. 
 
 ### Detailed Design
 
@@ -252,7 +252,7 @@ When `currentTime-messageID.timestamp>snapshotTime`, the node should do the foll
 * Remove messageID from `eligibleTipList` if present
 * Remove the message from `messageTangle`  
 
-The parameter `snapshotTime` can be set individidually by each node as long as `snapshotTime>w+2D+Delta`.  
+The parameter `snapshotTime` can be set individually by each node as long as `snapshotTime>w+2D+Delta`.  
 
 
 ### Rationale
@@ -444,10 +444,10 @@ ZSBsZXZlbD8iLCJjcmVhdGVkIjoxNTk1NTc3OTY1MzMxfSwiZU
 tDSUVvU3cyOHFwVUtYTiI6eyJkaXNjdXNzaW9uSWQiOiJnMk1G
 eDljQlpvaFNFd1FlIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZX
 h0Ijoid2hlcmUgaXMgdGhpcyBkZWZpbmVkPyIsImNyZWF0ZWQi
-OjE1OTU1NzgwMjg3MDF9fSwiaGlzdG9yeSI6WzU3OTA1ODc0OS
-wxMzc3ODcyODA0LC0yNjE0MTQwODUsLTEzNzc5MDg3NjMsMTE4
-OTIxOTcyMiwtOTc2NzY1NjA0LC00MTMzMjMyMzcsNjYxNDQ3ND
-U5LC0xMDgxMjk1MTc2LC0xNDg3MDY4MDAwLDgxMzU4NTg2NCwx
-MDEyNTI4MjY4LC0xMjMwNDgyMDM4LC0xMzQxODkzMzI5LC01Mj
-QwNTg5MzRdfQ==
+OjE1OTU1NzgwMjg3MDF9fSwiaGlzdG9yeSI6Wy03NjI2MjY5Nz
+IsNTc5MDU4NzQ5LDEzNzc4NzI4MDQsLTI2MTQxNDA4NSwtMTM3
+NzkwODc2MywxMTg5MjE5NzIyLC05NzY3NjU2MDQsLTQxMzMyMz
+IzNyw2NjE0NDc0NTksLTEwODEyOTUxNzYsLTE0ODcwNjgwMDAs
+ODEzNTg1ODY0LDEwMTI1MjgyNjgsLTEyMzA0ODIwMzgsLTEzND
+E4OTMzMjksLTUyNDA1ODkzNF19
 -->
