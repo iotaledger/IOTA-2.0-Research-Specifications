@@ -121,7 +121,6 @@ We will use RURTS which stands for Restricted Uniform Random Tip Selection. This
 
 ### Detailed Design
 
-
 First, we describe how the `eligibleTipsList` is maintained.  After the timestamp is set, when a message is added to the tangle, the following logic is performed:
 ```
 If messageID.opinionField.opinion=TRUE and (messageID.opinionField.level=2 or messageID.opinionField.level=3) 
@@ -415,8 +414,9 @@ QwNX0sIkxQdlV0RFE1T2Vsazh5QzUiOnsiZGlzY3Vzc2lvbklk
 IjoiSjZpckhyRXVVbFJpTVIwZSIsInN1YiI6ImdoOjUxMTEyNj
 E4IiwidGV4dCI6Ik9yIGlzIHRoaXMgY29udGFpbmVkIGluIHRo
 ZSB0aW1lc3RhbXAgY2hlY2sgaW4gMS0zPyIsImNyZWF0ZWQiOj
-E1OTU1NzYyOTYyNTZ9fSwiaGlzdG9yeSI6Wy05NzY3NjU2MDQs
-LTQxMzMyMzIzNyw2NjE0NDc0NTksLTEwODEyOTUxNzYsLTE0OD
-cwNjgwMDAsODEzNTg1ODY0LDEwMTI1MjgyNjgsLTEyMzA0ODIw
-MzgsLTEzNDE4OTMzMjksLTUyNDA1ODkzNF19
+E1OTU1NzYyOTYyNTZ9fSwiaGlzdG9yeSI6WzExODkyMTk3MjIs
+LTk3Njc2NTYwNCwtNDEzMzIzMjM3LDY2MTQ0NzQ1OSwtMTA4MT
+I5NTE3NiwtMTQ4NzA2ODAwMCw4MTM1ODU4NjQsMTAxMjUyODI2
+OCwtMTIzMDQ4MjAzOCwtMTM0MTg5MzMyOSwtNTI0MDU4OTM0XX
+0=
 -->
