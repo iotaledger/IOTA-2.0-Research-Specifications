@@ -177,7 +177,7 @@ A message disliked by FPC will not be added to `eligibleTipsList` and thus will 
 
 Since messages with questionable timestamps will not be flagged eligible until FPC resolves their status, honest messages should not approve them.  Thus, an attacker cannot trick honest messages into being orphaned.
 
-It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence ofevery message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issueing messages, but the attacker can also  have the chain reach full confirmation confidence by issueing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
+It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence of every message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issueing messages, but the attacker can also  have the chain reach full confirmation confidence by issueing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
 
 To summarize, bad messages will be orphaned, and honest messages will not.  Moreover, we claim that there is no middle ground: regardless of an attacker's actions, all messages flagged as eligible will not be orphaned, with high probability.   Indeed, `Delta` will be set significantly greater than `w+D`, thus any message added to the eligible tip list will be eligible for tip selection long enough that it will be eventually selected with high probability.  
 
@@ -421,9 +421,9 @@ VVJoMXl0NWk3d1ciOnsiZGlzY3Vzc2lvbklkIjoialN3Zk9jbV
 ozQnVhanJvUyIsInN1YiI6ImdoOjUxMTEyNjE4IiwidGV4dCI6
 ImRvbiB0IHVuZGVyc3RhbmQ/IElzIHRoaXMgZ2V0VGlwIGZvci
 BuZXcgbWVzc2FnZS5JRD8iLCJjcmVhdGVkIjoxNTk1NTc2OTIz
-NjI4fX0sImhpc3RvcnkiOls1NjAwMTAxMCwxMTg5MjE5NzIyLC
-05NzY3NjU2MDQsLTQxMzMyMzIzNyw2NjE0NDc0NTksLTEwODEy
-OTUxNzYsLTE0ODcwNjgwMDAsODEzNTg1ODY0LDEwMTI1MjgyNj
-gsLTEyMzA0ODIwMzgsLTEzNDE4OTMzMjksLTUyNDA1ODkzNF19
-
+NjI4fX0sImhpc3RvcnkiOlsxODI0MDg0ODUyLDExODkyMTk3Mj
+IsLTk3Njc2NTYwNCwtNDEzMzIzMjM3LDY2MTQ0NzQ1OSwtMTA4
+MTI5NTE3NiwtMTQ4NzA2ODAwMCw4MTM1ODU4NjQsMTAxMjUyOD
+I2OCwtMTIzMDQ4MjAzOCwtMTM0MTg5MzMyOSwtNTI0MDU4OTM0
+XX0=
 -->
