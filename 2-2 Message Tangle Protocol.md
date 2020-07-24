@@ -116,7 +116,7 @@ Suppose an incoming message has a parent with timestamp older than w+2D+Delta.  
 
 ## 3. Tips selection
 
-We will use RURTS which stands for Restricted Uniform Random Tip Selection. This means we choose tips randomly from  a list of "good" tips i.e. the `eligibleTipsList`.  
+We will use RURTS which stands for Restricted Uniform Random Tip Selection. This means we choose tips randomly from a list of "good" tips, i.e., the `eligibleTipsList`.  
 
 
 ### Detailed Design
@@ -411,8 +411,12 @@ FVOEREWENzUmd0ZEZIIjp7ImRpc2N1c3Npb25JZCI6IjdDUVp2
 M1lGcWlieHhQc1UiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleH
 QiOiJmcm9tIHdoZXJlPyBNZXNzYWdlIEluYm94PyBTdGlsbCBn
 b3NzaXBlZCBvciBub3Q/IiwiY3JlYXRlZCI6MTU5NTU3NjE1OT
-QwNX19LCJoaXN0b3J5IjpbLTQxMzMyMzIzNyw2NjE0NDc0NTks
-LTEwODEyOTUxNzYsLTE0ODcwNjgwMDAsODEzNTg1ODY0LDEwMT
-I1MjgyNjgsLTEyMzA0ODIwMzgsLTEzNDE4OTMzMjksLTUyNDA1
-ODkzNF19
+QwNX0sIkxQdlV0RFE1T2Vsazh5QzUiOnsiZGlzY3Vzc2lvbklk
+IjoiSjZpckhyRXVVbFJpTVIwZSIsInN1YiI6ImdoOjUxMTEyNj
+E4IiwidGV4dCI6Ik9yIGlzIHRoaXMgY29udGFpbmVkIGluIHRo
+ZSB0aW1lc3RhbXAgY2hlY2sgaW4gMS0zPyIsImNyZWF0ZWQiOj
+E1OTU1NzYyOTYyNTZ9fSwiaGlzdG9yeSI6Wy05NzY3NjU2MDQs
+LTQxMzMyMzIzNyw2NjE0NDc0NTksLTEwODEyOTUxNzYsLTE0OD
+cwNjgwMDAsODEzNTg1ODY0LDEwMTI1MjgyNjgsLTEyMzA0ODIw
+MzgsLTEzNDE4OTMzMjksLTUyNDA1ODkzNF19
 -->
