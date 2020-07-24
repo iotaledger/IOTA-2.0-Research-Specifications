@@ -53,7 +53,7 @@ We define the following function.
 
 ## How messages are stored
 
-Every message in `messageTangle` will be identified through its `MessageID`.  Each message contains the following information which is relevant to this specification:
+Every message in `messageTangle` will be identified through its`MessageID`.  Each message contains the following information ~~which is relevant to this specification~~:
 * `parent1` and `parent2` These are message IDs of two other messages and endow the message tangle with a DAG structure.  Together these fields shall be called *parents*.
 * `timeStamp` This is a time.  This field will be discussed in SubSection 1. 
 
@@ -311,7 +311,7 @@ hpcyB0aW1lLiJ9LCJNUk1qZXJqaHk0YllHRWtvIjp7InN0YXJ0
 IjoxNDc4LCJlbmQiOjE1MzEsInRleHQiOiJwZW5kaW5nYCBUaG
 UgbWVzc2FnZXMgbm90IGVsaWdpYmxlIGZvciB0aXAgc2VsZWN0
 aW9uLiJ9LCJYSFd0bXE5bjBsY1VQSHluIjp7InN0YXJ0IjoxOT
-gwLCJlbmQiOjE5ODksInRleHQiOiJNZXNzYWdlSUQifX0sImNv
+c5LCJlbmQiOjE5ODgsInRleHQiOiJNZXNzYWdlSUQifX0sImNv
 bW1lbnRzIjp7IlhXQzdyQ1dXdTlzRTNSOHYiOnsiZGlzY3Vzc2
 lvbklkIjoia2tFb2dWaHhwT2taVnJXRSIsInN1YiI6ImdoOjUx
 MTEyNjE4IiwidGV4dCI6IlRoaXMgaXMgYSBzdHJvbmcgYXNzdW
@@ -330,6 +330,6 @@ bGUuIiwiY3JlYXRlZCI6MTU5NTU3Mjc5MzY5M30sIkZZWFVXN1
 VPWTVlb3NKQmoiOnsiZGlzY3Vzc2lvbklkIjoiWEhXdG1xOW4w
 bGNVUEh5biIsInN1YiI6ImdoOjUxMTEyNjE4IiwidGV4dCI6Im
 1lc3NhZ2VJRD8iLCJjcmVhdGVkIjoxNTk1NTcyOTg2ODE3fX0s
-Imhpc3RvcnkiOlstMTI0OTIzOTEsLTEzNDE4OTMzMjksLTUyND
-A1ODkzNF19
+Imhpc3RvcnkiOlstMTIzMDQ4MjAzOCwtMTM0MTg5MzMyOSwtNT
+I0MDU4OTM0XX0=
 -->
