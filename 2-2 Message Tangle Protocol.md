@@ -184,9 +184,9 @@ To summarize, bad messages will be orphaned, and honest messages will not.  More
 
 ### Alternatives
 
-Tips in the eligible tip list might expire, although this should not happen very often given the discussion above. Such tips will be removed from `eligibleTipList` during snapshotting.  However, to optmize efficiency, a node may want to occasionally clean the `eligibleTipList` of expired tips.
+Tips in the eligible tip list might expire, although this should not happen very often given the discussion above. Such tips will be removed from `eligibleTipList` during snapshotting.  However, to optimize efficiency, a node may want to occasionally clean the `eligibleTipList` of expired tips.
 
-Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a messase with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
+Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a message with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
 
 Periodically cycling through the pending list may not be efficient.  Instead, a node can check the `pending` list when it performs an action which might cause a message to becoem eligible.  For example, if FPC changes the opinion of a message to `True`  with `level=3`, the node can immediately remove the message can flag it as eligible and move it to the `eligibleTipList`.  Similarly, whenever a message is flagged elible, a node can search `pending` for messages which reference it, and then check if these messages can now be flagged as eligible.  
  
@@ -427,8 +427,9 @@ OTIzNjI4fSwiNVh2c1NMejBxbkd0ZmFxYiI6eyJkaXNjdXNzaW
 9uSWQiOiJtZUNFSXBaNXhMTUt1Y2dNIiwic3ViIjoiZ2g6NTEx
 MTI2MTgiLCJ0ZXh0Ijoid2hlcmUgaXMgdGhpcyBkZWZpbmVkPy
 IsImNyZWF0ZWQiOjE1OTU1NzcxODEyNTl9fSwiaGlzdG9yeSI6
-Wy0xMzc3OTA4NzYzLDExODkyMTk3MjIsLTk3Njc2NTYwNCwtND
-EzMzIzMjM3LDY2MTQ0NzQ1OSwtMTA4MTI5NTE3NiwtMTQ4NzA2
-ODAwMCw4MTM1ODU4NjQsMTAxMjUyODI2OCwtMTIzMDQ4MjAzOC
-wtMTM0MTg5MzMyOSwtNTI0MDU4OTM0XX0=
+WzE4NjQ4NTY2MjQsLTEzNzc5MDg3NjMsMTE4OTIxOTcyMiwtOT
+c2NzY1NjA0LC00MTMzMjMyMzcsNjYxNDQ3NDU5LC0xMDgxMjk1
+MTc2LC0xNDg3MDY4MDAwLDgxMzU4NTg2NCwxMDEyNTI4MjY4LC
+0xMjMwNDgyMDM4LC0xMzQxODkzMzI5LC01MjQwNTg5MzRdfQ==
+
 -->
