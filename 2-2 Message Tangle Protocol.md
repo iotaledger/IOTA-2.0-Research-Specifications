@@ -4,7 +4,7 @@ Started 2 June 2020.
 
 # Summary
 
-Data will be gossiped through the network in objects called messages. These messages will be stored in a data structure called the  message tangle.   This specification details how this information is stored and managed.  
+Data will be gossiped through the network in objects called messages. These messages will be stored in a data structure called the  message tangle. This specification details how this information is stored and managed.  
 
 The exact layout of messages is given in a [different specification](add-link).  Moreover, how messages are gossiped is the subject of the [rate control specification](add-link).  
 
@@ -303,3 +303,6 @@ The message tangle is a conflict free replicated data type, which means it conta
 
 
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA2NTc5MzYyN119
+-->
