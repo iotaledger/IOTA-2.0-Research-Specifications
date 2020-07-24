@@ -188,7 +188,7 @@ Tips in the eligible tip list might expire, although this should not happen very
 
 Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a message with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
 
-Periodically cycling through the pending list may not be efficient.  Instead, a node can check the `pending` list when it performs an action which might cause a message to become eligible.  For example, if FPC changes the opinion of a message to `True`  with `level=3`, the node can immediately remove the message, can flag it as eligible and move it to the `eligibleTipList`.  Similarly, whenever a message is flagged elible, a node can search `pending` for messages which reference it, and then check if these messages can now be flagged as eligible.  
+Periodically cycling through the pending list may not be efficient.  Instead, a node can check the `pending` list when it performs an action which might cause a message to become eligible.  For example, if FPC changes the opinion of a message to `True`  with `level=3`, the node can immediately remove the message, can flag it as eligible and move it to the `eligibleTipList`.  Similarly, whenever a message is flagged eligible, a node can search `pending` for messages which reference it, and then check if these messages can now be flagged as eligible.  
  
 ### Open questions
 
@@ -427,7 +427,7 @@ OTIzNjI4fSwiNVh2c1NMejBxbkd0ZmFxYiI6eyJkaXNjdXNzaW
 9uSWQiOiJtZUNFSXBaNXhMTUt1Y2dNIiwic3ViIjoiZ2g6NTEx
 MTI2MTgiLCJ0ZXh0Ijoid2hlcmUgaXMgdGhpcyBkZWZpbmVkPy
 IsImNyZWF0ZWQiOjE1OTU1NzcxODEyNTl9fSwiaGlzdG9yeSI6
-Wy0xNDgzMDg1NzM4LC0xMzc3OTA4NzYzLDExODkyMTk3MjIsLT
+Wy0xNTAzNjAwMDcyLC0xMzc3OTA4NzYzLDExODkyMTk3MjIsLT
 k3Njc2NTYwNCwtNDEzMzIzMjM3LDY2MTQ0NzQ1OSwtMTA4MTI5
 NTE3NiwtMTQ4NzA2ODAwMCw4MTM1ODU4NjQsMTAxMjUyODI2OC
 wtMTIzMDQ4MjAzOCwtMTM0MTg5MzMyOSwtNTI0MDU4OTM0XX0=
