@@ -26,7 +26,7 @@ Each of these topics will be given a "mini-specification" which details the desi
 
 ## Parameters, lists, and functions
 The following are the applicable parameters.  
-* `D` Gratuitous network delay~5 minutes.  We assume all messages are delivered within this time.
+* `D` gratuitous network delay~5 minutes.  We assume all messages are delivered within this time.
 * `w` window~30 minutes. Require `w>2D`
 * `Delta` max difference in consecutive timestamps. Require `Delta>w+D`
 * `theta` confidence level of grade 2 finality for messages.  
@@ -304,5 +304,15 @@ The message tangle is a conflict free replicated data type, which means it conta
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2NTc5MzYyN119
+eyJkaXNjdXNzaW9ucyI6eyJra0VvZ1ZoeHBPa1pWcldFIjp7In
+N0YXJ0Ijo5NDcsImVuZCI6MTAwMSwidGV4dCI6IldlIGFzc3Vt
+ZSBhbGwgbWVzc2FnZXMgYXJlIGRlbGl2ZXJlZCB3aXRoaW4gdG
+hpcyB0aW1lLiJ9fSwiY29tbWVudHMiOnsiWFdDN3JDV1d1OXNF
+M1I4diI6eyJkaXNjdXNzaW9uSWQiOiJra0VvZ1ZoeHBPa1pWcl
+dFIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZXh0IjoiVGhpcyBp
+cyBhIHN0cm9uZyBhc3N1bXB0aW9uIGFuZCBtYXkgYmUgaW50ZX
+JwcmV0ZWQgaW4gYSB3cm9uZyB3YXkuIFdoYXQgaGFwcGVucyBv
+ZiBvbmUgbWVzc2FnZSBpcyBub3QgZGVsaXZlcmVkIG9uIHRpbW
+U/IFByb3RvY29sIGJyZWFrcz8iLCJjcmVhdGVkIjoxNTk1NTcy
+NjI0OTMzfX0sImhpc3RvcnkiOlstNTI0MDU4OTM0XX0=
 -->
