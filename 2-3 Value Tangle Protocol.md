@@ -5,10 +5,10 @@ Created June 12th.
 
 # Summary
 
-In this specification, we outline the value tangle management, which forms the backbone of the value transafer application.  In this specification, we describe how transfers are verified, decided upon, and recorded.  
+In this specification, we outline the value tangle management, which forms the backbone of the value transfer application.  In this specification, we describe how transfers are verified, decided upon, and recorded.  
 
 
-We highly recommend first reading the [message tangle specification](https://https://hackmd.io/YfrUh4wqSua0Ou4-XHwYIA?both).  Overall the message tangle is much simpler because it has no conflicts.  However, the basic tangle management is decribed in great detail.  Instead of retyping many of these explanations, we will often simply refer the reader to that speicification. 
+We highly recommend first reading the [message tangle specification](https://https://hackmd.io/YfrUh4wqSua0Ou4-XHwYIA?both).  Overall the message tangle is much simpler because it has no conflicts.  However, the basic tangle management is described in great detail.  Instead of retyping many of these explanations, we will often simply refer the reader to that specification. 
 
 This specification covers a lot of information.  For the reader's ease, the Components section is broken up into the following subsections, each one formatted as a small specification. 
 
@@ -509,3 +509,6 @@ Another Problem: when an epoch changes, an attacker can issue messages canceling
 
 
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTUwMzc2NDk3MV19
+-->
