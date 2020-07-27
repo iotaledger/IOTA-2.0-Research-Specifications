@@ -5,10 +5,10 @@ Created June 12th.
 
 # Summary
 
-In this specification, we outline the value tangle management, which forms the backbone of the value transfer application.  In this specification, we describe how transfers are verified, decided upon, and recorded.  
+In this specification, we outline the value tangle management, which forms the backbone of the value transafer application.  In this specification, we describe how transfers are verified, decided upon, and recorded.  
 
 
-We highly recommend first reading the [message tangle specification](https://https://hackmd.io/YfrUh4wqSua0Ou4-XHwYIA?both).  Overall the message tangle is much simpler because it has no conflicts.  However, the basic tangle management is described in great detail.  Instead of retyping many of these explanations, we will often simply refer the reader to that specification. 
+We highly recommend first reading the [message tangle specification](https://https://hackmd.io/YfrUh4wqSua0Ou4-XHwYIA?both).  Overall the message tangle is much simpler because it has no conflicts.  However, the basic tangle management is described in great detail.  Instead of retyping many of these explanations, we will often simply refer the reader to that speicification. 
 
 This specification covers a lot of information.  For the reader's ease, the Components section is broken up into the following subsections, each one formatted as a small specification. 
 
@@ -33,7 +33,7 @@ The following are parameters.
 * `correctionCheckTime` the time till the correction check
 * `theta` confidence level of grade 3 finality for messages.  
 * `T` time for grade 4 finality 
-* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapShotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, although this parameter is global: it must be the same for all nodes.   
+* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapSshotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, alathough this parameter is global: it must be the same for all nodes.   
 
 
 The following are lists.
@@ -511,26 +511,26 @@ Another Problem: when an epoch changes, an attacker can issue messages canceling
 
 <!--stackedit_data:
 eyJkaXNjdXNzaW9ucyI6eyJiOENCTzJrcTNzVHNTZVZuIjp7In
-N0YXJ0IjoxMTk5LCJlbmQiOjEyMDMsInRleHQiOiJtb3N0In0s
-InhHZXFQazB5T1NWcElGelQiOnsic3RhcnQiOjEyOTQsImVuZC
-I6MTM0OCwidGV4dCI6IldlIGFzc3VtZSBhbGwgbWVzc2FnZXMg
-YXJlIGRlbGl2ZXJlZCB3aXRoaW4gdGhpcyB0aW1lLiJ9LCJDUz
-RnWFpWd1ZvTGo1Nnk3Ijp7InN0YXJ0IjoxNjc1LCJlbmQiOjE2
-ODYsInRleHQiOiJlYWNoIGluZGV4LiJ9LCJPMjI0b3IyU0RFTz
-lSTExoIjp7InN0YXJ0IjoxNzExLCJlbmQiOjE3NDUsInRleHQi
-OiJ0aGUgdGltZSB0aWxsIHRoZSBjb3JyZWN0aW9uIGNoZWNrIn
-0sIjlab2pvMWJFZ3ltcUh0OEoiOnsic3RhcnQiOjE3NDksImVu
-ZCI6MTc1NSwidGV4dCI6InRoZXRhYCJ9LCJ5VmJ1TDZhaUQ4MU
-RQQVRpIjp7InN0YXJ0IjoxODQ1LCJlbmQiOjE4NTMsInRleHQi
-OiJzbmFwU2hvdCJ9LCJvR0tMVWU3NUt0SGdEbVZkIjp7InN0YX
-J0IjoxODY0LCJlbmQiOjE4ODQsInRleHQiOiJBZ2Ugb2YgYSB0
-cmFuc2FjdGlvbiJ9LCJ4NkQ3OG1wSTNmSGl1a0M2Ijp7InN0YX
-J0IjoyMDE0LCJlbmQiOjIwODMsInRleHQiOiJhbHRob3VnaCB0
-aGlzIHBhcmFtZXRlciBpcyBnbG9iYWw6IGl0IG11c3QgYmUgdG
-hlIHNhbWUgZm9yIGFsbCBub2Rlcy4ifSwiclRVMFZ0Qk5KalVY
-VDVHbSI6eyJzdGFydCI6MjE0NiwiZW5kIjoyMTU5LCJ0ZXh0Ij
-oidmFsdWUgb2JqZWN0cyJ9LCJyRVdiMTlWcmNWTUJXeWdmIjp7
-InN0YXJ0IjoyMjI2LCJlbmQiOjIyMjgsInRleHQiOiJUeCJ9fS
+RleHQiOiJtb3N0Iiwic3RhcnQiOjEyMDEsImVuZCI6MTIwNX0s
+InhHZXFQazB5T1NWcElGelQiOnsidGV4dCI6IldlIGFzc3VtZS
+BhbGwgbWVzc2FnZXMgYXJlIGRlbGl2ZXJlZCB3aXRoaW4gdGhp
+cyB0aW1lLiIsInN0YXJ0IjoxMjk2LCJlbmQiOjEzNTB9LCJDUz
+RnWFpWd1ZvTGo1Nnk3Ijp7InRleHQiOiJlYWNoIGluZGV4LiIs
+InN0YXJ0IjoxNjc3LCJlbmQiOjE2ODh9LCJPMjI0b3IyU0RFTz
+lSTExoIjp7InRleHQiOiJ0aGUgdGltZSB0aWxsIHRoZSBjb3Jy
+ZWN0aW9uIGNoZWNrIiwic3RhcnQiOjE3MTMsImVuZCI6MTc0N3
+0sIjlab2pvMWJFZ3ltcUh0OEoiOnsidGV4dCI6InRoZXRhYCIs
+InN0YXJ0IjoxNzUxLCJlbmQiOjE3NTd9LCJ5VmJ1TDZhaUQ4MU
+RQQVRpIjp7InRleHQiOiJzbmFwU2hvdCIsInN0YXJ0IjoxODQ3
+LCJlbmQiOjE4NTV9LCJvR0tMVWU3NUt0SGdEbVZkIjp7InRleH
+QiOiJBZ2Ugb2YgYSB0cmFuc2FjdGlvbiIsInN0YXJ0IjoxODY2
+LCJlbmQiOjE4ODZ9LCJ4NkQ3OG1wSTNmSGl1a0M2Ijp7InRleH
+QiOiJhbHRob3VnaCB0aGlzIHBhcmFtZXRlciBpcyBnbG9iYWw6
+IGl0IG11c3QgYmUgdGhlIHNhbWUgZm9yIGFsbCBub2Rlcy4iLC
+JzdGFydCI6MjAxNywiZW5kIjoyMDg3fSwiclRVMFZ0Qk5KalVY
+VDVHbSI6eyJ0ZXh0IjoidmFsdWUgb2JqZWN0cyIsInN0YXJ0Ij
+oyMTUwLCJlbmQiOjIxNjN9LCJyRVdiMTlWcmNWTUJXeWdmIjp7
+InRleHQiOiJUeCIsInN0YXJ0IjoyMjMwLCJlbmQiOjIyMzJ9fS
 wiY29tbWVudHMiOnsibWlsVDlnU09RMTBnZE9RVyI6eyJkaXNj
 dXNzaW9uSWQiOiJiOENCTzJrcTNzVHNTZVZuIiwic3ViIjoiZ2
 g6NTExMTI2MTgiLCJ0ZXh0Ijoid2hhdCBkb2VzIHRoaXMgbWVh
@@ -568,6 +568,6 @@ c2FjdGlvbj8iLCJjcmVhdGVkIjoxNTk1ODc1MDIxMjE3fSwiUW
 VYSzhpSXBCNkNJRmVDNCI6eyJkaXNjdXNzaW9uSWQiOiJyRVdi
 MTlWcmNWTUJXeWdmIiwic3ViIjoiZ2g6NTExMTI2MTgiLCJ0ZX
 h0IjoiV2h5IG5vdCBUeCAtPiBUcmFuc2FjdGlvbj8iLCJjcmVh
-dGVkIjoxNTk1ODc1MTI3OTU4fX0sImhpc3RvcnkiOlsxMzI2NT
-A0NTI0LC0xMTU3NzQ1ODU2XX0=
+dGVkIjoxNTk1ODc1MTI3OTU4fX0sImhpc3RvcnkiOlstMTMwMz
+IzNDc3NSwxMzI2NTA0NTI0LC0xMTU3NzQ1ODU2XX0=
 -->
