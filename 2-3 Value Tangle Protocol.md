@@ -33,7 +33,7 @@ The following are parameters.
 * `correctionCheckTime` the time till the correction check
 * `theta` confidence level of grade 3 finality for messages.  
 * `T` time for grade 4 finality 
-* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapshotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, athough this parameter is global: it must be the same for all nodes.   
+* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapShotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, athough this parameter is global: it must be the same for all nodes.   
 
 
 The following are lists.
@@ -539,5 +539,5 @@ Y5NjMzN30sImhicWJ2OFFWaUJ3bU1kOWIiOnsiZGlzY3Vzc2lv
 bklkIjoiOVpvam8xYkVneW1xSHQ4SiIsInN1YiI6ImdoOjUxMT
 EyNjE4IiwidGV4dCI6InNhbWUgYXMgaW4gbWVzc2FnZSB0YW5n
 bGU/IiwiY3JlYXRlZCI6MTU5NTg3NDcyNzQyOH19LCJoaXN0b3
-J5IjpbNDYwNDcyNTA5XX0=
+J5IjpbLTk2NDExODM3MV19
 -->
