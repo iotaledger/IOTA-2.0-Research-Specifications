@@ -170,7 +170,7 @@ Return messageID
 
 ### Rationale
 
-RURTS is easy to implement, computationally inexpensive, and minimizes orphanage. Moreover, it is in weak Nash equilibrium: honest users have nothing to gain by deviating from the protocol. Moreover, this tip selection algorithm should be resistant to blow ball attacks.  
+RURTS is easy to implement, computationally inexpensive, and minimises orphanage. Moreover, it is in weak Nash equilibrium: honest users have nothing to gain by deviating from the protocol. Moreover, this tip selection algorithm should be resistant to blow ball attacks.  
 
 As demonstrated in the original Iota white paper and subsequent simulations, URTS has no orphans.  Theoretically, RURTS should largely approximate URTS.  The only difference is that some tips may "expire" when they become older than `Delta`.  With a large `Delta`, honest messages will essentially never be orphaned. 
 
@@ -178,16 +178,16 @@ A message disliked by FPC will not be added to `eligibleTipsList` and thus will 
 
 Since messages with questionable timestamps will not be flagged eligible until FPC resolves their status, honest messages should not approve them.  Thus, an attacker cannot trick honest messages into being orphaned.
 
-It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence of every message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issueing messages, but the attacker can also  have the chain reach full confirmation confidence by issueing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
+It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence of every message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issuing messages, but the attacker can also  have the chain reach full confirmation confidence by issuing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
 
-To summarize, bad messages will be orphaned, and honest messages will not.  Moreover, we claim that there is no middle ground: regardless of an attacker's actions, all messages flagged as eligible will not be orphaned, with high probability.   Indeed, `Delta` will be set significantly greater than `w+D`, thus any message added to the eligible tip list will be eligible for tip selection long enough that it will be eventually selected with high probability.  
+To summarise, bad messages will be orphaned, and honest messages will not.  Moreover, we claim that there is no middle ground: regardless of an attacker's actions, all messages flagged as eligible will not be orphaned, with high probability.   Indeed, `Delta` will be set significantly greater than `w+D`, thus any message added to the eligible tip list will be eligible for tip selection long enough that it will be eventually selected with high probability.  
 
 
 ### Alternatives
 
 Tips in the eligible tip list might expire, although this should not happen very often given the discussion above. Such tips will be removed from `eligibleTipList` during snapshotting.  However, to optimize efficiency, a node may want to occasionally clean the `eligibleTipList` of expired tips.
 
-Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a messagse with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
+Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a messages with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
 
 Periodically cycling through the pending list may not be efficient.  Instead, a node can check the `pending` list when it performs an action which might cause a message to becomem eligible.  For example, if FPC changes the opinion of a message to `True`  with `level=3`, the node can immediately remove the message, can flag it as eligible and move it to the `eligibleTipList`.  Similarly, whenever a message is flagged eligible, a node can search `pending` for messages which reference it, and then check if these messages can now be flagged as eligible.  
  
@@ -341,13 +341,13 @@ NvbmZpcm1hdGlvbiBjb25maWRlbmNlIiwic3RhcnQiOjg1NzMs
 ImVuZCI6ODU5Nn0sIkRPb2w3SklYT09iTEV0WEYiOnsidGV4dC
 I6IldlIGtub3cgZm9yIGluc3RhbmNlIHRoZSBwcm9iYWJpbGl0
 eSBvZiBiZWluZyBvcnBoYW5lZCBpcyBcInNtYWxsXCIsIGJ1dC
-B3ZSBkbyBub+KApiIsInN0YXJ0IjoxMTE5NSwiZW5kIjoxMTMy
-NX0sIktVVVBXbkgzMTBZUFA2bkQiOnsidGV4dCI6ImNvbmZpcm
-1hdGlvbkNvbmZpZGVuYyIsInN0YXJ0IjoxMjY2MiwiZW5kIjox
-MjY4M30sImcyTUZ4OWNCWm9oU0V3UWUiOnsidGV4dCI6IlJlY2
-FsbCB0Iiwic3RhcnQiOjEzMDMwLCJlbmQiOjEzMDM4fSwiZWNS
+B3ZSBkbyBub+KApiIsInN0YXJ0IjoxMTE5MywiZW5kIjoxMTMy
+M30sIktVVVBXbkgzMTBZUFA2bkQiOnsidGV4dCI6ImNvbmZpcm
+1hdGlvbkNvbmZpZGVuYyIsInN0YXJ0IjoxMjY2MCwiZW5kIjox
+MjY4MX0sImcyTUZ4OWNCWm9oU0V3UWUiOnsidGV4dCI6IlJlY2
+FsbCB0Iiwic3RhcnQiOjEzMDI4LCJlbmQiOjEzMDM2fSwiZWNS
 VDB1ZzRPTFV1WnpjYyI6eyJ0ZXh0IjoiaGUgZm9sbG93aW5nIi
-wic3RhcnQiOjE1MTM0LCJlbmQiOjE1MTQ2fSwiQ05zWEJ2QTNE
+wic3RhcnQiOjE1MTMyLCJlbmQiOjE1MTQ0fSwiQ05zWEJ2QTNE
 ejhJZzZYaSI6eyJ0ZXh0IjoiVGlwcyBzZWxlY3Rpb24iLCJzdG
 FydCI6NTQzNCwiZW5kIjo1NDQ4fSwiUktxOWVrbXVVa1V3SHhl
 dSI6eyJzdGFydCI6NzMxNywiZW5kIjo3MzI2LCJ0ZXh0IjoiTW
@@ -522,11 +522,11 @@ c2lvbklkIjoiZ1ZFSkI1dUpJcGNFeE0zcyIsInN1YiI6ImdoOj
 Y4MjUwMzUwIiwidGV4dCI6IlBlaGFwcyBhIHNlY3Rpb24gZGVz
 Y3JpYmluZyBwb3NzaWJsZSBhdHRhY2tzIHdvdWxkIG1pa2UgdG
 hlIGZpbGUgY2xlYW5lciIsImNyZWF0ZWQiOjE1OTU4ODExMTE1
-Njd9fSwiaGlzdG9yeSI6Wy0yMDI2MzQ4ODgwLC0xNDg4NjI3OT
-Q4LDE4MzE3MjAwNTEsLTE4NjAxMTg4NjYsMTA2MzE5NTY3Nywx
-MzgzMDE0MTQ1LDE1NTQ0ODM1MDMsLTc2MjAxMjE5OSwtNzYyNj
-I2OTcyLDU3OTA1ODc0OSwxMzc3ODcyODA0LC0yNjE0MTQwODUs
-LTEzNzc5MDg3NjMsMTE4OTIxOTcyMiwtOTc2NzY1NjA0LC00MT
-MzMjMyMzcsNjYxNDQ3NDU5LC0xMDgxMjk1MTc2LC0xNDg3MDY4
-MDAwLDgxMzU4NTg2NF19
+Njd9fSwiaGlzdG9yeSI6WzE0MjEyNDYzMDksLTIwMjYzNDg4OD
+AsLTE0ODg2Mjc5NDgsMTgzMTcyMDA1MSwtMTg2MDExODg2Niwx
+MDYzMTk1Njc3LDEzODMwMTQxNDUsMTU1NDQ4MzUwMywtNzYyMD
+EyMTk5LC03NjI2MjY5NzIsNTc5MDU4NzQ5LDEzNzc4NzI4MDQs
+LTI2MTQxNDA4NSwtMTM3NzkwODc2MywxMTg5MjE5NzIyLC05Nz
+Y3NjU2MDQsLTQxMzMyMzIzNyw2NjE0NDc0NTksLTEwODEyOTUx
+NzYsLTE0ODcwNjgwMDBdfQ==
 -->
