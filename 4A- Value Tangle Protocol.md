@@ -62,7 +62,7 @@ We define the following functions.
 ## How value objects and transactions are stored
 
 Every value object and transaction can be identified by their `valueObjectID` and `transactionID` respectively.  Each value object contains the following information which is relevant to this specification:
-* `parent1` and `parent2` These are message IDs of two other messages and endow the message tangle with a DAG structure.  Together these fields shall be called *parents*.
+* `parent1` and `parent2` These are value object IDs and endow the value tangle with a DAG structure.  Together these fields shall be called *parents*.
 * `transaction` this is the payload of each value object. 
 * `timeStamp` which indicates the time the value object was created.  
 
@@ -534,19 +534,19 @@ ZW50MWAgYW5kIGBwYXJlbnQyIiwic3RhcnQiOjM2MzksImVuZC
 I6MzY2MH0sIkpZSHJrTU15VlBqbFQ5amIiOnsidGV4dCI6InZh
 bHVlIG9iamVjdHMiLCJzdGFydCI6MjE2OSwiZW5kIjoyMTgyfS
 wiNDhGejI0M2lodmx2Ym53dyI6eyJ0ZXh0Ijoid2FzIGZpcnN0
-IHBhcnNlZCIsInN0YXJ0Ijo0MDQyLCJlbmQiOjQwNTh9LCJkNm
+IHBhcnNlZCIsInN0YXJ0Ijo0MDIzLCJlbmQiOjQwMzl9LCJkNm
 RvNXp3dzl5dGlXNnN2Ijp7InRleHQiOiJoZSBpbmRleGVkIHRy
 YW5zYWN0aW9uIGFzc29jaWF0ZWQgdG8gdGhlIHZhbHVlIG9iam
-VjdC4iLCJzdGFydCI6NDMzNCwiZW5kIjo0Mzg4fSwiaGRKS21X
+VjdC4iLCJzdGFydCI6NDMxNSwiZW5kIjo0MzY5fSwiaGRKS21X
 dWJFczkzM0hKSCI6eyJ0ZXh0IjoiaW5kZXgraW5kZXhlZFR4SU
-QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDY0NywiZW5kIjo0Njc2
+QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDYyOCwiZW5kIjo0NjU3
 fSwiNWlpWlUyeUV6ajRUcU5JVSI6eyJ0ZXh0IjoidHJhbnNhY3
 Rpb25gICBpcyB0aGUgaGFzaCBvZiB0aGUgdHJhbnNhY3Rpb24g
-aXQgY29udGFpbnMiLCJzdGFydCI6NDczOSwiZW5kIjo0Nzk1fS
+aXQgY29udGFpbnMiLCJzdGFydCI6NDcyMCwiZW5kIjo0Nzc2fS
 wiajZRVFJhRlYyQ3JtY2kwSSI6eyJ0ZXh0IjoiVGltZXN0YW1w
-cyIsInN0YXJ0Ijo2NDcxLCJlbmQiOjY0ODF9LCJkbGkwQ251NF
+cyIsInN0YXJ0Ijo2NDUyLCJlbmQiOjY0NjJ9LCJkbGkwQ251NF
 V6cEVQdnhiIjp7InRleHQiOiJpdCBpcyBvYmplY3QgYW5kIiwi
-c3RhcnQiOjczODUsImVuZCI6NzQwMX19LCJjb21tZW50cyI6ey
+c3RhcnQiOjczNjYsImVuZCI6NzM4Mn19LCJjb21tZW50cyI6ey
 JtaWxUOWdTT1ExMGdkT1FXIjp7ImRpc2N1c3Npb25JZCI6ImI4
 Q0JPMmtxM3NUc1NlVm4iLCJzdWIiOiJnaDo1MTExMjYxOCIsIn
 RleHQiOiJ3aGF0IGRvZXMgdGhpcyBtZWFuPyIsImNyZWF0ZWQi
@@ -620,6 +620,10 @@ IHZlcnkgbmF0dXJhbCBhbmQgc2hvdWxkIGJlIG1lbnRpb25lZC
 IsImNyZWF0ZWQiOjE1OTU5MTUzOTA2NDN9LCJGd1BjSHI0NlE2
 cXVCcHFGIjp7ImRpc2N1c3Npb25JZCI6ImRsaTBDbnU0VXpwRV
 B2eGIiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQiOiJvYmpl
-Y3RpdmU/IiwiY3JlYXRlZCI6MTU5NTkxNTQ0NjIzNH19LCJoaX
-N0b3J5IjpbNDE2MTIyNjQxXX0=
+Y3RpdmU/IiwiY3JlYXRlZCI6MTU5NTkxNTQ0NjIzNH0sIm9yRF
+ZsbHhSVnN5VWkxSG0iOnsiZGlzY3Vzc2lvbklkIjoickVXYjE5
+VnJjVk1CV3lnZiIsInN1YiI6ImdoOjUwNjYxODQ0IiwidGV4dC
+I6Ikl0cyB0b28gbG9uZyB0byB3cml0ZSBvdmVyIGFuZCBvdmVy
+IiwiY3JlYXRlZCI6MTU5NTkyNzAwNTU0MH19LCJoaXN0b3J5Ij
+pbLTE5NTc2ODYzNzldfQ==
 -->
