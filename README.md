@@ -37,22 +37,21 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 **2. Network Layer**
 
--  **A.**  Peer DiscoveryCommunication Layer
-Communication Layer
+-  **A.**  Peer Discovery
 
-- **B.**  Data processing by nodes
 
 -  **C.** Message Tangle
     
 -   **D** Data processing by nodes
 
-Communication Layer**
+**Communication Layer**
 
-- **A.**   Message Tangle
+- **A.**  Data processing by nodes
+- **B.**   Message Tangle
     
-- **B.**  Rate control
+- **C.**  Rate control
     
--   **C.** Congestion Control
+-   **D.** Congestion Control
     
 
 **4. Value Transfer Application**
@@ -75,7 +74,7 @@ Communication Layer**
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4MzU2MTM5MSwtMTgwOTQxNzc3MywtMT
-M5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkx
-OTEzNTYsLTE5MDM3NjU2NTRdfQ==
+eyJoaXN0b3J5IjpbLTE4MjkxNzE5MDUsLTE4MDk0MTc3NzMsLT
+EzOTg1MDM0NTYsLTEwOTAwNjk0NjksMTM0MzkxNDA2MCwtOTA5
+MTkxMzU2LC0xOTAzNzY1NjU0XX0=
 -->
