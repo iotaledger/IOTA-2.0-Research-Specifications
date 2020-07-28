@@ -139,7 +139,7 @@ Another alternative is to have value objects inherit the timestamp of their pare
 
 ## 2. Indexed transactions and reattachments
 
-Value objects can be reattached multiple times in the message tangle, assuming the message has the correct timestamp.  Similarly, a transaction can be reattached multiple times by any party since neither messages nor value objects are signed by the account holders of the spent funds.  Transactions which are reattached should, in general not be considered distinct.  If reattached transactions were considered conflicts, then the FCoB rule (see Subsection 4) would cancel both out. 
+Value objects can be reattached multiple times in the message tangle, assuming the message has the correct timestamp.  Similarly, a transaction can be reattached multiple times by any party since neither messages nor value objects are signed by the account holders of the spent funds.  Transactions which are reattached should, in general, not be considered distinct.  If reattached transactions were considered conflicts, then the FCoB rule (see Subsection 4) would cancel both out. 
 
 However, this approach precludes snapshotting: when receiving a transaction, a node would need to check its entire history for duplicates. This is simply not practical.  As a solution, we divide the timeline into "indices" or epochs. Transactions issued in the same index will be identified together in an object called `indexedTx` or an indexed transaction.  FPC will vote on indexed transactions.
 
@@ -621,7 +621,8 @@ IsImNyZWF0ZWQiOjE1OTU5MTUzOTA2NDN9LCJGd1BjSHI0NlE2
 cXVCcHFGIjp7ImRpc2N1c3Npb25JZCI6ImRsaTBDbnU0VXpwRV
 B2eGIiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQiOiJvYmpl
 Y3RpdmU/IiwiY3JlYXRlZCI6MTU5NTkxNTQ0NjIzNH19LCJoaX
-N0b3J5IjpbMjExNTI4MjEyLC0xOTA1MDE4MDI4LDU5MjgwNTY5
-NiwtMTIwMTExNDk1NywtNDg0ODM3MDAwLDE4OTI0NDQ4OTYsLT
-EzMDMyMzQ3NzUsMTMyNjUwNDUyNCwtMTE1Nzc0NTg1Nl19
+N0b3J5IjpbNzgyMTU3MTE0LDIxMTUyODIxMiwtMTkwNTAxODAy
+OCw1OTI4MDU2OTYsLTEyMDExMTQ5NTcsLTQ4NDgzNzAwMCwxOD
+kyNDQ0ODk2LC0xMzAzMjM0Nzc1LDEzMjY1MDQ1MjQsLTExNTc3
+NDU4NTZdfQ==
 -->
