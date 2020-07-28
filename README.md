@@ -55,11 +55,11 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 -   **A.** Value Tangle Protocol
     
-- **.**  UTXO and Ledger Calculations
+- **B.**  UTXO and Ledger Calculations
     
--   **.** Mana
+-   **C.** Mana
     
-    **5. Core Consensus Applications**
+   **5. Core Consensus Applications**
 
 -   **A.** FPC
    
@@ -71,8 +71,8 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjUxNzk4MDYsMTc1MDk0MDMyMywtMT
-M0NzY3NDYwOSwtMTgwOTQxNzc3MywtMTM5ODUwMzQ1NiwtMTA5
-MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3Nj
-U2NTRdfQ==
+eyJoaXN0b3J5IjpbLTU2NzA4ODM5MSwtMTUyNTE3OTgwNiwxNz
+UwOTQwMzIzLC0xMzQ3Njc0NjA5LC0xODA5NDE3NzczLC0xMzk4
+NTAzNDU2LC0xMDkwMDY5NDY5LDEzNDM5MTQwNjAsLTkwOTE5MT
+M1NiwtMTkwMzc2NTY1NF19
 -->
