@@ -40,10 +40,13 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 -  **B.** Neighbor selection
     
-**3. oction ****
-- *B.*   Message Tangle Protocol
-    
-- **C.** **D.** Congestion Control
+**3. Communication **
+
+- **A.** Data processing
+- **B.**   Message Tangle Protocol
+
+- **C.** Rate Control
+-  **D.** Congestion Control
     
 
 **4. Value Transfer Application**
@@ -66,7 +69,8 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MDk0MDMyMywtMTM0NzY3NDYwOSwtMT
-gwOTQxNzc3MywtMTM5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQz
-OTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRdfQ==
+eyJoaXN0b3J5IjpbLTUyMzk5OTkyOCwxNzUwOTQwMzIzLC0xMz
+Q3Njc0NjA5LC0xODA5NDE3NzczLC0xMzk4NTAzNDU2LC0xMDkw
+MDY5NDY5LDEzNDM5MTQwNjAsLTkwOTE5MTM1NiwtMTkwMzc2NT
+Y1NF19
 -->
