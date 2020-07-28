@@ -1,10 +1,6 @@
-# Coordicide-Coordicide-Coordicide-Specifications
-
-Specifications For Iota 2.0
+# Coordicide-Specifications For Iota 2.0
 
 These specifications are not stable
-
-  
 
 This document contains links to all specifications for all the components of all the components of the Iota 2.0 protocol informally known as coordicide. These specifications are currently in flux as the research department is still writing and revising them.
 
@@ -31,6 +27,6 @@ On top of the communication layer is the application layer. There are several co
 
 Several core applications provide consensus and regulate timestamps in the message tangle and conflicts in the value tangle (a component of the value transfer application). FPC or Fast Probabilistic Consensus is a binary voting protocol which produces consensus on a bit. The “implementing FPC” specification outlines how this binary voting protocol is used to vote on actual objects. The FPC protocol relies on a DRNG, aka a distributed random number generator. Lastly, the resynchronisation application detects any FPC failures.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwOTE5MTM1NiwxMTAzNzc3MDAwLC0xOT
+eyJoaXN0b3J5IjpbMTM0MzkxNDA2MCwtOTA5MTkxMzU2LC0xOT
 AzNzY1NjU0XX0=
 -->
