@@ -65,14 +65,14 @@ Several core applications provide consensus and regulate timestamps in the messa
    
 - **5.2**  Implementing FPC
 
--   **5.** DRNG
+-   **5.3** DRNG
 
--   **D** Resynchronization
+-   **5.4** Resynchronization
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjEzNzQ1NTIsLTU2NzA4ODM5MSwtMT
-UyNTE3OTgwNiwxNzUwOTQwMzIzLC0xMzQ3Njc0NjA5LC0xODA5
-NDE3NzczLC0xMzk4NTAzNDU2LC0xMDkwMDY5NDY5LDEzNDM5MT
-QwNjAsLTkwOTE5MTM1NiwtMTkwMzc2NTY1NF19
+eyJoaXN0b3J5IjpbNzg3MTA3MzE2LC01NjcwODgzOTEsLTE1Mj
+UxNzk4MDYsMTc1MDk0MDMyMywtMTM0NzY3NDYwOSwtMTgwOTQx
+Nzc3MywtMTM5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MD
+YwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
