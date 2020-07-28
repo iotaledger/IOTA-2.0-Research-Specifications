@@ -11,7 +11,7 @@ These specifications are not stable
 
 ## Introduction
 
-To orientate the reader, we provide a brief summary of the Iota 2.0 protocol. The network will be maintained via the Networking layer which consists of two basic modules: the peer discovery module which provides a list of nodes actively using the network, and the neighbour selection (aka autopeering) which actually picks links. The Networking layer also manages the gossiping which is done by flooding.
+To orientate the reader, we provide a brief summary of the Iota 2.0 protocol. The network will be maintained via the Networking layer which consists of two basic modules: the peer discovery module which provides a list of nodes actively using the network, and the neighbor selection (aka autopeering) which actually picks links. The Networking layer also manages the gossiping which is done by flooding.
 
   
 
@@ -27,15 +27,15 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 ## Overview of files
 
-**Structure**
+**1. Structure**
 
--   Data Models
+-   A. Data Models
     
 -   Communication Specifications
     
 -   Payloads and Layers
 
-**Network Layer**
+**2. Network Layer**
 
 -   Peer DiscoveryCommunication Layer
 Communication Layer
@@ -46,7 +46,7 @@ Communication Layer
     
 -   Data processing by nodes
 
-**Communication Layer**
+Communication Layer**
 
 -   Message Tangle
     
@@ -55,7 +55,7 @@ Communication Layer
 -   Congestion Control
     
 
-**Value Transfer Application**
+**4. Value Transfer Application**
 
 -   Value Tangle
     
@@ -63,7 +63,7 @@ Communication Layer
     
 -   Mana
     
-    **Core Consensus Applications**
+    **5. Core Consensus Applications**
 
 -   FPC
    
@@ -75,7 +75,7 @@ Communication Layer
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTg1MDM0NTYsMTU3NzYyNjkwNiwtMT
+eyJoaXN0b3J5IjpbLTU0MDYwNDUwNiwtMTM5ODUwMzQ1NiwtMT
 A5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3
 NjU2NTRdfQ==
 -->
