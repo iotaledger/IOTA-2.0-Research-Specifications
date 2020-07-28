@@ -27,7 +27,7 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 ## Overview of files
 
-Structure
+**Structure**
 
 -   Data Models
     
@@ -41,48 +41,12 @@ Structure
 
 Network Layer
 
--   Peer Discovery
-    
-
--   Author: Angelo
-    
--   Engineer:
-    
--   [https://hackmd.io/lpa1Mz_ITNuWc1NQ8wuU5w](https://slack-redir.net/link?url=https%3A%2F%2Fhackmd.io%2Flpa1Mz_ITNuWc1NQ8wuU5w)
-    
-
--   Neighbor Selection
-    
-
--   Author: Angelo
-    
--   Engineer:
-    
--   [https://hackmd.io/j2MkN2K-SViAqe_b_6d98g](https://slack-redir.net/link?url=https%3A%2F%2Fhackmd.io%2Fj2MkN2K-SViAqe_b_6d98g)
-    
-
-Communication Layer
+-   Peer DiscoveryCommunication Layer
 
 -   Data processing by nodes
-    
-
--   Author: Darcy
-    
--   Engineer:
-    
--   [https://hackmd.io/@darcycamargo/Sy9AYrKjI](https://hackmd.io/@darcycamargo/Sy9AYrKjI)
-    
 
 -   Message Tangle
     
-
--   Author: Billy
-    
--   Engineer: Broad
-    
--   [https://hackmd.io/YfrUh4wqSua0Ou4-XHwYIA?both](https://slack-redir.net/link?url=https%3A%2F%2Fhackmd.io%2FYfrUh4wqSua0Ou4-XHwYIA%3Fboth)
-    
-
 -   Rate control
     
 -   Congestion Control
@@ -92,7 +56,7 @@ Communication Layer
 
 -   Value Tangle
     
--   UTXO and Realities
+-   UTXO and Ledger Calculations
     
 -   Mana
     
@@ -101,6 +65,7 @@ Communication Layer
 -   FPC
    
 -   Implementing FPC
+- 
 -   DRNG
   
 
@@ -108,6 +73,6 @@ Communication Layer
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTAwNjk0NjksODUyODcxMSwxMzQzOT
-E0MDYwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRdfQ==
+eyJoaXN0b3J5IjpbMTQ2NjM2ODI2LC0xMDkwMDY5NDY5LDEzND
+M5MTQwNjAsLTkwOTE5MTM1NiwtMTkwMzc2NTY1NF19
 -->
