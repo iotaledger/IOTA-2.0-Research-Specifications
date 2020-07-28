@@ -92,10 +92,10 @@ In Components Subsection 8, we reference other fields in the transaction layout,
 
 # Main Components
 
-As mentioned in the introduction, this section is divided into 9 subsections. To help orientate the reader, we briefly outline the actions performed on a vlaue object.
+As mentioned in the introduction, this section is divided into 9 subsections. To help orientate the reader, we briefly outline the actions performed on a value object.
 
 After a message has been processed on the communication layer, it passes through the payload parser.  If the payload is a value object, the parser calls the `value object processor` which does the following actions.
-1. Timestmap check 
+1. Timestamp check 
 2. Duplicate detector 
 3. Conflict Check
 4. Initial Eligibility Check
@@ -599,7 +599,7 @@ h0IjoiPyIsImNyZWF0ZWQiOjE1OTU5MTQzNjEzOTd9LCJCbG9E
 ZWNTV09pWGxNS2l6Ijp7ImRpc2N1c3Npb25JZCI6IjVpaVpVMn
 lFemo0VHFOSVUiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQi
 OiJ0cmFuc2FjdGlvbklEID8iLCJjcmVhdGVkIjoxNTk1OTE0ND
-QzNjMyfX0sImhpc3RvcnkiOlstNDg0ODM3MDAwLDE4OTI0NDQ4
-OTYsLTEzMDMyMzQ3NzUsMTMyNjUwNDUyNCwtMTE1Nzc0NTg1Nl
-19
+QzNjMyfX0sImhpc3RvcnkiOlstODUyODA1MTc4LC00ODQ4Mzcw
+MDAsMTg5MjQ0NDg5NiwtMTMwMzIzNDc3NSwxMzI2NTA0NTI0LC
+0xMTU3NzQ1ODU2XX0=
 -->
