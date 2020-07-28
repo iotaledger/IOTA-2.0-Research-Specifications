@@ -40,10 +40,8 @@ Several core applications provide consensus and regulate timestamps in the messa
 -  **A.**  Peer Discovery
 
 
--  **C.** Message Tangle
+-  **B.** Neighbor selection
     
--   **D** Data processing by nodes
-
 **Communication Layer**
 
 - **A.**  Data processing by nodes
@@ -74,7 +72,7 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjkxNzE5MDUsLTE4MDk0MTc3NzMsLT
-EzOTg1MDM0NTYsLTEwOTAwNjk0NjksMTM0MzkxNDA2MCwtOTA5
-MTkxMzU2LC0xOTAzNzY1NjU0XX0=
+eyJoaXN0b3J5IjpbLTI0ODMwNzI0NiwtMTgwOTQxNzc3MywtMT
+M5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkx
+OTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
