@@ -34,16 +34,14 @@ Several core applications provide consensus and regulate timestamps in the messa
 -   Communication Specifications
     
 -   Payloads and Layers
-    
 
--   Author: Darcy
-    
-
-Network Layer
+**Network Layer**
 
 -   Peer DiscoveryCommunication Layer
 
 -   Data processing by nodes
+
+**Communication Layer**
 
 -   Message Tangle
     
@@ -67,12 +65,11 @@ Network Layer
 -   Implementing FPC
 - 
 -   DRNG
-  
 
 -   Resynchronization
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NjM2ODI2LC0xMDkwMDY5NDY5LDEzND
-M5MTQwNjAsLTkwOTE5MTM1NiwtMTkwMzc2NTY1NF19
+eyJoaXN0b3J5IjpbMTU3NzYyNjkwNiwtMTA5MDA2OTQ2OSwxMz
+QzOTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
