@@ -179,7 +179,7 @@ A message disliked by FPC will not be added to `eligibleTipsList` and thus will 
 
 Since messages with questionable timestamps will not be flagged eligible until FPC resolves their status, honest messages should not approve them.  Thus, an attacker cannot trick honest messages into being orphaned.
 
-It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence of every message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issueing messages, but the attacker can also  have the chain reach full confirmation confidence by issueing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
+It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence (the probability of selecting a tip that is an indirect approver) of every message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issueing messages, but the attacker can also  have the chain reach full confirmation confidence by issueing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
 
 To summarize, bad messages will be orphaned, and honest messages will not.  Moreover, we claim that there is no middle ground: regardless of an attacker's actions, all messages flagged as eligible will not be orphaned, with high probability.   Indeed, `Delta` will be set significantly greater than `w+D`, thus any message added to the eligible tip list will be eligible for tip selection long enough that it will be eventually selected with high probability.  
 
@@ -339,13 +339,13 @@ IGNvbmZpZGVuY2UiLCJzdGFydCI6ODYyNSwiZW5kIjo4NjQ4fS
 wiRE9vbDdKSVhPT2JMRXRYRiI6eyJ0ZXh0IjoiV2Uga25vdyBm
 b3IgaW5zdGFuY2UgdGhlIHByb2JhYmlsaXR5IG9mIGJlaW5nIG
 9ycGhhbmVkIGlzIFwic21hbGxcIiwgYnV0IHdlIGRvIG5v4oCm
-Iiwic3RhcnQiOjExMjQ1LCJlbmQiOjExMzc1fSwiS1VVUFduSD
+Iiwic3RhcnQiOjExMzExLCJlbmQiOjExNDQxfSwiS1VVUFduSD
 MxMFlQUDZuRCI6eyJ0ZXh0IjoiY29uZmlybWF0aW9uQ29uZmlk
-ZW5jIiwic3RhcnQiOjEyNzEyLCJlbmQiOjEyNzMzfSwiZzJNRn
+ZW5jIiwic3RhcnQiOjEyNzc4LCJlbmQiOjEyNzk5fSwiZzJNRn
 g5Y0Jab2hTRXdRZSI6eyJ0ZXh0IjoiUmVjYWxsIHQiLCJzdGFy
-dCI6MTMwODEsImVuZCI6MTMwODl9LCJlY1JUMHVnNE9MVXVaem
-NjIjp7InRleHQiOiJoZSBmb2xsb3dpbmciLCJzdGFydCI6MTUx
-ODYsImVuZCI6MTUxOTh9LCJDTnNYQnZBM0R6OElnNlhpIjp7In
+dCI6MTMxNDcsImVuZCI6MTMxNTV9LCJlY1JUMHVnNE9MVXVaem
+NjIjp7InRleHQiOiJoZSBmb2xsb3dpbmciLCJzdGFydCI6MTUy
+NTIsImVuZCI6MTUyNjR9LCJDTnNYQnZBM0R6OElnNlhpIjp7In
 RleHQiOiJUaXBzIHNlbGVjdGlvbiIsInN0YXJ0Ijo1NDM0LCJl
 bmQiOjU0NDd9LCJsQnZndGJHYUJUdmZWU1lnIjp7InRleHQiOi
 JJb3RhIiwic3RhcnQiOjc0ODUsImVuZCI6NzQ4OX0sIlVzUGxa
@@ -362,17 +362,17 @@ ZsYWdzLiIsInN0YXJ0Ijo4MDIxLCJlbmQiOjgwNjV9LCJnVkVK
 QjV1SklwY0V4TTNzIjp7InRleHQiOiJmb2xsb3dpbmcgYXR0YW
 NrIiwic3RhcnQiOjgzNDEsImVuZCI6ODM1N30sIkdOYkQ3SmhV
 dHg5aGNYcVMiOnsidGV4dCI6Im9ycGhhbmVkIiwic3RhcnQiOj
-kzMDIsImVuZCI6OTMxMH0sIm5xRjdjbGNYOFB2cjlubFUiOnsi
-dGV4dCI6IkZpbmFsaXR5Iiwic3RhcnQiOjExMzg3LCJlbmQiOj
-ExMzk1fSwiR0Z6Y3REUVJ5RmZ6eTl2eCI6eyJ0ZXh0IjoiUGVy
+kzNjgsImVuZCI6OTM3Nn0sIm5xRjdjbGNYOFB2cjlubFUiOnsi
+dGV4dCI6IkZpbmFsaXR5Iiwic3RhcnQiOjExNDUzLCJlbmQiOj
+ExNDYxfSwiR0Z6Y3REUVJ5RmZ6eTl2eCI6eyJ0ZXh0IjoiUGVy
 aW9kaWNhbGx5Iiwic3RhcnQiOjYyNTQsImVuZCI6NjI2Nn0sIj
 UyNncxMEI5UXhMN2RHWWYiOnsidGV4dCI6IkdyYWRlIDEiLCJz
-dGFydCI6MTIyMzYsImVuZCI6MTIyNDN9LCJNcncxSUducFpCQ2
-JKRExqIjp7InRleHQiOiIuIiwic3RhcnQiOjE0MDY5LCJlbmQi
-OjE0MDcwfSwidWNxU3FqRkxYUHZzdVZHVCI6eyJ0ZXh0IjoiUm
+dGFydCI6MTIzMDIsImVuZCI6MTIzMDl9LCJNcncxSUducFpCQ2
+JKRExqIjp7InRleHQiOiIuIiwic3RhcnQiOjE0MTM1LCJlbmQi
+OjE0MTM2fSwidWNxU3FqRkxYUHZzdVZHVCI6eyJ0ZXh0IjoiUm
 Vtb3ZlIG1lc3NhZ2VJRCBmcm9tIGBwZW5kaW5nYCBpZiBwcmVz
 ZW50XG4qIFJlbW92ZSBtZXNzYWdlSUQgZnJvbSBgZWxpZ2libG
-VUaXDigKYiLCJzdGFydCI6MTUyMDIsImVuZCI6MTUzMzl9LCJs
+VUaXDigKYiLCJzdGFydCI6MTUyNjgsImVuZCI6MTU0MDV9LCJs
 VTl2N0Z3MnRXSEtLbk9jIjp7InRleHQiOiJEZWx0YT5tZXNzYW
 dlSUQudGltZXN0YW1wLW1lc3NhZ2VJRC5wYXJlbnQxLnRpbWVT
 dGFtcCA+MCIsInN0YXJ0Ijo0ODc0LCJlbmQiOjQ5MzB9fSwiY2
@@ -615,6 +615,12 @@ ZXQgYSB0aXAgd2UgY2FuIGFwcHJvdmUuIiwiY3JlYXRlZCI6MT
 U5NTkyNTkzNzU2MH0sImZDQUpDbmcyN2xwa0s5T1AiOnsiZGlz
 Y3Vzc2lvbklkIjoiVXNQbFpFMVhBdXMwN1NMMCIsInN1YiI6Im
 doOjUwNjYxODQ0IiwidGV4dCI6IkkgaGF2ZSBubyBpZGVhISIs
-ImNyZWF0ZWQiOjE1OTU5MjU5NTQ3NTB9fSwiaGlzdG9yeSI6Wy
-0xNTY2MzkxNzQ2LC0xMTAyMzM0Nzk0XX0=
+ImNyZWF0ZWQiOjE1OTU5MjU5NTQ3NTB9LCJ3YnVKdWxCSUxSeD
+Y4UzVvIjp7ImRpc2N1c3Npb25JZCI6IndOR3d0OHQzanh4NGta
+VzMiLCJzdWIiOiJnaDo1MDY2MTg0NCIsInRleHQiOiJBaCwgYn
+V0IHdlIGRvbnQgbmVlZCB0byBjaGVjayB0aGUgcGFzdCBjb25l
+IHVzaW5nIHRoZSByZWN1cnNpdmUgZWxpZ2libGl0eSBjaGVjay
+4iLCJjcmVhdGVkIjoxNTk1OTI2MjM0ODk4fX0sImhpc3Rvcnki
+OlstNTUxMTIwOTEzLC0xNTY2MzkxNzQ2LC0xMTAyMzM0Nzk0XX
+0=
 -->
