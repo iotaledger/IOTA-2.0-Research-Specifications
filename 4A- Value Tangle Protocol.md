@@ -33,7 +33,7 @@ The following are parameters.
 * `correctionCheckTime` the time till the correction check
 * `theta` confidence level of grade 3 finality for messages.  
 * `T` time for grade 4 finality 
-* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapSshotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, although this parameter is global: it must be the same for all nodes.   
+* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapSshotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, alathough this parameter is global: it must be the same for all nodes.   
 
 
 The following are lists.
@@ -62,7 +62,7 @@ We define the following functions.
 ## How value objects and transactions are stored
 
 Every value object and transaction can be identified by their `valueObjectID` and `transactionID` respectively.  Each value object contains the following information which is relevant to this specification:
-* `parent1` and `parent2` These are value object IDs and endow the value tangle with a DAG structure.  Together these fields shall be called *parents*.
+* `parent1` and `parent2` These are value object IDmessage IDs of two other messages and endow the valumessage tangle with a DAG structure.  Together these fields shall be called *parents*.
 * `transaction` this is the payload of each value object. 
 * `timeStamp` which indicates the time the value object was created.  
 
@@ -511,7 +511,7 @@ Another Problem: when an epoch changes, an attacker can issue messages canceling
 
 <!--stackedit_data:
 eyJkaXNjdXNzaW9ucyI6eyJiOENCTzJrcTNzVHNTZVZuIjp7In
-RleHQiOiJtb3N0Iiwic3RhcnQiOjEyMTMsImVuZCI6MTIwMX0s
+RleHQiOiJtb3N0IiwiZW5kIjoxMjEzLCJzdGFydCI6MTIxM30s
 InhHZXFQazB5T1NWcElGelQiOnsidGV4dCI6IldlIGFzc3VtZS
 BhbGwgbWVzc2FnZXMgYXJlIGRlbGl2ZXJlZCB3aXRoaW4gdGhp
 cyB0aW1lLiIsInN0YXJ0IjoxMzAzLCJlbmQiOjEzNzB9LCJDUz
@@ -527,26 +527,26 @@ QiOiJBZ2Ugb2YgYSB0cmFuc2FjdGlvbiIsInN0YXJ0IjoxODg2
 LCJlbmQiOjE5MDZ9LCJ4NkQ3OG1wSTNmSGl1a0M2Ijp7InRleH
 QiOiJhbHRob3VnaCB0aGlzIHBhcmFtZXRlciBpcyBnbG9iYWw6
 IGl0IG11c3QgYmUgdGhlIHNhbWUgZm9yIGFsbCBub2Rlcy4iLC
-JzdGFydCI6MjAzNywiZW5kIjoyMTA2fSwickVXYjE5VnJjVk1C
-V3lnZiI6eyJ0ZXh0IjoiVHgiLCJzdGFydCI6MjI0OSwiZW5kIj
-oyMjUxfSwiY0oxTnppS3lzUnFHVFZ0aSI6eyJ0ZXh0IjoicGFy
-ZW50MWAgYW5kIGBwYXJlbnQyIiwic3RhcnQiOjM2MzksImVuZC
-I6MzY2MH0sIkpZSHJrTU15VlBqbFQ5amIiOnsidGV4dCI6InZh
-bHVlIG9iamVjdHMiLCJzdGFydCI6MjE2OSwiZW5kIjoyMTgyfS
+JzdGFydCI6MjAzNywiZW5kIjoyMTA3fSwickVXYjE5VnJjVk1C
+V3lnZiI6eyJ0ZXh0IjoiVHgiLCJzdGFydCI6MjI1MCwiZW5kIj
+oyMjUyfSwiY0oxTnppS3lzUnFHVFZ0aSI6eyJ0ZXh0IjoicGFy
+ZW50MWAgYW5kIGBwYXJlbnQyIiwic3RhcnQiOjM2NDAsImVuZC
+I6MzY2MX0sIkpZSHJrTU15VlBqbFQ5amIiOnsidGV4dCI6InZh
+bHVlIG9iamVjdHMiLCJzdGFydCI6MjE3MCwiZW5kIjoyMTgzfS
 wiNDhGejI0M2lodmx2Ym53dyI6eyJ0ZXh0Ijoid2FzIGZpcnN0
-IHBhcnNlZCIsInN0YXJ0Ijo0MDIzLCJlbmQiOjQwMzl9LCJkNm
+IHBhcnNlZCIsInN0YXJ0Ijo0MDYyLCJlbmQiOjQwNzh9LCJkNm
 RvNXp3dzl5dGlXNnN2Ijp7InRleHQiOiJoZSBpbmRleGVkIHRy
 YW5zYWN0aW9uIGFzc29jaWF0ZWQgdG8gdGhlIHZhbHVlIG9iam
-VjdC4iLCJzdGFydCI6NDMxNSwiZW5kIjo0MzY5fSwiaGRKS21X
+VjdC4iLCJzdGFydCI6NDM1NCwiZW5kIjo0NDA4fSwiaGRKS21X
 dWJFczkzM0hKSCI6eyJ0ZXh0IjoiaW5kZXgraW5kZXhlZFR4SU
-QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDYyOCwiZW5kIjo0NjU3
+QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDY2NywiZW5kIjo0Njk2
 fSwiNWlpWlUyeUV6ajRUcU5JVSI6eyJ0ZXh0IjoidHJhbnNhY3
 Rpb25gICBpcyB0aGUgaGFzaCBvZiB0aGUgdHJhbnNhY3Rpb24g
-aXQgY29udGFpbnMiLCJzdGFydCI6NDcyMCwiZW5kIjo0Nzc2fS
+aXQgY29udGFpbnMiLCJzdGFydCI6NDc1OSwiZW5kIjo0ODE1fS
 wiajZRVFJhRlYyQ3JtY2kwSSI6eyJ0ZXh0IjoiVGltZXN0YW1w
-cyIsInN0YXJ0Ijo2NDUyLCJlbmQiOjY0NjJ9LCJkbGkwQ251NF
+cyIsInN0YXJ0Ijo2NDkxLCJlbmQiOjY1MDF9LCJkbGkwQ251NF
 V6cEVQdnhiIjp7InRleHQiOiJpdCBpcyBvYmplY3QgYW5kIiwi
-c3RhcnQiOjczNjYsImVuZCI6NzM4Mn19LCJjb21tZW50cyI6ey
+c3RhcnQiOjc0MDUsImVuZCI6NzQyMX19LCJjb21tZW50cyI6ey
 JtaWxUOWdTT1ExMGdkT1FXIjp7ImRpc2N1c3Npb25JZCI6ImI4
 Q0JPMmtxM3NUc1NlVm4iLCJzdWIiOiJnaDo1MTExMjYxOCIsIn
 RleHQiOiJ3aGF0IGRvZXMgdGhpcyBtZWFuPyIsImNyZWF0ZWQi
@@ -630,5 +630,5 @@ VFZ0aSIsInN1YiI6ImdoOjUwNjYxODQ0IiwidGV4dCI6IlBhcm
 VudCBpcyBhIHJlbGF0aXZlIHRlcm0uICBUaGUgcGFyZW50cyBv
 ZiBhIHZhbHVlIG9iamVjdCBhcmUgYWdhaW4gdmFsdWUgb2JqZW
 N0cy4iLCJjcmVhdGVkIjoxNTk1OTI3MDk5NTg5fX0sImhpc3Rv
-cnkiOlstOTcyMDkxMjcyXX0=
+cnkiOlsxODk4MTM1MTA5LC05NzIwOTEyNzJdfQ==
 -->
