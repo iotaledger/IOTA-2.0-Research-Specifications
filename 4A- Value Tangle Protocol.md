@@ -24,16 +24,16 @@ This specification covers a lot of information.  For the reader's ease, the Comp
 # Preliminaries
 ## Parameters, lists, and functions
 The following are parameters.  
-* `d` Estimation of network delay ~5 seconds. We assume all messages arrive at most nodes in this time.  
+* `d` Estimation of network delay ~5 seconds. We assume all messages arrive at almost all  nodes in this time.  
 * `c` FCoB parameter ~d.
-* `D` Gratuitous network delay~5 minutes.  We assume all messages are delivered within this time.  This parameter is also used in the message tangle.  
+* `D` Gratuitous network delay~5 minutes.  We assume all messages are delivered to all nodes within this time.  This parameter is also used in the message tangle.  
 * `w` window~30 minutes. Require `w>2D`. This parameter is also used in the message tangle.
 * `DeltaValue` max difference in consecutive timestamps. Require `DeltaValue>w+D`.  This parameter is similar to `Delta` on the message tangle. 
 * `epoch` is the length of time of each index.
 * `correctionCheckTime` the time till the correction check
 * `theta` confidence level of grade 3 finality for messages.  
 * `T` time for grade 4 finality 
-* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapSshotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, alathough this parameter is global: it must be the same for all nodes.   
+* `snapShotTimeValue` Age of a transaction when snapshotted. Require `snapSshotTimeValue>DeltaValue+w+2D` This parameter is similar to `snapShotTime` on the message tangle, although this parameter is global: it must be the same for all nodes.   
 
 
 The following are lists.
@@ -511,42 +511,42 @@ Another Problem: when an epoch changes, an attacker can issue messages canceling
 
 <!--stackedit_data:
 eyJkaXNjdXNzaW9ucyI6eyJiOENCTzJrcTNzVHNTZVZuIjp7In
-RleHQiOiJtb3N0Iiwic3RhcnQiOjEyMDEsImVuZCI6MTIwNX0s
+RleHQiOiJtb3N0Iiwic3RhcnQiOjEyMTMsImVuZCI6MTIwMX0s
 InhHZXFQazB5T1NWcElGelQiOnsidGV4dCI6IldlIGFzc3VtZS
 BhbGwgbWVzc2FnZXMgYXJlIGRlbGl2ZXJlZCB3aXRoaW4gdGhp
-cyB0aW1lLiIsInN0YXJ0IjoxMjk2LCJlbmQiOjEzNTB9LCJDUz
+cyB0aW1lLiIsInN0YXJ0IjoxMzAzLCJlbmQiOjEzNzB9LCJDUz
 RnWFpWd1ZvTGo1Nnk3Ijp7InRleHQiOiJlYWNoIGluZGV4LiIs
-InN0YXJ0IjoxNjc3LCJlbmQiOjE2ODh9LCJPMjI0b3IyU0RFTz
+InN0YXJ0IjoxNjk3LCJlbmQiOjE3MDh9LCJPMjI0b3IyU0RFTz
 lSTExoIjp7InRleHQiOiJ0aGUgdGltZSB0aWxsIHRoZSBjb3Jy
-ZWN0aW9uIGNoZWNrIiwic3RhcnQiOjE3MTMsImVuZCI6MTc0N3
+ZWN0aW9uIGNoZWNrIiwic3RhcnQiOjE3MzMsImVuZCI6MTc2N3
 0sIjlab2pvMWJFZ3ltcUh0OEoiOnsidGV4dCI6InRoZXRhYCIs
-InN0YXJ0IjoxNzUxLCJlbmQiOjE3NTd9LCJ5VmJ1TDZhaUQ4MU
-RQQVRpIjp7InRleHQiOiJzbmFwU2hvdCIsInN0YXJ0IjoxODQ3
-LCJlbmQiOjE4NTV9LCJvR0tMVWU3NUt0SGdEbVZkIjp7InRleH
-QiOiJBZ2Ugb2YgYSB0cmFuc2FjdGlvbiIsInN0YXJ0IjoxODY2
-LCJlbmQiOjE4ODZ9LCJ4NkQ3OG1wSTNmSGl1a0M2Ijp7InRleH
+InN0YXJ0IjoxNzcxLCJlbmQiOjE3Nzd9LCJ5VmJ1TDZhaUQ4MU
+RQQVRpIjp7InRleHQiOiJzbmFwU2hvdCIsInN0YXJ0IjoxODY3
+LCJlbmQiOjE4NzV9LCJvR0tMVWU3NUt0SGdEbVZkIjp7InRleH
+QiOiJBZ2Ugb2YgYSB0cmFuc2FjdGlvbiIsInN0YXJ0IjoxODg2
+LCJlbmQiOjE5MDZ9LCJ4NkQ3OG1wSTNmSGl1a0M2Ijp7InRleH
 QiOiJhbHRob3VnaCB0aGlzIHBhcmFtZXRlciBpcyBnbG9iYWw6
 IGl0IG11c3QgYmUgdGhlIHNhbWUgZm9yIGFsbCBub2Rlcy4iLC
-JzdGFydCI6MjAxNywiZW5kIjoyMDg3fSwickVXYjE5VnJjVk1C
-V3lnZiI6eyJ0ZXh0IjoiVHgiLCJzdGFydCI6MjIzMCwiZW5kIj
-oyMjMyfSwiY0oxTnppS3lzUnFHVFZ0aSI6eyJ0ZXh0IjoicGFy
-ZW50MWAgYW5kIGBwYXJlbnQyIiwic3RhcnQiOjM2MjAsImVuZC
-I6MzY0MX0sIkpZSHJrTU15VlBqbFQ5amIiOnsidGV4dCI6InZh
-bHVlIG9iamVjdHMiLCJzdGFydCI6MjE1MCwiZW5kIjoyMTYzfS
+JzdGFydCI6MjAzNywiZW5kIjoyMTA2fSwickVXYjE5VnJjVk1C
+V3lnZiI6eyJ0ZXh0IjoiVHgiLCJzdGFydCI6MjI0OSwiZW5kIj
+oyMjUxfSwiY0oxTnppS3lzUnFHVFZ0aSI6eyJ0ZXh0IjoicGFy
+ZW50MWAgYW5kIGBwYXJlbnQyIiwic3RhcnQiOjM2MzksImVuZC
+I6MzY2MH0sIkpZSHJrTU15VlBqbFQ5amIiOnsidGV4dCI6InZh
+bHVlIG9iamVjdHMiLCJzdGFydCI6MjE2OSwiZW5kIjoyMTgyfS
 wiNDhGejI0M2lodmx2Ym53dyI6eyJ0ZXh0Ijoid2FzIGZpcnN0
-IHBhcnNlZCIsInN0YXJ0Ijo0MDIzLCJlbmQiOjQwMzl9LCJkNm
+IHBhcnNlZCIsInN0YXJ0Ijo0MDQyLCJlbmQiOjQwNTh9LCJkNm
 RvNXp3dzl5dGlXNnN2Ijp7InRleHQiOiJoZSBpbmRleGVkIHRy
 YW5zYWN0aW9uIGFzc29jaWF0ZWQgdG8gdGhlIHZhbHVlIG9iam
-VjdC4iLCJzdGFydCI6NDMxNSwiZW5kIjo0MzY5fSwiaGRKS21X
+VjdC4iLCJzdGFydCI6NDMzNCwiZW5kIjo0Mzg4fSwiaGRKS21X
 dWJFczkzM0hKSCI6eyJ0ZXh0IjoiaW5kZXgraW5kZXhlZFR4SU
-QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDYyOCwiZW5kIjo0NjU3
+QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDY0NywiZW5kIjo0Njc2
 fSwiNWlpWlUyeUV6ajRUcU5JVSI6eyJ0ZXh0IjoidHJhbnNhY3
 Rpb25gICBpcyB0aGUgaGFzaCBvZiB0aGUgdHJhbnNhY3Rpb24g
-aXQgY29udGFpbnMiLCJzdGFydCI6NDcyMCwiZW5kIjo0Nzc2fS
+aXQgY29udGFpbnMiLCJzdGFydCI6NDczOSwiZW5kIjo0Nzk1fS
 wiajZRVFJhRlYyQ3JtY2kwSSI6eyJ0ZXh0IjoiVGltZXN0YW1w
-cyIsInN0YXJ0Ijo2NDUyLCJlbmQiOjY0NjJ9LCJkbGkwQ251NF
+cyIsInN0YXJ0Ijo2NDcxLCJlbmQiOjY0ODF9LCJkbGkwQ251NF
 V6cEVQdnhiIjp7InRleHQiOiJpdCBpcyBvYmplY3QgYW5kIiwi
-c3RhcnQiOjczNjYsImVuZCI6NzM4Mn19LCJjb21tZW50cyI6ey
+c3RhcnQiOjczODUsImVuZCI6NzQwMX19LCJjb21tZW50cyI6ey
 JtaWxUOWdTT1ExMGdkT1FXIjp7ImRpc2N1c3Npb25JZCI6ImI4
 Q0JPMmtxM3NUc1NlVm4iLCJzdWIiOiJnaDo1MTExMjYxOCIsIn
 RleHQiOiJ3aGF0IGRvZXMgdGhpcyBtZWFuPyIsImNyZWF0ZWQi
@@ -621,5 +621,5 @@ IsImNyZWF0ZWQiOjE1OTU5MTUzOTA2NDN9LCJGd1BjSHI0NlE2
 cXVCcHFGIjp7ImRpc2N1c3Npb25JZCI6ImRsaTBDbnU0VXpwRV
 B2eGIiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQiOiJvYmpl
 Y3RpdmU/IiwiY3JlYXRlZCI6MTU5NTkxNTQ0NjIzNH19LCJoaX
-N0b3J5IjpbNzgyMTU3MTE0XX0=
+N0b3J5IjpbNDE2MTIyNjQxXX0=
 -->
