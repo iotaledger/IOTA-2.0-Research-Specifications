@@ -75,7 +75,7 @@ Value objects will be stored with the following fields:
 * `indexedTx` the indexed transaction associated to the value object.
 
 
-We introduce an object called `indexedTx` or indexed transaction, which is rigorously defined in Main Components Subsection 2 below. These objects will be stored in the list `indexedTxList` along with the following fields:
+We introduce an object called `indexedTx` or indexed transaction, which isn rigorously defined in Main Components Subsection 2 below. These objects will be stored in the list `indexedTxList` along with the following fields:
 * `indexedTxID` is the hash of `index+indexedTxID.transaction`.  This hash uniquely identifies each indexed transaction.
 * `transaction`  is the hash of the transaction it contains
 * `index`  is coarse measurement of time: see Main Components Subsection 1 below.
@@ -92,10 +92,10 @@ In Components Subsection 8, we reference other fields in the transaction layout,
 
 # Main Components
 
-As mentioned in the introduction, this section is divided into 9 subsections. To help orientate the reader, we briefly outline the actions performed on a value object.
+As mentioned in the introduction, this section is divided into 9 subsections. To help orientate the reader, we briefly outline the actions performed on a valaue object.
 
 After a message has been processed on the communication layer, it passes through the payload parser.  If the payload is a value object, the parser calls the `value object processor` which does the following actions.
-1. Timestamp check 
+1. Timestamap check 
 2. Duplicate detector 
 3. Conflict Check
 4. Initial Eligibility Check
@@ -529,20 +529,20 @@ QiOiJhbHRob3VnaCB0aGlzIHBhcmFtZXRlciBpcyBnbG9iYWw6
 IGl0IG11c3QgYmUgdGhlIHNhbWUgZm9yIGFsbCBub2Rlcy4iLC
 JzdGFydCI6MjAxNywiZW5kIjoyMDg3fSwickVXYjE5VnJjVk1C
 V3lnZiI6eyJ0ZXh0IjoiVHgiLCJzdGFydCI6MjIzMCwiZW5kIj
-oyMjMyfSwiY0oxTnppS3lzUnFHVFZ0aSI6eyJzdGFydCI6MzYy
-MCwiZW5kIjozNjQxLCJ0ZXh0IjoicGFyZW50MWAgYW5kIGBwYX
-JlbnQyIn0sIkpZSHJrTU15VlBqbFQ5amIiOnsic3RhcnQiOjIx
-NTAsImVuZCI6MjE2MywidGV4dCI6InZhbHVlIG9iamVjdHMifS
-wiNDhGejI0M2lodmx2Ym53dyI6eyJzdGFydCI6NDAyMywiZW5k
-Ijo0MDM5LCJ0ZXh0Ijoid2FzIGZpcnN0IHBhcnNlZCJ9LCJkNm
-RvNXp3dzl5dGlXNnN2Ijp7InN0YXJ0Ijo0MzE1LCJlbmQiOjQz
-NjksInRleHQiOiJoZSBpbmRleGVkIHRyYW5zYWN0aW9uIGFzc2
-9jaWF0ZWQgdG8gdGhlIHZhbHVlIG9iamVjdC4ifSwiaGRKS21X
-dWJFczkzM0hKSCI6eyJzdGFydCI6NDYyNywiZW5kIjo0NjU2LC
-J0ZXh0IjoiaW5kZXgraW5kZXhlZFR4SUQudHJhbnNhY3Rpb24i
-fSwiNWlpWlUyeUV6ajRUcU5JVSI6eyJzdGFydCI6NDcxOSwiZW
-5kIjo0Nzc1LCJ0ZXh0IjoidHJhbnNhY3Rpb25gICBpcyB0aGUg
-aGFzaCBvZiB0aGUgdHJhbnNhY3Rpb24gaXQgY29udGFpbnMifX
+oyMjMyfSwiY0oxTnppS3lzUnFHVFZ0aSI6eyJ0ZXh0IjoicGFy
+ZW50MWAgYW5kIGBwYXJlbnQyIiwic3RhcnQiOjM2MjAsImVuZC
+I6MzY0MX0sIkpZSHJrTU15VlBqbFQ5amIiOnsidGV4dCI6InZh
+bHVlIG9iamVjdHMiLCJzdGFydCI6MjE1MCwiZW5kIjoyMTYzfS
+wiNDhGejI0M2lodmx2Ym53dyI6eyJ0ZXh0Ijoid2FzIGZpcnN0
+IHBhcnNlZCIsInN0YXJ0Ijo0MDIzLCJlbmQiOjQwMzl9LCJkNm
+RvNXp3dzl5dGlXNnN2Ijp7InRleHQiOiJoZSBpbmRleGVkIHRy
+YW5zYWN0aW9uIGFzc29jaWF0ZWQgdG8gdGhlIHZhbHVlIG9iam
+VjdC4iLCJzdGFydCI6NDMxNSwiZW5kIjo0MzY5fSwiaGRKS21X
+dWJFczkzM0hKSCI6eyJ0ZXh0IjoiaW5kZXgraW5kZXhlZFR4SU
+QudHJhbnNhY3Rpb24iLCJzdGFydCI6NDYyOCwiZW5kIjo0NjU3
+fSwiNWlpWlUyeUV6ajRUcU5JVSI6eyJ0ZXh0IjoidHJhbnNhY3
+Rpb25gICBpcyB0aGUgaGFzaCBvZiB0aGUgdHJhbnNhY3Rpb24g
+aXQgY29udGFpbnMiLCJzdGFydCI6NDcyMCwiZW5kIjo0Nzc2fX
 0sImNvbW1lbnRzIjp7Im1pbFQ5Z1NPUTEwZ2RPUVciOnsiZGlz
 Y3Vzc2lvbklkIjoiYjhDQk8ya3Ezc1RzU2VWbiIsInN1YiI6Im
 doOjUxMTEyNjE4IiwidGV4dCI6IndoYXQgZG9lcyB0aGlzIG1l
@@ -599,7 +599,7 @@ h0IjoiPyIsImNyZWF0ZWQiOjE1OTU5MTQzNjEzOTd9LCJCbG9E
 ZWNTV09pWGxNS2l6Ijp7ImRpc2N1c3Npb25JZCI6IjVpaVpVMn
 lFemo0VHFOSVUiLCJzdWIiOiJnaDo1MTExMjYxOCIsInRleHQi
 OiJ0cmFuc2FjdGlvbklEID8iLCJjcmVhdGVkIjoxNTk1OTE0ND
-QzNjMyfX0sImhpc3RvcnkiOlstODUyODA1MTc4LC00ODQ4Mzcw
-MDAsMTg5MjQ0NDg5NiwtMTMwMzIzNDc3NSwxMzI2NTA0NTI0LC
-0xMTU3NzQ1ODU2XX0=
+QzNjMyfX0sImhpc3RvcnkiOlstMTIwMTExNDk1NywtODUyODA1
+MTc4LC00ODQ4MzcwMDAsMTg5MjQ0NDg5NiwtMTMwMzIzNDc3NS
+wxMzI2NTA0NTI0LC0xMTU3NzQ1ODU2XX0=
 -->
