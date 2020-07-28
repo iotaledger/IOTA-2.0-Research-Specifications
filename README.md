@@ -29,7 +29,7 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 **1. Structure**
 
--   **A.** Data Models
+-   **A.**A. Data Models
     
 -   **B.** Communication Specifications
     
@@ -46,7 +46,7 @@ Communication Layer
     
 -   **D** Data processing by nodes
 
-**3. Communication Layer**
+Communication Layer**
 
 - **A.**   Message Tangle
     
@@ -75,7 +75,7 @@ Communication Layer
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4MzkzMjIxNywtMTM5ODUwMzQ1NiwtMT
-A5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3
-NjU2NTRdfQ==
+eyJoaXN0b3J5IjpbLTE4MDk0MTc3NzMsLTI4MzkzMjIxNywtMT
+M5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkx
+OTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
