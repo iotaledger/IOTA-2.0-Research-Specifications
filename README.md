@@ -29,7 +29,7 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 **1. Structure**
 
--   **1.1**   Data Models
+-   **1.1**   Data Structures
     
 -   **1.2** Communication Specifications
     
@@ -71,9 +71,9 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTIwMzg4ODQsLTE4MTgzNDg2NzgsNz
-g3MTA3MzE2LC01NjcwODgzOTEsLTE1MjUxNzk4MDYsMTc1MDk0
-MDMyMywtMTM0NzY3NDYwOSwtMTgwOTQxNzc3MywtMTM5ODUwMz
-Q1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYs
-LTE5MDM3NjU2NTRdfQ==
+eyJoaXN0b3J5IjpbMTg4NTk4MTE4LC0xODE4MzQ4Njc4LDc4Nz
+EwNzMxNiwtNTY3MDg4MzkxLC0xNTI1MTc5ODA2LDE3NTA5NDAz
+MjMsLTEzNDc2NzQ2MDksLTE4MDk0MTc3NzMsLTEzOTg1MDM0NT
+YsLTEwOTAwNjk0NjksMTM0MzkxNDA2MCwtOTA5MTkxMzU2LC0x
+OTAzNzY1NjU0XX0=
 -->
