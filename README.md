@@ -3,7 +3,7 @@
 These specifications are not stable
 
 
- 
+  
 -   [Glossary of terms](https://docs.google.com/document/d/1Ak8NT9e9NFQIrXahYmlgj_FLH7mMT5NR4rlTwczfQSE/edit#heading=h.h27luwpmebto)
     
 -   [Diagram summarizing the protocol](https://app.diagrams.net/#G1DS5lUas9URTYwspkBl5nlp80R2opE5fC)
@@ -108,6 +108,6 @@ Communication Layer
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUyODcxMSwxMzQzOTE0MDYwLC05MDkxOT
-EzNTYsLTE5MDM3NjU2NTRdfQ==
+eyJoaXN0b3J5IjpbLTEwOTAwNjk0NjksODUyODcxMSwxMzQzOT
+E0MDYwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
