@@ -29,49 +29,49 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 **1. Structure**
 
--   **.1**   Data Models
+-   **1.1**   Data Models
     
--   **.2** Communication Specifications
+-   **1.2** Communication Specifications
     
--   **.3** Payloads and Layers
+-   **1.3** Payloads and Layers
 
 **2. Network** 
--  **.1**  Peer Discovery
+-  **2.1**  Peer Discovery
 
 
--  **.2** Neighbor selection
+-  **2.2** Neighbor selection
     
 **3. Communication Layer** 
 
-- **.1** Data Processing
+- **3.1** Data Processing
 
-- **.2**   Message Tangle Protocol
+- **3.2**   Message Tangle Protocol
 
-- **.3** Rate Control
--  **.4** Congestion Control
+- **3.3** Rate Control
+- **3.4** Congestion Control
     
 
 **4. Value Transfer Application**
 
--   **.1** Value Tangle Protocol
+-   **4.1** Value Tangle Protocol
     
-- **.2**  UTXO and Ledger Calculations
+- **4.2**  UTXO and Ledger Calculations
     
--   **.3** Mana
+-   **4.3** Mana
     
    **5. Core Consensus Applications**
 
--   **.1** FPC
+- **5.1** FPC
    
-- **.2**  Implementing FPC
+- **5.2**  Implementing FPC
 
--   **.3** DRNG
+- **5.3** DRNG
 
--   **5.4** Resynchronization
+- **5.4** Resynchronization
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk4MzQ1MjAsLTE4MTgzNDg2NzgsNz
+eyJoaXN0b3J5IjpbLTE5MTIwMzg4ODQsLTE4MTgzNDg2NzgsNz
 g3MTA3MzE2LC01NjcwODgzOTEsLTE1MjUxNzk4MDYsMTc1MDk0
 MDMyMywtMTM0NzY3NDYwOSwtMTgwOTQxNzc3MywtMTM5ODUwMz
 Q1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYs
