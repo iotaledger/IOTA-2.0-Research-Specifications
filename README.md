@@ -71,11 +71,11 @@ Communication Layer**
 
 -   **C.** DRNG
 
--   Resynchronization
+-   **D** Resynchronization
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk0MTc3NzMsLTI4MzkzMjIxNywtMT
+eyJoaXN0b3J5IjpbMTE4MzU2MTM5MSwtMTgwOTQxNzc3MywtMT
 M5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkx
 OTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
