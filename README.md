@@ -29,20 +29,22 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 **1. Structure**
 
--   **A.** Daa Models
-    Specifications
+-   **A.**   Data Models
+    
+-   **B.** Communication Specifications
     
 -   **C.** Payloads and Layers
 
-**2. Network 
--  *A.**  Peer Discovery
+**2. Network** 
+-  **A.**  Peer Discovery
 
 
 -  **B.** Neighbor selection
     
-**3. Communication **
+**3. Communication Layer** 
 
-- **A.** Data processing
+- **A.** Data Processing
+
 - **B.**   Message Tangle Protocol
 
 - **C.** Rate Control
@@ -69,8 +71,8 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMzk5OTkyOCwxNzUwOTQwMzIzLC0xMz
-Q3Njc0NjA5LC0xODA5NDE3NzczLC0xMzk4NTAzNDU2LC0xMDkw
-MDY5NDY5LDEzNDM5MTQwNjAsLTkwOTE5MTM1NiwtMTkwMzc2NT
-Y1NF19
+eyJoaXN0b3J5IjpbLTE1MjUxNzk4MDYsMTc1MDk0MDMyMywtMT
+M0NzY3NDYwOSwtMTgwOTQxNzc3MywtMTM5ODUwMzQ1NiwtMTA5
+MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3Nj
+U2NTRdfQ==
 -->
