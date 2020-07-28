@@ -39,7 +39,7 @@ Several core applications provide consensus and regulate timestamps in the messa
 -  **.1**  Peer Discovery
 
 
--  **.** Neighbor selection
+-  **.2** Neighbor selection
     
 **3. Communication Layer** 
 
@@ -71,9 +71,9 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTgzNDg2NzgsNzg3MTA3MzE2LC01Nj
-cwODgzOTEsLTE1MjUxNzk4MDYsMTc1MDk0MDMyMywtMTM0NzY3
-NDYwOSwtMTgwOTQxNzc3MywtMTM5ODUwMzQ1NiwtMTA5MDA2OT
-Q2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRd
-fQ==
+eyJoaXN0b3J5IjpbLTE4MDk4MzQ1MjAsLTE4MTgzNDg2NzgsNz
+g3MTA3MzE2LC01NjcwODgzOTEsLTE1MjUxNzk4MDYsMTc1MDk0
+MDMyMywtMTM0NzY3NDYwOSwtMTgwOTQxNzc3MywtMTM5ODUwMz
+Q1NiwtMTA5MDA2OTQ2OSwxMzQzOTE0MDYwLC05MDkxOTEzNTYs
+LTE5MDM3NjU2NTRdfQ==
 -->
