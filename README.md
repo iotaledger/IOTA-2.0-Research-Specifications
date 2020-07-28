@@ -29,36 +29,30 @@ Several core applications provide consensus and regulate timestamps in the messa
 
 **1. Structure**
 
--   **A.**A. Data Models
-    
--   **B.** Communication Specifications
+-   **A.** Daa Models
+    Specifications
     
 -   **C.** Payloads and Layers
 
-**2. Network Layer**
-
--  **A.**  Peer Discovery
+**2. Network 
+-  *A.**  Peer Discovery
 
 
 -  **B.** Neighbor selection
     
-**3. Communication Layer**
-
-- **A.**  Data Processing 
-- **B.**   Message Tangle Protocol
+**3. oction ****
+- *B.*   Message Tangle Protocol
     
-- **C.**  Rate control
-    
--   **D.** Congestion Control
+- **C.** **D.** Congestion Control
     
 
 **4. Value Transfer Application**
 
 -   **A.** Value Tangle Protocol
     
-- **B.**  UTXO and Ledger Calculations
+- **.**  UTXO and Ledger Calculations
     
--   **C.** Mana
+-   **.** Mana
     
     **5. Core Consensus Applications**
 
@@ -72,7 +66,7 @@ Several core applications provide consensus and regulate timestamps in the messa
     
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDc2NzQ2MDksLTE4MDk0MTc3NzMsLT
-EzOTg1MDM0NTYsLTEwOTAwNjk0NjksMTM0MzkxNDA2MCwtOTA5
-MTkxMzU2LC0xOTAzNzY1NjU0XX0=
+eyJoaXN0b3J5IjpbMTc1MDk0MDMyMywtMTM0NzY3NDYwOSwtMT
+gwOTQxNzc3MywtMTM5ODUwMzQ1NiwtMTA5MDA2OTQ2OSwxMzQz
+OTE0MDYwLC05MDkxOTEzNTYsLTE5MDM3NjU2NTRdfQ==
 -->
