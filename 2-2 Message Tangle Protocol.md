@@ -180,16 +180,16 @@ Since messages with questionable timestamps will not be flagged eligible until F
 
 It is necessary that `Delta>w+D` in order to prevent the following attack.  Suppose `w=30`, `D=5`, and `Delta=5`.  Given these parameters, an attacker can maintain a chain of messages whose tip always has a timestamp between `currentTime-10` and `currentTime-15`,   because the timestamps in this interval will always be valid. However, the confirmation confidence of every message in this chain will always be `0` because each message is older than `Delta`.  At anytime, the attacker can orphan the entire chain by ceasing issueing messages, but the attacker can also  have the chain reach full confirmation confidence by issueing tips with current timestamps. Thus the status of this chain is indeterminable: the messages are neither "in" nor "out" of the ledger.  This is effectively a liveness attack.  
 
-To summarisze, bad messages will be orphaned, and honest messages will not.  Moreover, we claim that there is no middle ground: regardless of an attacker's actions, all messages flagged as eligible will not be orphaned, with high probability.   Indeed, `Delta` will be set significantly greater than `w+D`, thus any message added to the eligible tip list will be eligible for tip selection long enough that it will be eventually selected with high probability.  
+To summarize, bad messages will be orphaned, and honest messages will not.  Moreover, we claim that there is no middle ground: regardless of an attacker's actions, all messages flagged as eligible will not be orphaned, with high probability.   Indeed, `Delta` will be set significantly greater than `w+D`, thus any message added to the eligible tip list will be eligible for tip selection long enough that it will be eventually selected with high probability.  
 
 
 ### Alternatives
 
 Tips in the eligible tip list might expire, although this should not happen very often given the discussion above. Such tips will be removed from `eligibleTipList` during snapshotting.  However, to optimize efficiency, a node may want to occasionally clean the `eligibleTipList` of expired tips.
 
-Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a messagese with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
+Similarly, the `pending` list can be regularly cleaned of messages which will never become eligible.  Indeed, if any message directly references a message with `opinion=FaLSE`  or `level` 2 or 3, that message can be eliminated from the pending list.  However, if they are not, they will be scrubbed from the pending list during the snapshot.  
 
-Periodically cycling through the pending list may not be efficient.  Instead, a node can check the `pending` list when it performs an action which might cause a message to becomem eligible.  For example, if FPC changes the opinion of a message to `True`  with `level=3`, the node can immediately remove the message, can flag it as eligible and move it to the `eligibleTipList`.  Similarly, whenever a message is flagged eligible, a node can search `pending` for messages which reference it, and then check if these messages can now be flagged as eligible.  
+Periodically cycling through the pending list may not be efficient.  Instead, a node can check the `pending` list when it performs an action which might cause a message to become eligible.  For example, if FPC changes the opinion of a message to `True`  with `level=3`, the node can immediately remove the message, can flag it as eligible and move it to the `eligibleTipList`.  Similarly, whenever a message is flagged eligible, a node can search `pending` for messages which reference it, and then check if these messages can now be flagged as eligible.  
  
 ### Open questions
 
@@ -341,13 +341,13 @@ NvbmZpcm1hdGlvbiBjb25maWRlbmNlIiwic3RhcnQiOjg1NzIs
 ImVuZCI6ODU5NX0sIkRPb2w3SklYT09iTEV0WEYiOnsidGV4dC
 I6IldlIGtub3cgZm9yIGluc3RhbmNlIHRoZSBwcm9iYWJpbGl0
 eSBvZiBiZWluZyBvcnBoYW5lZCBpcyBcInNtYWxsXCIsIGJ1dC
-B3ZSBkbyBub+KApiIsInN0YXJ0IjoxMTE5NiwiZW5kIjoxMTMy
-Nn0sIktVVVBXbkgzMTBZUFA2bkQiOnsidGV4dCI6ImNvbmZpcm
-1hdGlvbkNvbmZpZGVuYyIsInN0YXJ0IjoxMjY2MywiZW5kIjox
-MjY4NH0sImcyTUZ4OWNCWm9oU0V3UWUiOnsidGV4dCI6IlJlY2
-FsbCB0Iiwic3RhcnQiOjEzMDMyLCJlbmQiOjEzMDQwfSwiZWNS
+B3ZSBkbyBub+KApiIsInN0YXJ0IjoxMTE5MiwiZW5kIjoxMTMy
+Mn0sIktVVVBXbkgzMTBZUFA2bkQiOnsidGV4dCI6ImNvbmZpcm
+1hdGlvbkNvbmZpZGVuYyIsInN0YXJ0IjoxMjY1OSwiZW5kIjox
+MjY4MH0sImcyTUZ4OWNCWm9oU0V3UWUiOnsidGV4dCI6IlJlY2
+FsbCB0Iiwic3RhcnQiOjEzMDI4LCJlbmQiOjEzMDM2fSwiZWNS
 VDB1ZzRPTFV1WnpjYyI6eyJ0ZXh0IjoiaGUgZm9sbG93aW5nIi
-wic3RhcnQiOjE1MTM3LCJlbmQiOjE1MTQ5fSwiQ05zWEJ2QTNE
+wic3RhcnQiOjE1MTMzLCJlbmQiOjE1MTQ1fSwiQ05zWEJ2QTNE
 ejhJZzZYaSI6eyJ0ZXh0IjoiVGlwcyBzZWxlY3Rpb24iLCJzdG
 FydCI6NTQzMiwiZW5kIjo1NDQ2fSwiUktxOWVrbXVVa1V3SHhl
 dSI6eyJ0ZXh0IjoiTW9yZW92ZXIsIiwic3RhcnQiOjczMTYsIm
@@ -366,17 +366,17 @@ ZmxhZ3MuIiwic3RhcnQiOjc5NjgsImVuZCI6ODAxMn0sImdWRU
 pCNXVKSXBjRXhNM3MiOnsidGV4dCI6ImZvbGxvd2luZyBhdHRh
 Y2siLCJzdGFydCI6ODI4OCwiZW5kIjo4MzA0fSwiR05iRDdKaF
 V0eDloY1hxUyI6eyJ0ZXh0Ijoib3JwaGFuZWQiLCJzdGFydCI6
-OTI1MCwiZW5kIjo5MjU4fSwibnFGN2NsY1g4UHZyOW5sVSI6ey
-J0ZXh0IjoiRmluYWxpdHkiLCJzdGFydCI6MTEzMzgsImVuZCI6
-MTEzNDZ9LCJHRnpjdERRUnlGZnp5OXZ4Ijp7InRleHQiOiJQZX
+OTI0OSwiZW5kIjo5MjU3fSwibnFGN2NsY1g4UHZyOW5sVSI6ey
+J0ZXh0IjoiRmluYWxpdHkiLCJzdGFydCI6MTEzMzQsImVuZCI6
+MTEzNDJ9LCJHRnpjdERRUnlGZnp5OXZ4Ijp7InRleHQiOiJQZX
 Jpb2RpY2FsbHkiLCJzdGFydCI6NjI1MywiZW5kIjo2MjY1fSwi
 NTI2dzEwQjlReEw3ZEdZZiI6eyJ0ZXh0IjoiR3JhZGUgMSIsIn
-N0YXJ0IjoxMjE4NywiZW5kIjoxMjE5NH0sIk1ydzFJR25wWkJD
-YkpETGoiOnsidGV4dCI6Ii4iLCJzdGFydCI6MTQwMjAsImVuZC
-I6MTQwMjF9LCJ1Y3FTcWpGTFhQdnN1VkdUIjp7InRleHQiOiJS
+N0YXJ0IjoxMjE4MywiZW5kIjoxMjE5MH0sIk1ydzFJR25wWkJD
+YkpETGoiOnsidGV4dCI6Ii4iLCJzdGFydCI6MTQwMTYsImVuZC
+I6MTQwMTd9LCJ1Y3FTcWpGTFhQdnN1VkdUIjp7InRleHQiOiJS
 ZW1vdmUgbWVzc2FnZUlEIGZyb20gYHBlbmRpbmdgIGlmIHByZX
 NlbnRcbiogUmVtb3ZlIG1lc3NhZ2VJRCBmcm9tIGBlbGlnaWJs
-ZVRpcOKApiIsInN0YXJ0IjoxNTE1MywiZW5kIjoxNTI5MH19LC
+ZVRpcOKApiIsInN0YXJ0IjoxNTE0OSwiZW5kIjoxNTI4Nn19LC
 Jjb21tZW50cyI6eyJYV0M3ckNXV3U5c0UzUjh2Ijp7ImRpc2N1
 c3Npb25JZCI6ImtrRW9nVmh4cE9rWlZyV0UiLCJzdWIiOiJnaD
 o1MTExMjYxOCIsInRleHQiOiJUaGlzIGlzIGEgc3Ryb25nIGFz
@@ -563,7 +563,7 @@ I6MTU5NTg5ODA0MDUzNn0sIjNIeEVzZHVRczFVcUxuWkIiOnsi
 ZGlzY3Vzc2lvbklkIjoidWNxU3FqRkxYUHZzdVZHVCIsInN1Yi
 I6ImdoOjY4MjUwMzUwIiwidGV4dCI6IlNob3VsZG4ndCB0aGlz
 IGJlIGluIHBzZXVkby1BbGdvcml0aG0/IiwiY3JlYXRlZCI6MT
-U5NTg5ODgwOTE3MX19LCJoaXN0b3J5IjpbLTY2Nzc4NzkyNywt
+U5NTg5ODgwOTE3MX19LCJoaXN0b3J5IjpbMTgyNTE4MDU3MSwt
 OTcwMDE4MjgzLDg5NTcwMzgzNywtMTIzODUxNTY2NSwtMzkyNT
 g2MjEwLC03ODk1MzMzNjIsLTcwNTcwMDc1MiwtMjAyNjM0ODg4
 MCwtMTQ4ODYyNzk0OCwxODMxNzIwMDUxLC0xODYwMTE4ODY2LD
