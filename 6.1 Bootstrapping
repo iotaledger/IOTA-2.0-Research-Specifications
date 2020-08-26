@@ -1,0 +1,419 @@
+
+ 
+# 6.1 Bootstrapping
+
+  
+
+  
+
+  
+
+  
+
+This specificaction is part of [Coordicide](https://coordicide.iota.org/).
+
+  
+
+  
+
+  
+
+The module presented in this specification, bootstrapping, allows for the node to join the network. This process is the first action taken by the node and includes: finding other nodes in the network; obtaining ledger; and other information from the network needed to find neighbors and identify dRNG committee. To do so new nodes rely on the entry nodes which are special nodes and provide necessary information to the new nodes.
+
+  
+
+  
+
+  
+
+  
+
+The bootstrapping process has the following phases:
+
+  
+
+1. Entry information gathering
+
+  
+
+2. Neighbor selection
+
+  
+
+3. Ledger:
+
+(a) part 1 - a snapshot
+
+(b) part 2 - recent transactions
+
+  
+
+4. In-synch assessment
+
+  
+
+  
+
+  
+
+  
+
+  
+
+PARAMETERS:
+
+  
+
+$n_{EN}$ = 7 number of entry nodes new node conects to.
+
+$min_{EN}$ = 4 [nodes]
+
+$t_{EN}$ = 30 sec (??)
+
+$n_{snap}$ = 3 (??) [nodes]
+
+  
+
+$min_{snap}$ = 2 [nodes](??)
+
+  
+
+$t_{snap-wait} $ =5 min (??)
+
+$t_{snap}$ = 20 min
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+# 6.1.1 Phase 1: Entry information gathering
+
+  
+
+Entry information gathering is done via entry nodes. Entry nodes do not have to be normal Tangle nodes, however, they have to have access to the following information from the Tangle:
+
+  
+
+1. List of peers in the network (LoP)
+
+2. Mana values (MV)
+
+3. Salt hash-chains
+
+4. dRNG committee selection data (dRNG data)
+
+  
+
+Entry nodes should be run by both IF and community.
+
+  
+
+Information 1-4 about the network should be gathered from multiple entry nodes. This prevents putting too much trust in one entity. A new node $X$ tries to get entry information from $n_{EN} $ entry nodes (chosen randomly). $X$ assumes that it did not receive an answer to its entry information request if it did not come within $t_{EN}$ seconds. If the node $X$ received less than $min_{EN}$ responses it repeats the procedure with different entry nodes.
+
+  
+
+  
+
+  
+
+## 6.1.1.1 List of peers
+
+  
+
+For the simplicity, we assume that a valid ID of a peer in the network is a pair of ID + last value of the salt hash chain i.e., two LoP from different entry nodes which contain the same ID of a node $Y$ but different salt from the hash chain are treated as different.
+
+  
+
+  
+
+  
+
+$X$ should receive mostly the same LoP, however, they differ in few entries. The final list of peers used by X contains only the nodes which appear in the $min_{EN}$ majority of the LoP i.e.:
+
+a node $Y$ is in the $X$’s list of online peers if it appeared in more than $min_{EN}$ of the LoP sent to $X$.
+
+  
+
+  
+
+  
+
+## 6.1.1.1 Mana Values
+
+  
+
+To obtain an MV of a peer $Y$ node $X$ averages all of the mana values for $Y$ obtained from the entry nodes. For example, if $X$ sends 5 requests to entry nodes; 4 entry nodes respond and LoP of 3 of them contain $Y$ with mana values $MV^1_Y,MV^2_Y,MV^3_Y$ then the mana value of a node $Y$ equals $(MV^1_Y+MV^2_Y+MV^3_Y)/3$
+
+  
+
+  
+
+  
+
+## 6.1.1.1 dRNG data
+
+  
+
+DRNG data contains:
+
+1. Collective public key
+
+2. IDs of all committee nodes
+
+3. Public keys of drng members
+
+4. dRNG round number
+
+  
+
+If more than $min_{EN}$ entry nodes send $X$ the same dRNG data then $X$ assumes that the committee is working and can be identified from the information. Otherwise, $X$ assumes that there is no currently working dRNG committee in the Tangle.
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+# 6.1.2 Phase 2: Neighbor selection
+
+  
+
+After phase 1, node $X$ has:
+
+1. List of online peers
+
+2. Mana values
+
+3. Autopeering salts
+
+Which, is all of the information it needs to find neighbors. For the details see specification 2.2 Neighbor Selection.
+
+  
+
+  
+
+  
+
+# 6.1.3 Phase 3: Ledger
+
+  
+
+The first part of this phase (6.1.3) can take place at the same time as the "Phase 2: Neighbor selection".
+
+  
+
+## 6.1.3 Ledger part 1 - a snapshot
+
+  
+
+To obtain a snapshot the node $X$ asks $n_{snap}$ nodes from LoP (selected randomly with mana based weights) for a **hash** of the discrete-time snapshot for the time $t_s$.
+
+  
+
+The discrete-time snapshot is the snapshot for the time $t_{s} between $t_{snap}$ and $2\times t_{snap}$min ago; where $t_{s}$ is divisible by $t_{snap}$. For example, for $t_{snap} =20 min$ at time 14:45 the discrete-time snapshot is the snapshot for time $t_s$ = 14:20.
+
+  
+
+Requesting hash, rather than the discrete-time snapshot assurest message exchange is low bandwidth.
+
+  
+
+Asked nodes:
+
+1) Prepare such a snapshot upon receiving a request and keep it in the memory for up to 20 min
+
+2) If they had been already asked for such snapshot for exactly this time they read it from memory
+
+  
+
+Node $X$ waits up till $t_{snap-wait} $ for the discrete-time snapshot hash, after this time $X$ assumes it did not receive an answer.
+
+  
+
+Assume that at least $min_{snap}$ of the received hashes of discrete-time snapshots sent to $X$ agrees. Then the node asks any node for this snapshot (its validity is confirmed with hashing). If obtained hashes do not agree the procedure is repeated with a different set of nodes.
+
+  
+
+  
+
+## 6.1.3 Ledger part 2 - recent transactions
+
+  
+
+This part is done after the neighbor selection process when the node takes part in the gossip. Upon receiving the first message from the gossip, let us call it $mg$, node $X$ proceeds as follow:
+
+  
+
+$X$ asks one of its neighbors (selected at random) for all of the transactions in the past cone of $mg$ which are older than the timestamp of the discrete time-snapshot via special "large-salification" message.
+
+If asked neighbor did not respond within $t_{Large- solid}$ then $X$ listens for another tx from the gossip, let us call it $mg_2$ and asks other neighbor for the past cone of $mg_2$.
+
+  
+
+WE MUST MAKE SURE $mg$ IS A "DECENT" TRANSACTION (BY MANA?, dRNG MESSAGE? FPC VOTE?)
+
+OTHER SOLUTION: AS NODE FOR A RECENT TX FROM THEIR POINTOF VIEW
+
+  
+
+  
+
+  
+
+## 6.1.3 In-synch assessment
+
+  
+
+This is done via standard in-synch assessment described in XXX.
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+# ?? Messages layout
+
+  
+
+  
+
+  
+
+  
+
+## ?? Discrete timestamp request
+
+  
+
+Committee candidature payload
+
+| Field | Type | Description |
+|------------|--------|----------------------------------|
+| type | byte | message type |
+| time | (??)uint32 | timestamp of the time discrete snapshot|
+
+  
+
+  
+
+  
+
+## ?? Entry information response
+
+  
+
+  
+
+| Field | Type | Description |
+|------------|---------------|----------------------------------|
+| type | byte | message type |
+| number of peers | ?? | |
+| FOR EACH PEER:
+| ID of a node | ?? | |
+| Last salt | ?? | |
+| mana value | ?? | |
+| dRNG INFO: |
+| number of peers | ?? | |
+| Collective public key|
+| IDs of all committee nodes| x $n_{CN}=10$
+| Public keys of drng members|x $n_{CN}=10$
+| dRNG round number|
+
+  
+
+  
+
+  
+
+  
+
+## ?? Large solidification reqest
+
+  
+
+| Field | Type | Description |
+|------------|---------------|----------------------------------|
+| type | byte | message type |
+| ID of a message | ?? | |
+| time of the time-discrete snapshot | ?? | |
