@@ -7,15 +7,14 @@ This part of the specifications defines the functionality of Approval Weights th
 The intuition behind the approval weight of a given message is that the more message are approving this given message, the higher the approval of the other nodes in the network, and thus the higher the probability that this message is eventually included in the Tangle. While  in the original Tangle whitepaper the approval weight equals the number of approving messages, in this current version approval must be weighted in as the sum of  approving active consensus Mana;  a message gains mana weight, by messages approving (weakly or strongly) it directly or indirectly. 
 
 ## 6.4.2 Approval Weight
-We say that a node approves a given message `messageID` if it issued a message that (weakly or strongly) approves this `messsageID`.  The active consensus Mana approving a message `messageID` is the sum of the active consensus Mana of all nodes approving message `messageID`. We denote  Approval Weight of a message as the percentage of  active consensus Mana approving this message. The Approval Weight should be used as a  metric to determine the finality of a given message. 
+We say that a node approves a given message `messageID` if it issued a message that (weakly or strongly) approves this `messsageID`.  The active consensus Mana approving a message `messageID` is the sum of the active consensus Mana of all nodes approving message `messageID`. We denote  Approval Weight of a message as the percentage of  active consensus Mana approving this message. The Approval Weight should be used as a metric to determine the finality of a given message. The active consensus Mana used must be the one of the second last epoch `epoch-2` before the current epoch `epoch`.
 
 ## 6.4.3 Finality
 Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Different use cases may need different kinds of "finality" or "confirmation". Two main (antagonistic) criteria are fast confirmation rate and a high probability of non-reversibility. Nevertheless, nodes must agree on when outputs (of an UTXO) are "confirmed" in the sense that they can be used as valid inputs. 
 
 An message must be considered as confirmed if its Approval Weight is higher than 50%.
-The active consensus Mana used must be the one of the epoch that contains the timestamp of the message. 
-
-A transaction must be considered as confirmed if its Approval Weight is 50 percent points higher than the maximal Approval Weight of all conflicting transactions. The active consensus Mana used must be the one of epoch containing the smallest timestamps among all the conflicting transactions.
+ 
+A transaction must be considered as confirmed if its Approval Weight is 50 percent points higher than the maximal Approval Weight of all conflicting transactions. 
 
 
 THE REMAINING PART MAY BE JUST IMPLEMENTATION DETAIL, but probably good to give it anyway.
