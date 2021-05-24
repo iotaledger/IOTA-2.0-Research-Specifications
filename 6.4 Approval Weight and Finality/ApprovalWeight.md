@@ -9,28 +9,13 @@ The intuition behind the approval weight of a given message is that the more inf
 The approval weight tool was derived from the confirmation confidence tool, initially defined in the legacy network whitepaper, that only considered the approving messages. The approval weight, on the other side,  considers the proportion of approving active consensus Mana, which makes it more reliable and less succeptible to attacks. 
 
 ## 6.4.2 Approval Weight
-We say that a node approves a given message `messageID` if it issued a message that (weakly or strongly) approves this `messsageID`.  The active consensus Mana approving a message `messageID` is the sum of the active consensus Mana of all nodes approving message `messageID`. We define  Approval Weight of a message as the proportion of  active consensus Mana approving this message. The active consensus Mana is defined as the mana of the  nodes that issued messages during the second last epoch `cepoch-2` before the current epoch `cepoch`.
+We need some definitions to define Approval Weight. 
+- **Node Approval:** We say that a node approves a given message `messageID` if it issued a message that (weakly or strongly) approves this `messsageID`.
+- **Active Consensus Mana:**  The active consensus Mana is defined as the mana of the  nodes that issued messages during the second last complete epoch `cepoch-2`, before the current epoch `cepoch`.
+- **Message Approval Weight:** The active consensus Mana approving a message `messageID` is the sum of the active consensus Mana of all nodes approving message `messageID`. We define approval weight of a message as the proportion of  active consensus Mana approving this message.
+- **Branch Approval Weight:** We define the approval weight of a branch as the smallest approval weight of the messages that belong to that branch. 
 
-## 6.4.3 Finality
-Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Different use cases may need different kinds of "finality" or "confirmation". Two main (antagonistic) criteria are fast confirmation rate and a high probability of non-reversibility. Nevertheless, nodes must agree on when outputs (of an UTXO) are "confirmed" in the sense that they can be used as valid inputs: 
-
-- A message must be considered as confirmed if its Approval Weight is higher than 50%.
- 
-- A transaction must be considered as confirmed if its Approval Weight is 50 percent points higher than the maximal Approval Weight of all conflicting transactions. 
-
-
-THE REMAINING PART MAY BE JUST IMPLEMENTATION DETAIL, but probably good to give it anyway.
-
-
-## Definitions
-* **branch supporter**: A branch's supporter is a **node** that attach messages to that branch, meaning the node likes the branch.
-* **marker/message supporter**: A marker/message's supporter is a **node** that attach messages that directly/inderictly reference it, including its issuer.
-
-## Dependency
-* Markers
-* Epochs
-
-## Approval weight calculation
+### Approval weight calculation
 To calculate the approval weight of a message/branch, we first sum up the issuers' consensus mana of its future cone/supporters, then finally get the percentage of consensus mana approving it. However, to precisely calculate the approval weight of a message/branch has following difficulties:
 1. it is costly to perform such calculation for a message if the network keeps growing,
 2. which node's consensus mana should be taken into account? (i.e., the definition of **active nodes**) 
@@ -44,7 +29,7 @@ To overcome these difficulties, we come up with **Markers** and **Epochs** .
 
     For more details of how Epochs works, refer to [Epochs Spec](https://github.com/iotaledger/goshimmer/blob/docs/epochs/docs/002-epochs.md).
 
-### Approval weight of markers
+#### Approval weight of markers
 The approval weight of markers is calculated as follow:
 
 1. Retrieve supporters of the marker within the same epoch
@@ -53,14 +38,14 @@ The approval weight of markers is calculated as follow:
 4. Retrieve a list of active nodes along with their consensus mana of `oracleEpoch` (`currentEpoch -2`)
 5. The approval weight of the marker is the sum of consensus mana of nodes from point 3.
 
-### Approval weight approximation of messages
+#### Approval weight approximation of messages
 To approximate the approval weight of a message, we simply retrieve the approval weight of its future markers (`FM`s). Since the message is in the past cone of its `FM`s, the approval weight and the finality will be at least the same as its `FM`s. If the markers are set frequently enough, it should be a good approximation.
 
 After we have the approval weight of a message, it is marked **confirmed** when the following 2 conditions meet:
 1. its branch is confirmed
 2. the total approval weight is greater than a given threshold
 
-### Approval weight of branches
+#### Approval weight of branches
 The approval weight of branches is calculated as follow:
 
 1. Get a list of supporters of a branch (i.e., a list of nodes that attach messages in that branch).
@@ -70,6 +55,26 @@ The approval weight of branches is calculated as follow:
 After we have the approval weight of a branch, it is marked **confirmed** when the following 2 conditions meet:
 1. its parents are confirmed,
 2. its approval weight is greater than a given threshold.
+
+## 6.4.3 Finality
+Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Two qualities desired from a finality criteria are fast confirmation rate and a high probability of non-reversibility. We now present the proposed criteria for finality. 
+
+- **Finality/Confirmation:** A message is considered finalized or confirmed if one of the following holds:
+
+	- Its approval weight is higher than $0.5$ and it belongs to a branch $B$ with no conflicting branches.
+ 
+	- It belongs to a branch $B$ with conflicting branches, but the approval weight of any of those conflicting branches is at least $0.5$ lower than $B$. 
+
+MISSING AN UPDATE PART
+MISSING COMMENT FROM NON MONOTONICITY AND HOW TO DEAL WITH IT
+
+
+
+## Definitions
+* **Branch Supporter**: We say a node is a branch supporter if it issued any messages that contain that branch in its branch past.
+* **Marker(Message) Supporter**: We say a node is a marker(message) supporter if it issued a message that approves, direcly or indirecly, the marker(message).
+
+
 
 **Note**: Once a branch gets confirmed, the conflicting ones get "lost."
 
