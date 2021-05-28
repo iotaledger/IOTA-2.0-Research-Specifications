@@ -15,14 +15,46 @@ We need some definitions to define Approval Weight.
 - **Message Approval Weight:** The active consensus Mana approving a message `messageID` is the sum of the active consensus Mana of all nodes approving message `messageID`. We define approval weight of a message as the proportion of  active consensus Mana approving this message.
 - **Branch Approval Weight:** We define the approval weight of a branch as the smallest approval weight of the messages that belong to that branch. 
 
-### Approval weight calculation
-To calculate the approval weight of a message/branch, we first sum up the issuers' consensus mana of its future cone/supporters, then finally get the percentage of consensus mana approving it. However, to precisely calculate the approval weight of a message/branch has following difficulties:
-1. it is costly to perform such calculation for a message if the network keeps growing,
-2. which node's consensus mana should be taken into account? (i.e., the definition of **active nodes**) 
-3. the newer part of the Tangle may not be confirmed yet among nodes.
+We will use $\text{AW}(x)$ to represent the approval weight of a message or branch $x$. There are two important facts to state about approval weight:
+- **Graph Monotonicity:** The approval weight grows as we explore the Tangle to the past, i.e. if message $x$ approves message $y$, then $\text{AW}(y)\geq \text{AW}(x)$.
+- **NO Time Monotonicity:** The approval weight of a fixed message or branch $x$ do not necessarily grow with time, but for non conflicting or preferred conflicting messages/branches, it will, with very large probability, achieve 100% eventually. 
 
-To overcome these difficulties, we come up with **Markers** and **Epochs** . 
+Observe that not having monotonicity on time is necessary, as otherwise it would not be possible to orphanage malicious or non-preferred conflicting messages. A final important comment is that any criteria we define based on approval weight is definitive, so if the approval weight of a message drops under the threshold just after it achieve confirmation, the message **WILL NOT** lose its confirmed status. 
+
+
+## 6.4.3 Finality
+Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Two qualities desired from a finality criteria are fast confirmation rate and a high probability of non-reversibility. We now present the proposed criteria for finality. 
+
+- **Finality/Confirmation:** A message is considered finalized or confirmed if one of the following holds:
+
+	- Its approval weight is higher than $0.5$ and it belongs to a branch $B$ with no conflicting branches.
+ 
+	- It belongs to a branch $B$ with conflicting branches, but the approval weight of any of those conflicting branches is at least $0.5$ lower than $B$. 
+
+MISSING AN UPDATE PART
+
+
+
+## Approval weight approximation
+In order to calculate the approval weight of a message  or branch, we need to follow the following steps:
+- Retrieve the information about nodes that issued messages in the second last complete epoch `cepoch-2` and sum its consensus Mana values (total active consensus Mana);
+- Identify the nodes among those that approve the relevant message or branch (active nodes);
+- Sum the consensus Mana of the nodes identified in the previous step (active consensus Mana approving the message or branch), divide the obtained value by the total active consensus Mana to obtain the approval weight. 
+
+While the first step is something straightoforward to implement as it can be part of the data flow (see Section 2.4 -  Data Flow), the other two steps computational cost are proportional to the rate of incoming messages, so they do not scale well  and may become too computationally costy to be usable. 
+
+To overcome this difficulty, we can make use of *Markers* to approximate the approval weight in an efficient way. Markers are basically chains of indexed messages, and each message is associated with the most recent marker it approves and the older marker that approves it. From the graph monotonicity, we know that if the marker achieve a value of approval weight, the message it approves will have a higher value. From the Marker and Branch definitions, the same also holds for the approval weight of a branch tracked by a marker,i.e. if marker $m$ tracks branch $B$, then $\text{AW}(m)\leq \text{AW}(B)$. Using those properties, we can define a lightweight criteria:
+
+- **Markers Method for Finality/Confirmation:** A message is considered finalized or confirmed if one of the following holds:
+
+	- Its approval weight of the oldest marker approving the message is at least $0.5$ and it belongs to a branch $B$ with no conflicting branches.
+ 
+	- It belongs to a branch $B$ with conflicting branches, but the approval weight of any of those conflicting branches is at least $0.5$ lower than $B$. ?????
+
+Basically for eac
 * **Markers** allows nodes to approximate approval weight of a message by summing up the approval weight of its future markers. For more details of how Markers works, refer to [Markers Spec](http://goshimmer.docs.iota.org/specification/003-markers.html)
+
+
 * **Epochs** divides timeline into intervals and keeps active consensus mana information of each time slice. With Epochs, difficulty 2 and 3 are solved:
     * an **active node** is a node that issues at least 1 message during a time slot.
     * nodes calculate approval weight based on the confirmed ledger state (the previous 2 epoch).
@@ -55,18 +87,6 @@ The approval weight of branches is calculated as follow:
 After we have the approval weight of a branch, it is marked **confirmed** when the following 2 conditions meet:
 1. its parents are confirmed,
 2. its approval weight is greater than a given threshold.
-
-## 6.4.3 Finality
-Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Two qualities desired from a finality criteria are fast confirmation rate and a high probability of non-reversibility. We now present the proposed criteria for finality. 
-
-- **Finality/Confirmation:** A message is considered finalized or confirmed if one of the following holds:
-
-	- Its approval weight is higher than $0.5$ and it belongs to a branch $B$ with no conflicting branches.
- 
-	- It belongs to a branch $B$ with conflicting branches, but the approval weight of any of those conflicting branches is at least $0.5$ lower than $B$. 
-
-MISSING AN UPDATE PART
-MISSING COMMENT FROM NON MONOTONICITY AND HOW TO DEAL WITH IT
 
 
 
