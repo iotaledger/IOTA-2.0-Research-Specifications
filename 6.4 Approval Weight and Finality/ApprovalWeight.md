@@ -13,10 +13,10 @@ We need some definitions to define Approval Weight.
 - **Branch Supporter**: We say a node is a branch supporter if it issued any messages that contain that branch in its branch past.
 - **Marker/Message Supporter**: We say a node is a marker/message supporter if it issued a message that approves, direcly or indirecly, the marker/message.
 - **Active Consensus Mana:**  The active consensus Mana is defined as the mana of the  nodes that issued messages during the second last complete epoch `cepoch-2`, before the current epoch `cepoch`.
-- **Message/Branch Approval Weight:** We define approval weight of a message as the proportion of  active consensus Mana that belongs to supporters of the message/Branch.
+- **Message/Branch Approval Weight:** We define approval weight of a message as the proportion of active consensus Mana that belongs to supporters of the message/Branch.
 
 We will use $\text{AW}(x)$ to represent the approval weight of a message or branch $x$. There are two important facts to state about approval weight:
-- **Graph Monotonicity:** The approval weight grows as we explore the Tangle to the past, i.e. if message $x$ approves message $y$, then $\text{AW}(y)\geq \text{AW}(x)$.
+- **Graph Monotonicity:** The approval weight grows as we explore the Tangle to the past, i.e. if message/branch $x$ approves message/branch $y$, then $\text{AW}(y)\geq \text{AW}(x)$.
 - **NO Time Monotonicity:** The approval weight of a fixed message or branch $x$ do not necessarily grow with time, but for non conflicting or preferred conflicting messages/branches, it will, with very large probability, achieve 100% eventually. 
 
 Observe that not having monotonicity on time is necessary, as otherwise it would not be possible to orphanage malicious or non-preferred conflicting messages. A final important comment is that any criteria we define based on approval weight is definitive, so if the approval weight of a message drops under the threshold just after it achieve confirmation, the message **WILL NOT** lose its confirmed status. 
@@ -27,13 +27,10 @@ Finality in IOTA 2.0 must always be considered as a probabilistic finality in th
 
 - **Finality/Confirmation:** A message $x$ is considered finalized or confirmed if both the following holds:
 
-	- $\text{AW}(x)>0.5$;
- 
 	- For any conflicting branches that may exists, its approval weight is at least $0.5$ lower than $x$'s branch.
-
-MISSING AN UPDATE PART
-
-
+	
+	- $\text{AW}(x)>0.5$;
+ 	
 
 ## Approval weight approximation
 In order to calculate the approval weight of a message  or branch, we need to follow the following steps:
