@@ -2,189 +2,27 @@
 
 ## 6.4.1 Introduction
 
-This part of the specifications defines the functionality of Approval Weights that allow the notion of Finality.  As every node might have different perceptions of the Tangle at a given time such a notion is necessary to guarantee consensus on the "final" Tangle and ledger state. 
+This part of the specifications defines the functionality of *Approval Weight* tool that allow the notion of Finality.  As every node might have slightly different perceptions of the Tangle at a given time, such a notion is necessary to guarantee consensus on the Tangle and its ledger state is achieved over time. 
 
-The intuition behind the approval weight of a given message is that the more message are approving this given message, the higher the approval of the other nodes in the network, and thus the higher the probability that this message is eventually included in the Tangle. While  in the original Tangle whitepaper the approval weight equals the number of approving messages, in this current version approval must be weighted as the sum of  approving active consensus Mana;  a message gains mana weight, by messages approving (weakly or strongly) it directly or indirectly. 
+The intuition behind the approval weight of a given message is that the more influential messages are approving a given message, the more trustworthy such a message will be for the other nodes, and thus the least the probability that this message branch will not be included in the main branch, i.e. not affecting the ledger state. More details on branches and ledger state may be found in [Section 5.2 - Ledger State](https://github.com/iotaledger/Coordicide-Specifications/blob/main/5.2%20Ledger%20State.md)
 
-## 6.4.2 Approval Weight
-We say that a node approves a given message `messageID` if it issued a message that (weakly or strongly) approves this `messsageID`.  The active consensus Mana approving a message `messageID` is the sum of the active consensus Mana of all nodes approving message `messageID`. We denote  Approval Weight of a message as the percentage of  active consensus Mana approving this message. The Approval Weight should be used as a metric to determine the finality of a given message. The active consensus Mana used must be the one of the second last `epoch-2` before the current  `epoch`.
-
-## 6.4.3 Finality
-Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Different use cases may need different kinds of "finality" or "confirmation". Two main (antagonistic) criteria are fast confirmation rate and a high probability of non-reversibility. Nevertheless, nodes must agree on when outputs (of an UTXO) are "confirmed" in the sense that they can be used as valid inputs: 
-
-- A message must be considered as confirmed if its Approval Weight is higher than 50%.
- 
-- A transaction must be considered as confirmed if its Approval Weight is 50 percent points higher than the maximal Approval Weight of all conflicting transactions. 
-
-
-THE REMAINING PART MAY BE JUST IMPLEMENTATION DETAIL, but probably good to give it anyway.
-
+The approval weight tool was derived from the confirmation confidence tool, initially defined in the legacy network whitepaper, that only considered the approving messages. The approval weight, on the other side,  considers the proportion of approving active consensus Mana, which makes it more reliable and less succeptible to attacks. 
 
 ## Definitions
-* **branch supporter**: A branch's supporter is a **node** that attach messages to that branch, meaning the node likes the branch.
-* **marker/message supporter**: A marker/message's supporter is a **node** that attach messages that directly/inderictly reference it, including its issuer.
 
-## Dependency
-* Markers
-* Epochs
+To define Approval Weight, we first need to understand what it means to support a message.  
+- **Conflict:** Two transactions conflict if they consume the same output. A conflict is a transaction which conflicts with some transaction. A transaction $X$ conflicts with a branch $B$ if $B$ and the branch of $X$ and cannot be aggregated.  
+- **Node Approval:** We say that a node approves a given message $X$ if it has issued a message $Y$ with $X$ in the strong past cone of $Y$.  A node approves a transaction if it approves some message containing an attachment of that transaction.  
+- **Conflict Supporter:** A node supports a conflict if:
+	- It issued a message approving a message containing that transaction
+	- It has not issued a message with a more recent timestamp with a conflicting branch.  
+- **Branch Supporter:** A node supports a branch if it supports all of its conflicts.  Equivalently, the supporters of a branch is the intersection of all the supporters of its conflicts.  
+- **Message Supporter:** The supporters of a message is the intersection of the approvers of the message, and the supporter of its branch. 
+- **Active Consensus Mana:**  The active consensus Mana is defined as the mana of the  nodes that issued messages during the second last complete epoch `cepoch-2`, before the current epoch `cepoch`.  A node which has not issued a message within that epoch has 0 active consensus mana. See [Section 5.3 - Mana](./5.3%20Mana.md).
 
-## Approval weight calculation
-To calculate the approval weight of a message/branch, we first sum up the issuers' consensus mana of its future cone/supporters, then finally get the percentage of consensus mana approving it. However, to precisely calculate the approval weight of a message/branch has following difficulties:
-1. it is costly to perform such calculation for a message if the network keeps growing,
-2. which node's consensus mana should be taken into account? (i.e., the definition of **active nodes**) 
-3. the newer part of the Tangle may not be confirmed yet among nodes.
+To be clear a node cannot be a  supporter of two conflicting transactions.  If it approves two messages with conflicting transactions, it either supports neither of them, or it supports the one it more recently references (with respect to the timestamp).  When a new message is booked, the node goes to the message's branch in the branch DAG and walks through the branch's history giving support to all the conflicts in its past cone and revoking support from conflicting branches.  
 
-To overcome these difficulties, we come up with **Markers** and **Epochs** . 
-* **Markers** allows nodes to approximate approval weight of a message by summing up the approval weight of its future markers. For more details of how Markers works, refer to [Markers Spec](http://goshimmer.docs.iota.org/specification/003-markers.html)
-* **Epochs** divides timeline into intervals and keeps active consensus mana information of each time slice. With Epochs, difficulty 2 and 3 are solved:
-    * an **active node** is a node that issues at least 1 message during a time slot.
-    * nodes calculate approval weight based on the confirmed ledger state (the previous 2 epoch).
-
-    For more details of how Epochs works, refer to [Epochs Spec](https://github.com/iotaledger/goshimmer/blob/docs/epochs/docs/002-epochs.md).
-
-### Approval weight of markers
-The approval weight of markers is calculated as follow:
-
-1. Retrieve supporters of the marker within the same epoch
-2. Retrieve the supporters of the branch where the message is.
-3. Get the intersection of the previous points. 
-4. Retrieve a list of active nodes along with their consensus mana of `oracleEpoch` (`currentEpoch -2`)
-5. The approval weight of the marker is the sum of consensus mana of nodes from point 3.
-
-### Approval weight approximation of messages
-To approximate the approval weight of a message, we simply retrieve the approval weight of its future markers (`FM`s). Since the message is in the past cone of its `FM`s, the approval weight and the finality will be at least the same as its `FM`s. If the markers are set frequently enough, it should be a good approximation.
-
-After we have the approval weight of a message, it is marked **confirmed** when the following 2 conditions meet:
-1. its branch is confirmed
-2. the total approval weight is greater than a given threshold
-
-### Approval weight of branches
-The approval weight of branches is calculated as follow:
-
-1. Get a list of supporters of a branch (i.e., a list of nodes that attach messages in that branch).
-2. Get the `oracleEpoch` of the branch, which is the  `oracleEpoch` of the oldest epoch of the conflict set.
-3. Sum the active consensus mana over all of its supporters.
-
-After we have the approval weight of a branch, it is marked **confirmed** when the following 2 conditions meet:
-1. its parents are confirmed,
-2. its approval weight is greater than a given threshold.
-
-**Note**: Once a branch gets confirmed, the conflicting ones get "lost."
-
-## Detailed design
-In this section, we will describe implementation details of how approval weight are managed with Epochs and Markers, which includes:
-1. approval weight management,
-2. branch supporters management,
-3. marker supporters management.
-
-## Approval Weight Manager
-In approval weight manager, the approval weight calculation described in [Approval weight calculation](#approval-weight-calculation) is performed. It contains:
-* **epochs manager**: retrieve active consensus mana of the given epoch
-* **supporters manager**: manage branch/marker supporters, refer to [Branch supporter / marker supporter management](#branch-supporter--marker-supporter-management).
-
-## Branch supporter / marker supporter management
-`SupporterManager` manages both branch and marker supporters. The following shows the details of essential data type and structure: `Supporter`, `Supporters` and `SupporterManager`.
-
-### Supporter
-A `Supporter` in the code is a node ID, and `Supporters` is a struct containing a set of `Supporter`. Both the data type and structure will be further used in `SupporterManager`.
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>Supporter</td>
-        <td>identity.ID</td>
-        <td>A supporter of a branch.</td>
-    </tr>
-    <tr>
-        <td>Supporters</td>
-        <td>set.Set</td>
-        <td>A list of supporters of a branch.</td>
-    </tr>
-</table> 
-
-`Supporters` has following methods:
-* `Add(supporter Supporter) (added bool)`: Add the `Supporter` from the Set and returns true if it did added.
-* `Delete(supporter Supporter) (deleted bool)`: Removes the `Supporter` from the Set and returns true if it did exist.
-* `Has(supporter Supporter) (has bool)`: Returns true if the Supporter exists in the Set.
-* `ForEach(callback func(supporter Supporter))`: Iterates through the `Supporters` and calls the callback for every element.
-
-### SupporterManager
-The `supporterManager` holds the following fields: 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>Events</td>
-        <td>*SupporterManagerEvents</td>
-        <td>A list of defined events for supporter manager.</td>
-    </tr>
-    <tr>
-        <td>tangle</td>
-        <td>*Tangle</td>
-        <td>The Tangle.</td>
-    </tr>
-    <tr>        
-        <td>lastStatements</td>
-        <td colspan="1">map[Supporter]*Statement            
-            <details open="true">
-            <table>                
-                <summary>Statement</summary>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    <tr>
-                        <td>SequenceNumber</td>
-                        <td>uint64</td>
-                        <td>The sequence number of the statement message.</td>
-                    </tr>
-                    <tr>
-                        <td>BranchID</td>
-                        <td>ledgerstate.BranchID</td>
-                        <td>The Branch ID of the branch it supports.</td>
-                    </tr>
-            </table>
-            </details>
-        </td>        
-        <td>A map of supporter to `Statement` of its latest issued message.</td>
-    </tr>
-    <tr>
-        <td>branchSupporters</td>
-        <td>map[ledgerstate.BranchID]*Supporters</td>
-        <td>A map of branch ID to its supporters.</td>
-    </tr>
-</table> 
-
-`supporterManager` processes every message in order to update the branch supporters and those for markers:
-```go
-func (s *SupporterManager) ProcessMessage(messageID MessageID) {
-	s.tangle.Storage.Message(messageID).Consume(func(message *Message) {
-        // branch supporter update
-		s.updateBranchSupporters(message)
-        // marker supporter update
-		s.updateSequenceSupporters(message)
-	})
-}
-```
-
-### Branch Supporter management
-`lastStatements` keeps the sequence number and the attached branch of the newest message that an issuer sent. The `supporterManager` will only continue if both conditions meet:
-1. the statement of the issuer is new, meaning the sequence number is larger than the `lastStatement`.
-2. the issuer attaches to the different branch from last message.
-
-This check help nodes update supporters when it's necessary.
-
-If the above conditions fulfill, `supporterManager` starts:
-1. add the issuer as supporters to the branch, and propagate to its parent branches,
-2. remove the issuer from the supporters of conflict branches, and propagate to its child branches.
+When comparing two messages with the same timestamps, the message with the greater hash is more recent. 
 
 Here's an example of how the propagation will look like:
 ![ApprovalWeight](https://user-images.githubusercontent.com/11289354/112409357-518e9480-8d54-11eb-8a40-19f4ab33ea35.png)
@@ -200,139 +38,63 @@ Finally, green nodes issued **message 3**, which is in `Branch 2`. Now the green
 
 `Branch 3`, `4` and both of their child branches have nothing to do with this attachement, the supporter status remains. 
 
-#### `addSupportToBranch`
-The codes below shows how a supporter is propagated to branches. For each processing branch, its conflicting branches (if have any) will trigger `revokeSupportFromBranch` to remove the supporter.
-```go
-func (s *SupporterManager) addSupportToBranch(branchID ledgerstate.BranchID, issuingTime time.Time, supporter Supporter, walk *walker.Walker) {
-	// prepare supporters set for a new branch
-    if _, exists := s.branchSupporters[branchID]; !exists {
-		s.branchSupporters[branchID] = NewSupporters()
-	}
-    // abort if the supporter exists
-	if !s.branchSupporters[branchID].Add(supporter) {
-		return
-	}
 
-    // remove the supporter from the conflicting branches if it exists
-	s.tangle.LedgerState.BranchDAG.ForEachConflictingBranchID(branchID, func(conflictingBranchID ledgerstate.BranchID) {
-		revokeWalker := walker.New()
-		revokeWalker.Push(conflictingBranchID)
-        // revoke supporters needs propagated to child branches
-		for revokeWalker.HasNext() {
-			s.revokeSupportFromBranch(revokeWalker.Next().(ledgerstate.BranchID), issuingTime, supporter, revokeWalker)
-		}
-	})
 
-	s.Events.BranchSupportAdded.Trigger(branchID, issuingTime, supporter)
 
-    // add parent branches to the walker for supporter propagation 
-	s.tangle.LedgerState.BranchDAG.Branch(branchID).Consume(func(branch ledgerstate.Branch) {
-		for parentBranchID := range branch.Parents() {
-			walk.Push(parentBranchID)
-		}
-	})
-}
-```
+## Approval Weight
 
-#### `revokeSupportFromBranch`
-The codes below shows how a supporter is revoked from a branch and its child branches. 
-```go
-func (s *SupporterManager) revokeSupportFromBranch(branchID ledgerstate.BranchID, issuingTime time.Time, supporter Supporter, walker *walker.Walker) {
-	// check if the supporter supports the branch
-    if supporters, exists := s.branchSupporters[branchID]; !exists || !supporters.Delete(supporter) {
-		return
-	}
 
-	s.Events.BranchSupportRemoved.Trigger(branchID, issuingTime, supporter)
+- **Approval Weight:** The approval weight of a conflict (resp. branch or message) is number of supports of the branch weighted by their active consensus mana, divided by the total amount of active consensus mana.  Equivalently, the approval weight is the proportion of active consensus Mana that belongs to the supporters of the conflict (resp. branch or message).
 
-    // propagate supporter removal to child branches
-	s.tangle.LedgerState.BranchDAG.ChildBranches(branchID).Consume(func(childBranch *ledgerstate.ChildBranch) {
-		if childBranch.ChildBranchType() != ledgerstate.ConflictBranchType {
-			return
-		}
+We will use $\text{AW}(x)$ to represent the approval weight of a message or branch $x$. There are several important facts to state about approval weight:
+- The approval weight is always between 0 and 1, and thus can be expressed as a percentage.  
+- For a conflict $X$ attached in a single message $M$, the following are the same: the approval weight of $X$, the conflict branch defined by $X$, and the message $M$. 
+- **Tangle Monotonicity:** The approval weight grows as we explore the Tangle to the past, i.e. if message $x$ approves message $y$, then $\text{AW}(y)\geq \text{AW}(x)$.
+- **NO Time Monotonicity:** The approval weight of a fixed message or branch $x$ do not necessarily grow with time, but for non conflicting or preferred conflicting messages/branches, it will, with very large probability, achieve 100% eventually. 
+- **Approval weight inequalities**  For any message $M$ and its branch $B$, we have $\text{AW}(B)\geq \text{AW}(M)$.  Similarly, for any conflict $X$ within a branch, $\text{AW}(X)\geq \text{AW}(B)$.  
 
-		walker.Push(childBranch.ChildBranchID())
-	})
-}
-```
+Observe that not having monotonicity on time is necessary, as otherwise it would not be possible to orphanage malicious or non-preferred conflicting messages. A final important comment is that any criteria we define based on approval weight is definitive, so if the approval weight of a message drops under the threshold just after it achieve confirmation, the message **WILL NOT** lose its confirmed status. 
 
-### Markers supporter management 
-Instead of keeping a list of supporters for each marker and collecting them by walking the Tangle, we keep a list of supporters along with its approved marker rank for each marker sequence. This approach provides a simple and fast look-up for marker/message supporters.
 
-For each marker sequence, we keep a map of supporter to marker index, meaning a supporter supports a marker index `i`. This give the implication that the supporter supports all markers with index `<= i`.
 
-Take the figure below as an example:
-![MarkersApprovalWeight SequenceSupporters-Page-2](https://user-images.githubusercontent.com/11289354/112416694-21012780-8d61-11eb-8089-cb9f5b236f30.png)
+## 6.4.3 Finality
+Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Two qualities desired from a finality criteria are fast confirmation rate and a high probability of non-reversibility. We use interchangeably the terms "finality" and "confirmation" We now present the proposed criteria for finality. 
 
-The purple circles represent markers of the same sequence, the given numbers are marker indices. 
+- **Message Finality/Confirmation:** A message $x$ is considered finalized (or confirmed) if $\text{AW}(x)>0.5$;
+- **Branch Finality/Confirmation:** A branch $B$ is considered finalized (or confirmed) if, for any conflicting branches that may exists, its approval weight is at least $0.5$ lower than $x$'s branch.
+- **Transaction Finality/Confirmation:** A transaction is considered finalized (or confirmed) if both its message and its branch are final (confirmed). 
 
-Four nodes (A to D) issue messages with Past Markers of the purple sequence. Node A and D issue messages having Past Marker with index 6, thus node A and D are the supporters of marker 6 that implicate they support all markers before, which is 1 to 5. On the other hand, node B issues a message having Past Marker with index 3, which implicates node B is a supporter for marker 1 and 2 as well.
+Because of the tangle monotonicity, if a message is finalised, its entire past cone is finalised.
 
-This is a fast look-up and avoids walking through a marker's future cone when it comes to retreiving supporters for approval weight calculation. 
 
-For example, to find all supporter of marker 2, we iterate through the map and filter out those support marker with `index >= 2`. In this case, all nodes are its supporters. As for marker 5, it has supporters node A and D, which fulfill the check: `index >= 5`.
 
-Here is another more complicated example with parent references:
-![MarkersApprovalWeight SequenceSupporters-Page-2(1)](https://user-images.githubusercontent.com/11289354/112433680-8cf18900-8d7d-11eb-8944-54030581a033.png)
+## Markers Method
+The approval weight of the branch is updated whenever the supporters are updated.  However, it is impractical to store the supporters of every message, and even calculating on demand is impractical since the computational cost of doing a future cone search to determine its approvers is immense.  To ease this calculation, we make use of the markers tool, see [Section 4.7 - Markers](./4.7%20Markers.md), to approximate the approval weight in an efficient way. 
 
-The supporter will be propagated to the parent references sequence.
+Markers are basically chains of indexed messages, and each message is associated with the most recent marker it approves and the oldest marker that approves it. When a new message arrives, the approvers of each marker can be updated by traversing the much smaller marker DAG and from the Tangle monotonicity, we know that if the marker achieve a certain value of approval weight, the message it approves will have a higher value.
 
-Node A issues message A2 having Past Markers `[1,4], [3,5]`, which implicates node A is a supporter for marker `[1,1]` to `[1,4]`, `[2,1]` to `[2,3]`, and `[3,4], [3,5]` as well.
+ Using those properties, we can define a lightweight criteria:
 
-#### Sequence supporter
-Each marker sequence has a corresponding `SequenceSupporters` struct to keep marker supporters information.
+- **Markers Method for Finality:**
+	- As new messages are booked, we update accordingly the list of supporters for each branch and, if needed, update their approval weight;
+	- If any branch reaches branch confirmation, we will now track the marker sequence associated to it;
+	- If any marker reaches message confirmation, we give the "confirmed" status to all messages in its past cone, and hence transaction confirmation to all transactions it may contain;
+	- If a tracked marker reaches age `FinalityMaxAge` without achieving confirmation, it will receive the status "Orphaned".
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>sequenceID</td>
-        <td>markers.SequenceID</td>
-        <td>The sequence ID of sequence that holds this struct.</td>
-    </tr>
-    <tr>
-        <td>supportersPerIndex</td>
-        <td>map[Supporter]markers.Index</td>
-        <td>Map supporters to the supported marker index of this sequence.</td>
-    </tr>
-    <tr>
-        <td>supportersPerIndexMutex</td>
-        <td>sync.RWMutex</td>
-        <td>A read/write mutex to protect read/write operations.</td>
-    </tr>
-</table> 
+## 6.4.6 Liked and monotonically liked
 
-`SequenceSupporters` has the following methods for management:
-* `NewSequenceSupporters(sequenceID markers.SequenceID) (sequenceSupporters *SequenceSupporters)`: Create a `SequenceSupporters` for the given sequence ID.
-* `AddSupporter(supporter Supporter, index markers.Index) (added bool)`: Add a new Supporter of a given index to the Sequence.
-* `Supporters(index markers.Index) (supporters *Supporters)`: Returns a list of supporters for the given marker index.
-* `SequenceID() (sequenceID markers.SequenceID)`: Return the SequenceID that is being tracked.
+The approval weight is also used in conjunction with FPC and to determine which branches should be considered for tip selection.  To do this we have the concept  of branches and conflicts being "liked".  
+- **Liked conflict:** A conflict is liked (or individually liked) if either 
+	- The opinion of the transaction is `true` and the `level` is either 2 or 3 (i.e. FPC has terminated with `liked` status) AND it does not conflict with a finalised conflict
+	-OR the conflict is finalized
+- **Individually liked conflict branch:** A conflict branch is individually liked if the conflict defining it is liked.
+- **Monotonically liked branch:** A branch is monotonically liked if all of its conflicts are liked.  Equivalently, a branch is monotonically liked if all of its conflict branches in its branch past cone are individually liked.
 
-#### `addSupportToMarker`
-The codes below shows how a supporter is propagated within marker sequences.
-```go
-func (s *SupporterManager) addSupportToMarker(marker *markers.Marker, issuingTime time.Time, supporter Supporter, walker *walker.Walker) {
-	// create a SequenceSupporters if the sequence doesn't have one
-    s.tangle.Storage.SequenceSupporters(marker.SequenceID(), func() *SequenceSupporters {
-		return NewSequenceSupporters(marker.SequenceID())
-	}).Consume(func(sequenceSupporters *SequenceSupporters) {
-        // add the supporter to the sequence
-		if sequenceSupporters.AddSupporter(supporter, marker.Index()) {
-			s.Events.SequenceSupportUpdated.Trigger(marker, issuingTime, supporter)
+FPC initially determines which conflicts are liked.  However, nodes which are syncing and missed the FPC voting will default to the conflicts which are finalised.  Decisions about each conflict set are carried out by FPC individually and so we separate between "individually liked" and "monotonically liked". 
+Branch which are monotonically liked have their entire history liked and can be included in the strong past cone of messages.  Monotonically like branch IDs will thus receiver more supporters and thus eventually become finalised.  
 
-            // propagate the supporter to parent marker sequences
-			s.tangle.Booker.MarkersManager.Manager.Sequence(marker.SequenceID()).Consume(func(sequence *markers.Sequence) {
-				sequence.ParentReferences().HighestReferencedMarkers(marker.Index()).ForEach(func(sequenceID markers.SequenceID, index markers.Index) bool {
-					walker.Push(markers.NewMarker(sequenceID, index))
 
-					return true
-				})
-			})
-		}
-	})
-}
-```
+
+
+**Note**: Once a branch gets confirmed, the conflicting ones receive the status "Orphaned".
 
