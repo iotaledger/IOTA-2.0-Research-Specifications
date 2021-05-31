@@ -1,0 +1,100 @@
+# 6.4 Approval Weight and Finality
+
+## 6.4.1 Introduction
+
+This part of the specifications defines the functionality of *Approval Weight* tool that allow the notion of Finality.  As every node might have slightly different perceptions of the Tangle at a given time, such a notion is necessary to guarantee consensus on the Tangle and its ledger state is achieved over time. 
+
+The intuition behind the approval weight of a given message is that the more influential messages are approving a given message, the more trustworthy such a message will be for the other nodes, and thus the least the probability that this message branch will not be included in the main branch, i.e. not affecting the ledger state. More details on branches and ledger state may be found in [Section 5.2 - Ledger State](https://github.com/iotaledger/Coordicide-Specifications/blob/main/5.2%20Ledger%20State.md)
+
+The approval weight tool was derived from the confirmation confidence tool, initially defined in the legacy network whitepaper, that only considered the approving messages. The approval weight, on the other side,  considers the proportion of approving active consensus Mana, which makes it more reliable and less succeptible to attacks. 
+
+## Definitions
+
+To define Approval Weight, we first need to understand what it means to support a message.  
+- **Conflict:** Two transactions conflict if they consume the same output. A conflict is a transaction which conflicts with some transaction. A transaction $X$ conflicts with a branch $B$ if $B$ and the branch of $X$ and cannot be aggregated.  
+- **Node Approval:** We say that a node approves a given message $X$ if it has issued a message $Y$ with $X$ in the strong past cone of $Y$.  A node approves a transaction if it approves some message containing an attachment of that transaction.  
+- **Conflict Supporter:** A node supports a conflict if:
+	- It issued a message approving a message containing that transaction
+	- It has not issued a message with a more recent timestamp with a conflicting branch.  
+- **Branch Supporter:** A node supports a branch if it supports all of its conflicts.  Equivalently, the supporters of a branch is the intersection of all the supporters of its conflicts.  
+- **Message Supporter:** The supporters of a message is the intersection of the approvers of the message, and the supporter of its branch. 
+- **Active Consensus Mana:**  The active consensus Mana is defined as the mana of the  nodes that issued messages during the second last complete epoch `cepoch-2`, before the current epoch `cepoch`.  A node which has not issued a message within that epoch has 0 active consensus mana. See [Section 5.3 - Mana](./5.3%20Mana.md).
+
+To be clear a node cannot be a  supporter of two conflicting transactions.  If it approves two messages with conflicting transactions, it either supports neither of them, or it supports the one it more recently references (with respect to the timestamp).  When a new message is booked, the node goes to the message's branch in the branch DAG and walks through the branch's history giving support to all the conflicts in its past cone and revoking support from conflicting branches.  
+
+When comparing two messages with the same timestamps, the message with the greater hash is more recent. 
+
+Here's an example of how the propagation will look like:
+![ApprovalWeight](https://user-images.githubusercontent.com/11289354/112409357-518e9480-8d54-11eb-8a40-19f4ab33ea35.png)
+
+
+The green node issued **message 1** and attached it to `Branch 1.1 + Branch 4.1.1`. Thus, green node is a supporter of `Branch 1.1 + Branch 4.1.1`, and it's also a supporter to parent branches, which are (from top to bottom) `Branch 4.1.1`, `Branch 1.1`, `Branch 4.1`, `Branch 1`, and `Branch 4`.
+
+Then, the green node issued **message 2** and attached it to `Branch 4.1.2`. This makes the green node a supporter of `Branch 4.1.2`, however, `Branch 4.1.1` is its conflict branch that makes green node not a supporter of `Branch 4.1.1`. 
+
+`Branch 4.1`, `Branch 4` are parent branches of `Branch 4.1.2`, green node is still their supporters. Since `Branch 1.1`, `Branch 1` are not conflicting to either of `Branch 4.1.2`'s parents, the green node remains their supporter. 
+
+Finally, green nodes issued **message 3**, which is in `Branch 2`. Now the green node is a supporter of `Branch 2`, and no longer a supporter of `Branch 1`, since `Branch 1` is conflicting to `Branch 2`. Note that, this supporter removal will propagate to child branches. Thus, green node is removed from `Branch 1.1`. 
+
+`Branch 3`, `4` and both of their child branches have nothing to do with this attachement, the supporter status remains. 
+
+
+
+
+## Approval Weight
+
+
+- **Approval Weight:** The approval weight of a conflict (resp. branch or message) is number of supports of the branch weighted by their active consensus mana, divided by the total amount of active consensus mana.  Equivalently, the approval weight is the proportion of active consensus Mana that belongs to the supporters of the conflict (resp. branch or message).
+
+We will use $\text{AW}(x)$ to represent the approval weight of a message or branch $x$. There are several important facts to state about approval weight:
+- The approval weight is always between 0 and 1, and thus can be expressed as a percentage.  
+- For a conflict $X$ attached in a single message $M$, the following are the same: the approval weight of $X$, the conflict branch defined by $X$, and the message $M$. 
+- **Tangle Monotonicity:** The approval weight grows as we explore the Tangle to the past, i.e. if message $x$ approves message $y$, then $\text{AW}(y)\geq \text{AW}(x)$.
+- **NO Time Monotonicity:** The approval weight of a fixed message or branch $x$ do not necessarily grow with time, but for non conflicting or preferred conflicting messages/branches, it will, with very large probability, achieve 100% eventually. 
+- **Approval weight inequalities**  For any message $M$ and its branch $B$, we have $\text{AW}(B)\geq \text{AW}(M)$.  Similarly, for any conflict $X$ within a branch, $\text{AW}(X)\geq \text{AW}(B)$.  
+
+Observe that not having monotonicity on time is necessary, as otherwise it would not be possible to orphanage malicious or non-preferred conflicting messages. A final important comment is that any criteria we define based on approval weight is definitive, so if the approval weight of a message drops under the threshold just after it achieve confirmation, the message **WILL NOT** lose its confirmed status. 
+
+
+
+## 6.4.3 Finality
+Finality in IOTA 2.0 must always be considered as a probabilistic finality in the sense that a message is included in the ledger with a very high probability. Two qualities desired from a finality criteria are fast confirmation rate and a high probability of non-reversibility. We use interchangeably the terms "finality" and "confirmation" We now present the proposed criteria for finality. 
+
+- **Message Finality/Confirmation:** A message $x$ is considered finalized (or confirmed) if $\text{AW}(x)>0.5$;
+- **Branch Finality/Confirmation:** A branch $B$ is considered finalized (or confirmed) if, for any conflicting branches that may exists, its approval weight is at least $0.5$ lower than $x$'s branch.
+- **Transaction Finality/Confirmation:** A transaction is considered finalized (or confirmed) if both its message and its branch are final (confirmed). 
+
+Because of the tangle monotonicity, if a message is finalised, its entire past cone is finalised.
+
+
+
+## Markers Method
+The approval weight of the branch is updated whenever the supporters are updated.  However, it is impractical to store the supporters of every message, and even calculating on demand is impractical since the computational cost of doing a future cone search to determine its approvers is immense.  To ease this calculation, we make use of the markers tool, see [Section 4.7 - Markers](./4.7%20Markers.md), to approximate the approval weight in an efficient way. 
+
+Markers are basically chains of indexed messages, and each message is associated with the most recent marker it approves and the oldest marker that approves it. When a new message arrives, the approvers of each marker can be updated by traversing the much smaller marker DAG and from the Tangle monotonicity, we know that if the marker achieve a certain value of approval weight, the message it approves will have a higher value.
+
+ Using those properties, we can define a lightweight criteria:
+
+- **Markers Method for Finality:**
+	- As new messages are booked, we update accordingly the list of supporters for each branch and, if needed, update their approval weight;
+	- If any branch reaches branch confirmation, we will now track the marker sequence associated to it;
+	- If any marker reaches message confirmation, we give the "confirmed" status to all messages in its past cone, and hence transaction confirmation to all transactions it may contain;
+	- If a tracked marker reaches age `FinalityMaxAge` without achieving confirmation, it will receive the status "Orphaned".
+
+## 6.4.6 Liked and monotonically liked
+
+The approval weight is also used in conjunction with FPC and to determine which branches should be considered for tip selection.  To do this we have the concept  of branches and conflicts being "liked".  
+- **Liked conflict:** A conflict is liked (or individually liked) if either 
+	- The opinion of the transaction is `true` and the `level` is either 2 or 3 (i.e. FPC has terminated with `liked` status) AND it does not conflict with a finalised conflict
+	-OR the conflict is finalized
+- **Individually liked conflict branch:** A conflict branch is individually liked if the conflict defining it is liked.
+- **Monotonically liked branch:** A branch is monotonically liked if all of its conflicts are liked.  Equivalently, a branch is monotonically liked if all of its conflict branches in its branch past cone are individually liked.
+
+FPC initially determines which conflicts are liked.  However, nodes which are syncing and missed the FPC voting will default to the conflicts which are finalised.  Decisions about each conflict set are carried out by FPC individually and so we separate between "individually liked" and "monotonically liked". 
+Branch which are monotonically liked have their entire history liked and can be included in the strong past cone of messages.  Monotonically like branch IDs will thus receiver more supporters and thus eventually become finalised.  
+
+
+
+
+**Note**: Once a branch gets confirmed, the conflicting ones receive the status "Orphaned".
+
