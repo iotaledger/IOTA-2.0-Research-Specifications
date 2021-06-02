@@ -28,20 +28,20 @@ These are the research specifications of the IOTA 2.0 protocol.  To put these in
 	- [4.2 Timestamps](./4.2%20Timestamps.md)
 	- [4.3 Tip Selection Algorithm](./4.3%20Tip%20Selection%20Algorithm.md)
 	- [4.4	 Solidification](./4.4%20Solidification.md)
-	- [4.5	 Rate Control](./3.3%20Peer%20Discovery.md)
-	- [4.6 Congestion Control]()
-	- [4.7	Markers]()
+	- [4.5	 Rate Control](./4.5%20Rate%20Control.md)
+	- [4.6 Congestion Control](./4.6%20Congestion%20Control.md)
+	- [4.7	Markers](./4.7%20Markers.md)
 	- 4.8	Message Creation
 **5. Value Transfer Application**
-	- [5.1	UTXO]()
-	- [5.2	Ledger State]()
-	- [5.3	Mana]()
+	- [5.1	UTXO](./5.1%20UTXO.md)
+	- [5.2	Ledger State](./5.2%20Ledger%20State.md)
+	- [5.3	Mana](./5.3%20Mana.md)
 **6. Consensus Applications**
-	- [6.1 Object of Consensus]()
-	- [6.2 Opinion Setting]()
-	- [6.3 FPC]()
-	- [6.4 Finalization]()
-	- [6.5	 dRNG]()
+	- [6.1 Object of Consensus](./6.1%20Objects%20of%20Consensus.md)
+	- [6.2 Opinion Setting](./6.2%20Opinion%20Setting.md)
+	- [6.3 FPC](./6.3%20Fast%20Probabilistic%20Consensus.md)
+	- [6.4 Finalization](./6.4%20Finalization.md)
+	- [6.5	 dRNG](./6.5%20dRNG.md)
 **Appendix**
 	A.1	Snapshots
 
