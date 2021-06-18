@@ -41,7 +41,7 @@ These are the research specifications of the IOTA 2.0 protocol.  To put these in
 	- [6.2 Opinion Setting](./6.2%20Opinion%20Setting.md)
 	- [6.3 FPC](./6.3%20Fast%20Probabilistic%20Consensus.md)
 	- [6.4 Finalization](./6.4%20Finalization.md)
-	- [6.5	 dRNG](./6.5%20dRNG.md)
-- **Appendix**
-	A.1	Snapshots
+	- [6.5 dRNG](./6.5%20dRNG.md)
+- **7. Snapshots**
+	- [7.1 Snapshots](./7.1%20Snapshot.md)
 
