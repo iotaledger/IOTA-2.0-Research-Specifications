@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Solidification - IOTA 2.0 Research Specifications</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0.0 Preface.html">Preface</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Control Files</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="1.1 Introduction.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.</strong> Table of Contents</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Terminology</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Index of parameters</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.5.</strong> References</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Structure</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Data Types</div></li><li class="chapter-item expanded "><a href="2.2 Message Layout.html"><strong aria-hidden="true">2.2.</strong> Message Layout</a></li><li class="chapter-item expanded "><a href="2.3 Standard Payloads Layout.html"><strong aria-hidden="true">2.3.</strong> Payloads Layout</a></li><li class="chapter-item expanded "><a href="2.4 Data flow.html"><strong aria-hidden="true">2.4.</strong> Data Flow</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Network Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Communication Models</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Bootstrapping</div></li><li class="chapter-item expanded "><a href="3.3 Peer Discovery.html"><strong aria-hidden="true">3.3.</strong> Peer Discovery</a></li><li class="chapter-item expanded "><a href="3.4 Neighbor Selection.html"><strong aria-hidden="true">3.4.</strong> Neighbor Selection</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Manual Peering</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Communication Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1 The Tangle.html"><strong aria-hidden="true">4.1.</strong> The Tangle</a></li><li class="chapter-item expanded "><a href="4.2 Timestamps.html"><strong aria-hidden="true">4.2.</strong> Timestamps</a></li><li class="chapter-item expanded "><a href="4.3 Tip Selection Algorithm.html"><strong aria-hidden="true">4.3.</strong> Tip Selection Algorithm</a></li><li class="chapter-item expanded "><a href="4.4 Solidification.html" class="active"><strong aria-hidden="true">4.4.</strong> Solidification</a></li><li class="chapter-item expanded "><a href="4.5 Rate Control.html"><strong aria-hidden="true">4.5.</strong> Rate Control</a></li><li class="chapter-item expanded "><a href="4.6 Congestion Control.html"><strong aria-hidden="true">4.6.</strong> Congestion Control</a></li><li class="chapter-item expanded "><a href="4.7 Markers.html"><strong aria-hidden="true">4.7.</strong> Markers</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.8.</strong> Message Creation</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Value Transfer Application</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1 UTXO.html"><strong aria-hidden="true">5.1.</strong> UTXO</a></li><li class="chapter-item expanded "><a href="5.2 Ledger State.html"><strong aria-hidden="true">5.2.</strong> Ledger State</a></li><li class="chapter-item expanded "><a href="5.3 Mana.html"><strong aria-hidden="true">5.3.</strong> Mana</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Consensus Applications</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="6.1 Objects of Consensus.html"><strong aria-hidden="true">6.1.</strong> Object of Consensus</a></li><li class="chapter-item expanded "><a href="6.2 Opinion Setting.html"><strong aria-hidden="true">6.2.</strong> Opinion Setting</a></li><li class="chapter-item expanded "><a href="6.3 Fast Probabilistic Consensus.html"><strong aria-hidden="true">6.3.</strong> FPC</a></li><li class="chapter-item expanded "><a href="6.4 Finalization.html"><strong aria-hidden="true">6.4.</strong> Finalization</a></li><li class="chapter-item expanded "><a href="6.5 dRNG.html"><strong aria-hidden="true">6.5.</strong> dRNG</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><div>Appendix</div></li><li class="chapter-item expanded affix "><div>Snapshots</div></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">IOTA 2.0 Research Specifications</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="44-solidification"><a class="header" href="#44-solidification">4.4 Solidification</a></h1>
+<p>A message is solid if all its parents are stored, solid and valid. This section defines how messages get solid in the Tangle.</p>
+<p>The Solidification specification depends on the following specifications:</p>
+<ul>
+<li><a href="./4.2%20Timestamps.html">4.2 - Timestamps</a></li>
+<li><a href="./5.1%20UTXO.html">5.1 - UTXO</a></li>
+</ul>
+<h2 id="441-motivation"><a class="header" href="#441-motivation">4.4.1 Motivation</a></h2>
+<p><strong>Solidification</strong> is a process of requesting missing referenced messages. It may be recursively repeated until all of a message's past cone up to the genesis (or snapshot) becomes solid.</p>
+<p>In that way, the Tangle enables all nodes to retrieve all of a message's history, even the ones joining the network at a point later in time.</p>
+<h2 id="442-definitions"><a class="header" href="#442-definitions">4.4.2 Definitions</a></h2>
+<ul>
+<li><strong>valid</strong>: A message is considered valid if it passes the following filters from the solidifier and from the message booker:
+<ul>
+<li>solidifier: it checks if parents are valid,</li>
+<li>booker: it check if the contained transaction is valid. Notice that only messages containing a transaction are required to perform this check, which are defined in <a href="./5.1%20UTXO.html#validation">Section 5.1 - UTXO</a></li>
+</ul>
+</li>
+<li><strong>parents age check</strong>: A check that ensures the timestamps of parents and child are valid, following the details defined in <a href="./4.2%20Timestamps.html">Section 4.2 - Timestamps</a>.</li>
+<li><strong>solid</strong>: A message is solid if it passes parents age check and all its parents are stored in the storage, solid and valid.</li>
+</ul>
+<h2 id="443-parameters"><a class="header" href="#443-parameters">4.4.3 Parameters</a></h2>
+<ul>
+<li><code>retryInterval</code>: The time interval of resending the same solidification request.</li>
+<li><code>maxRequestThreshold</code>: The maximum retry times to send a solidification request.</li>
+</ul>
+<h2 id="444-detailed-design"><a class="header" href="#444-detailed-design">4.4.4 Detailed Design</a></h2>
+<p>During solidification, if a node is missing a referenced message, the corresponding message ID is stored in the <code>solidification buffer</code>. A node asks its neighbors for the missing message by sending a <code>solidification request</code> containing the message ID. Once the requested message is received from its neighbors, its message ID shall be removed from the <code>solidification buffer</code>. The requested message is marked as solid after it passes the standard solidification checks. If any of the checks fails, the message remains unsolid. </p>
+<p>If a message gets solid, it shall walk through the rest of the data flow, then propagate the solid status its future cone by performing the solidification checks on each of the message in its future cone again.</p>
+<p>Figure 4.4.1 shows the solidification process:</p>
+<p><img src="https://user-images.githubusercontent.com/11289354/117009286-28333200-ad1e-11eb-8d0d-186c8d8ce373.png" alt="GoShimmer-flow-solidification_spec" /></p>
+<p style="text-align: center;">
+    Figure 4.4.1: solidification workflow
+</p>
+<h2 id="445-communication-details"><a class="header" href="#445-communication-details">4.4.5 Communication details</a></h2>
+<p>Nodes send and receive <code>solidification request/response</code> via gossip layer. The <code>solidification request</code> is created and scheduled by the gossip manager, if a node does not get the requested message, the gossip manager resends it every <code>retryInterval</code>. If the requested message is not received within <code>maxRequestThreshold</code> rounds, the <code>solidification request</code> must be removed from the <code>solidification buffer</code>.</p>
+<h3 id="4451-request-and-response"><a class="header" href="#4451-request-and-response">4.4.5.1 Request and response</a></h3>
+<p>Below we define the form of SolidificationRequest and SolidificationResponse: </p>
+<h3 id="solidificationrequest"><a class="header" href="#solidificationrequest">SolidificationRequest</a></h3>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>type</td>
+         <td>uint8</td>
+         <td>Indicates that the packet is SolidificationRequest.</td>
+     </tr>
+     <tr>
+         <td>messageID</td>
+         <td>ByteArray[32]</td>
+         <td>Contains the message ID of the requested message.</td>
+     </tr>
+ </table>
+<p style="text-align: center;">
+    Table 4.4.2: SolidificationRequest data fields description
+</p>
+<h3 id="solidificationresponse"><a class="header" href="#solidificationresponse">SolidificationResponse</a></h3>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>type</td>
+         <td>uint8</td>
+         <td>Indicates that the packet is SolidificationResponse.</td>
+     </tr>
+     <tr>
+         <td>message</td>
+         <td>ByteArray</td>
+         <td>Contains the entire requested message.</td>
+     </tr>
+ </table>
+<p style="text-align: center;">
+    Table 4.4.3: SolidificationResponses data fields description
+</p>
+<h2 id="446-denial-of-service"><a class="header" href="#446-denial-of-service">4.4.6 Denial of Service</a></h2>
+<p>All requests/responses exchanged during the solidification are sent via UDP. As such, any UDP based Denial of Service attack may harm the normal functionality of the solidification. To limit this, hardware based protection such as firewall or alternatively may be used.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="4.3 Tip Selection Algorithm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="4.5 Rate Control.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="4.3 Tip Selection Algorithm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="4.5 Rate Control.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

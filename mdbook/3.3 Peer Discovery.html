@@ -1,0 +1,462 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Peer Discovery - IOTA 2.0 Research Specifications</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0.0 Preface.html">Preface</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Control Files</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="1.1 Introduction.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.</strong> Table of Contents</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Terminology</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Index of parameters</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.5.</strong> References</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Structure</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Data Types</div></li><li class="chapter-item expanded "><a href="2.2 Message Layout.html"><strong aria-hidden="true">2.2.</strong> Message Layout</a></li><li class="chapter-item expanded "><a href="2.3 Standard Payloads Layout.html"><strong aria-hidden="true">2.3.</strong> Payloads Layout</a></li><li class="chapter-item expanded "><a href="2.4 Data flow.html"><strong aria-hidden="true">2.4.</strong> Data Flow</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Network Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Communication Models</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Bootstrapping</div></li><li class="chapter-item expanded "><a href="3.3 Peer Discovery.html" class="active"><strong aria-hidden="true">3.3.</strong> Peer Discovery</a></li><li class="chapter-item expanded "><a href="3.4 Neighbor Selection.html"><strong aria-hidden="true">3.4.</strong> Neighbor Selection</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Manual Peering</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Communication Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1 The Tangle.html"><strong aria-hidden="true">4.1.</strong> The Tangle</a></li><li class="chapter-item expanded "><a href="4.2 Timestamps.html"><strong aria-hidden="true">4.2.</strong> Timestamps</a></li><li class="chapter-item expanded "><a href="4.3 Tip Selection Algorithm.html"><strong aria-hidden="true">4.3.</strong> Tip Selection Algorithm</a></li><li class="chapter-item expanded "><a href="4.4 Solidification.html"><strong aria-hidden="true">4.4.</strong> Solidification</a></li><li class="chapter-item expanded "><a href="4.5 Rate Control.html"><strong aria-hidden="true">4.5.</strong> Rate Control</a></li><li class="chapter-item expanded "><a href="4.6 Congestion Control.html"><strong aria-hidden="true">4.6.</strong> Congestion Control</a></li><li class="chapter-item expanded "><a href="4.7 Markers.html"><strong aria-hidden="true">4.7.</strong> Markers</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.8.</strong> Message Creation</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Value Transfer Application</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1 UTXO.html"><strong aria-hidden="true">5.1.</strong> UTXO</a></li><li class="chapter-item expanded "><a href="5.2 Ledger State.html"><strong aria-hidden="true">5.2.</strong> Ledger State</a></li><li class="chapter-item expanded "><a href="5.3 Mana.html"><strong aria-hidden="true">5.3.</strong> Mana</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Consensus Applications</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="6.1 Objects of Consensus.html"><strong aria-hidden="true">6.1.</strong> Object of Consensus</a></li><li class="chapter-item expanded "><a href="6.2 Opinion Setting.html"><strong aria-hidden="true">6.2.</strong> Opinion Setting</a></li><li class="chapter-item expanded "><a href="6.3 Fast Probabilistic Consensus.html"><strong aria-hidden="true">6.3.</strong> FPC</a></li><li class="chapter-item expanded "><a href="6.4 Finalization.html"><strong aria-hidden="true">6.4.</strong> Finalization</a></li><li class="chapter-item expanded "><a href="6.5 dRNG.html"><strong aria-hidden="true">6.5.</strong> dRNG</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><div>Appendix</div></li><li class="chapter-item expanded affix "><div>Snapshots</div></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">IOTA 2.0 Research Specifications</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="33-peer-discovery"><a class="header" href="#33-peer-discovery">3.3 Peer Discovery</a></h1>
+<h2 id="331-introduction"><a class="header" href="#331-introduction">3.3.1 Introduction</a></h2>
+<p>This section defines the <em>Peer Discovery</em> protocol, its logic and the different requests and responses exchanged.</p>
+<p>In order to establish connections, an IOTA node needs to discover and maintain a list of the reachable IP addresses of other peers. Moreover, some external modules, such as the <em>Neighbor Selection</em> and the <em>Fast Probabilistic Consensus (FPC)</em> may require an updated list of known peers.</p>
+<p>The main goal of the <em>Peer Discovery</em> protocol is to expose an interface providing a list of all the verified peers.</p>
+<p>Throughout this section the terms <code>Node</code> and <code>Peer</code> are used interchangeably to refer to a <code>Node</code> device.</p>
+<p>The usage of the <em>Ping</em> and <em>Pong</em> mechanism is to be considered as a bidirectional exchange similarly to how described by other standards such as <a href="https://core-wg.github.io/coap-sig/">CoAP</a> and <a href="https://tools.ietf.org/html/rfc6455#section-5.5.2">WebSocket</a>.</p>
+<h2 id="332-detailed-design"><a class="header" href="#332-detailed-design">3.3.2 Detailed design</a></h2>
+<p>To bootstrap the peer discovery, a node <em>must</em> be able to reach one or more entry nodes. To achieve this, the implementation of the protocol <em>shall</em> provide a hard-coded list of trusted <strong>entry nodes</strong> run by the IF or by trusted community members that answer to peer discovery packets coming from new nodes joining the IOTA network. This approach is a common practice of many distributed networks <a href="https://ieeexplore.ieee.org/iel7/9739/8649699/08456488.pdf">[Neudecker 2018]</a>. 
+Public Key-based Cryptography (PKC) <em>shall</em> be used for uniquely <a href="#Node_identities">identifying</a> peers and for authenticating each packet. 
+The usage of the Ping and Pong protocols is that <a href="#Ping"><em>Ping</em></a> are sent to verify a given peer and, upon reception of a valid <a href="#Pong"><em>Pong</em></a> as a response from that peer, the peer is verified.
+Once a peer has been verified, it can be queried to discover new peers by sending a <a href="#DiscoveryRequest"><em>DiscoveryRequest</em></a>. As a response, a <a href="#DiscoveryResponse"><em>DiscoveryResponse</em></a> <em>shall</em> be returned, containing a list of new peers. The new peer nodes in this list <em>shall</em> be verified by the receiving application.</p>
+<p>This process is summarized in the following figure and detailed in the following subsections:</p>
+<p><img src="https://i.imgur.com/U51tPeK.png" alt="" /></p>
+<h3 id="3321-node-identities"><a class="header" href="#3321-node-identities">3.3.2.1 Node identities</a></h3>
+<p>Every node has a cryptographic identity, a key on the ed25519 elliptic curve. The <code>blake2b</code> hash of the public key of the peer serves as its identifier or <code>node ID</code>.</p>
+<h3 id="3322-verification"><a class="header" href="#3322-verification">3.3.2.2 Verification</a></h3>
+<p>The verification process aims at both verifying peer identities and checking their online status. Each peer <em>shall</em> maintain a list of all the known peers. This list <em>shall</em> be called <code>known_peer_list</code>. Elements of any known peer list <em>shall</em> contain a reference to a <a href="#Peer">Peer</a> and a time at which it <em>shall</em> be verified/re-verified. 
+As such, the <code>known_peer_list</code> can be seen as a time-priority queue. A newly discovered peer gets added to the list at the current time. Whenever a peer is verified, its time value on the <code>known_peer_list</code> gets updated to the time at which that peer <em>shall</em> be re-verified. 
+The intent of this arrangement is to allow the node application to first verify newly discovered (and thus still unverified) peers and then to re-verify older peers (to confirm their online status) by iterating over the <code>known_peer_list</code>.
+It is worthwhile to note that the order in which the <code>known_peer_list</code> is worked through is important. For example, if the peer is added to the front ('head') of the <code>known_peer_list</code>, it is possible for an adversary to front-fill the <code>known_peer_list</code> with a selection of its own nodes. This is resolved by the use of the time-priority queue.</p>
+<p>The verification process always initiates from a <a href="#Ping">Ping</a>. Upon reception of a <a href="#Ping">Ping</a>, a peer <em>shall</em> check its validity by:</p>
+<ul>
+<li>verifying that the signature of the <a href="#Ping">Ping</a> is valid and discarding the request otherwise;</li>
+<li>checking that the <code>version</code> and <code>network_id</code> fields match its configuration and discarding the <a href="#Ping">Ping</a> otherwise;</li>
+<li>checking that the <code>timestamp</code> field is fresh (i.e., not older than a given time) and discarding the packet otherwise;</li>
+<li>checking that the <code>dest_addr</code> matches its IP address and discarding the <a href="#Ping">Ping</a> otherwise.</li>
+</ul>
+<p>Upon successful validation of a received <a href="#Ping">Ping</a>, a peer <em>shall</em> respond with a <a href="#Pong">Pong</a>. In case the sender of the <em>Ping</em> is a new peer from the perspective of the receiving node, the receiver peer <em>shall</em> add it to its <code>known_peer_list</code>. This enables the verification process to also occur in the reverse direction. </p>
+<p>Upon reception of a <a href="#Pong">Pong</a>, a peer <em>shall</em> check its validity by:</p>
+<ul>
+<li>verifying that the signature of the <a href="#Pong">Pong</a> is valid and discarding it otherwise;</li>
+<li>checking that the <code>req_hash</code> field matches a request (i.e. <em>Ping</em>) previously sent and not expired (i.e., the difference between the timestamp of the <em>Ping</em> and <em>Pong</em> is not greater than a given threshold) and discarding the associated <em>Ping</em> or <em>Pong</em> otherwise;</li>
+<li>checking that the <code>dest_addr</code> matches its IP address and discarding the associated <em>Ping</em> or <em>Pong</em> otherwise.</li>
+</ul>
+<p>Upon successful validation of a received <a href="#Pong">Pong</a>, a peer <em>shall</em>:</p>
+<ul>
+<li>add the peer sender of the <em>Pong</em> to a list of verified peers called <code>verified_peer_list</code>;</li>
+<li>move the peer entry of the <code>known_peer_list</code> to the tail.</li>
+</ul>
+<h3 id="3323-removal"><a class="header" href="#3323-removal">3.3.2.3 Removal</a></h3>
+<p>While verifying a new peer, if no or an invalid <em>Pong</em> is received after <code>max_verify_attempts</code> attempts, that node <em>shall</em> be removed from the <code>known_peer_list</code>. Each expected reply should have a timeout such that if no answer is received after that, an attempt is considered concluded and counted as failed. </p>
+<p>Each peer on the <code>verified_peer_list</code> <em>shall</em> be re-verified after <code>verification_lifetime</code> hours; while re-verifying a peer, if no or invalid <em>Pong</em> is received after <code>max_reverify_attempts</code> attempts, the peer <em>shall</em> be removed from the <code>verified_peer_list</code>.</p>
+<h3 id="3324-discovery"><a class="header" href="#3324-discovery">3.3.2.4 Discovery</a></h3>
+<p>Each peer entry of the <code>verified_peer_list</code> may be used to discover new peers. This process is initiated by sending a <a href="#DiscoveryRequest">DiscoveryRequest</a>.</p>
+<p>Upon reception of a <a href="#DiscoveryRequest">DiscoveryRequest</a>, a peer node <em>shall</em> check its validity by:</p>
+<ul>
+<li>checking that the sender of the <a href="#DiscoveryRequest">DiscoveryRequest</a> is a verified peer (i.e. is stored in the <code>verified_peer_list</code>) and discarding the request otherwise;</li>
+<li>verifying that the signature of the <a href="#DiscoveryRequest">DiscoveryRequest</a> is valid and discarding the request otherwise;</li>
+<li>checking that the <code>timestamp</code> field is fresh (i.e., not older than a given time) and discarding the request otherwise.</li>
+</ul>
+<p>Upon successful validation of a received <a href="#DiscoveryRequest">DiscoveryRequest</a>, a peer <em>shall</em> reply with a <a href="#DiscoveryResponse">DiscoveryResponse</a>.</p>
+<p>Upon reception of a <a href="#DiscoveryResponse">DiscoveryResponse</a>, a peer <em>shall</em> check its validity by:</p>
+<ul>
+<li>verifying that the signature of the <a href="#DiscoveryResponse">DiscoveryResponse</a> is valid and discarding the response otherwise;</li>
+<li>checking that the <code>req_hash</code> field matches a discovery request (i.e. <em>DiscoveryRequest</em>) previously sent and not expired (i.e., the difference between the timestamp of the <em>DiscoveryRequest</em> and <em>DiscoveryResponse</em> is not greater than a given threshold) and discarding the response otherwise.</li>
+</ul>
+<p>Upon successful validation of a received <a href="#DiscoveryResponse">DiscoveryResponse</a>, a node <em>shall</em> add the nodes contained in the <code>peers</code> field to the <code>known_peer_list</code>.</p>
+<h3 id="3325-ping-and-pong-layout"><a class="header" href="#3325-ping-and-pong-layout">3.3.2.5 Ping and Pong Layout</a></h3>
+<p>Each <em>Ping</em> and <em>Pong</em> <em>shall</em> be encapsulated into a <code>data</code> field of a generic <code>Request</code> and <code>Response</code>. Its <code>type</code>  <em>shall</em> be specified in the <code>type</code> field. Each request and response <em>shall</em> be signed with the ed25519 private key of the sender's <a href="#Node_identities">identity</a> and <em>shall</em> contain the related public key, in order to allow the packet receiving node to verify the signature. All the received responses <em>shall</em> be verified and those with invalid signature <em>shall</em> be discarded.</p>
+<h4 id="request-and-response-layout"><a class="header" href="#request-and-response-layout">Request and Response Layout</a></h4>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>type</td>
+         <td>uint8</td>
+         <td>Defines the type of the request or response.</td>
+     </tr>
+     <tr>
+         <td>data</td>
+         <td>ByteArray</td>
+         <td>contains the payload of the  request or response (e.g., a Ping).</td>
+     </tr>
+     <tr>
+         <td>public_key</td>
+         <td>ByteArray[32]</td>
+         <td>The ed25519 public key of the peer's identity used to verify its signatures.</td>
+     </tr>
+     <tr>
+         <td>signature</td>
+         <td>ByteArray[32]</td>
+         <td>The ed25519 signature of the `data` field, signed by using the private key of the peer's identity.</td>
+     </tr>
+ </table>
+<h4 id="ping"><a class="header" href="#ping">Ping</a></h4>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>version</td>
+         <td>uint32</td>
+         <td>The version of the protocol.</td>
+     </tr>
+      <tr>
+         <td>network_id</td>
+         <td>uint32</td>
+         <td>The network identifier.</td>
+     </tr>
+     <tr>
+         <td>timestamp</td>
+         <td>time</td>
+         <td>The unix timestamp of the Ping.</td>
+     </tr>
+     <tr>
+         <td>src_addr</td>
+         <td>string</td>
+         <td>The IP address, in string form, of the sender (e.g., "192.0.2.1", "[2001:db8::1]").</td>
+     </tr>
+     <tr>
+         <td>src_port</td>
+         <td>uint32</td>
+         <td>The listening port of the sender.</td>
+     </tr>
+     <tr>
+         <td>dst_addr</td>
+         <td>string</td>
+         <td>The string form of the receiver's IP address. This provides a way to discover the external address (after NAT).</td>
+     </tr>
+ </table>
+<h4 id="pong"><a class="header" href="#pong">Pong</a></h4>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>req_hash</td>
+         <td>ByteArray[32]</td>
+         <td>The blake2b digest of the corresponding received Ping.</td>
+     </tr>
+     <tr>
+         <td colspan="1">
+             services
+         </td>
+         <td colspan="2">
+             <details open="true">
+                 <summary>Services supported by the Pong sender.</summary>
+                 <table>
+                     <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                     </tr>
+                     <tr>
+                        <td>serviceID</td>
+                        <td>ByteArray[32]</td>
+                        <td>The service ID (e.g., autopeering, gossip, fpc).</td>
+                     </tr>
+                     <tr>
+                        <td>network</td>
+                        <td>string</td>
+                        <td>The string form of the network (e.g., udp, tcp).</td>
+                     </tr>
+                     <tr>
+                        <td>port</td>
+                        <td>uint32</td>
+                        <td>The listening port of the service.</td>
+                     </tr>
+                 </table>
+             </details>
+         </td>
+     </tr>
+     <tr>
+         <td>dst_addr</td>
+         <td>string</td>
+         <td>the string form of the receiver's IP address. This MUST mirror the src_addr of the Ping's IP packet. It provides a way to discover the external address (after NAT).</td>
+     </tr>
+ </table>
+<h4 id="discoveryrequest"><a class="header" href="#discoveryrequest">DiscoveryRequest</a></h4>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>timestamp</td>
+         <td>time</td>
+         <td>The unix timestamp of the DiscoveryRequest.</td>
+     </tr>
+ </table>
+<h4 id="discoveryresponse"><a class="header" href="#discoveryresponse">DiscoveryResponse</a></h4>
+<table>
+     <tr>
+         <th>Name</th>
+         <th>Type</th>
+         <th>Description</th>
+     </tr>
+     <tr>
+         <td>req_hash</td>
+         <td>ByteArray[32]</td>
+         <td>The blake2b digest of the corresponding received DiscoveryRequest.</td>
+     </tr>
+     <tr>
+         <td colspan="1">
+             peers
+         </td>
+         <td colspan="2">
+             <details open="true">
+                 <summary>The list of some randomly chosen peers known by the sender of the DiscoveryResponse <code>between(1,6).</summary>
+                 <table>
+                     <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                     </tr>
+                     <tr>
+                        <td>public_key</td>
+                        <td>ByteArray[32]</td>
+                        <td>The ed25519 public key of the peer's identity used to verify its signature.</td>
+                     </tr>
+                     <tr>
+                        <td>ip</td>
+                        <td>string</td>
+                        <td>The string form of the peer's IP address.</td>
+                     </tr>
+                     <tr>
+                        <td colspan="1">
+                            services
+                        </td>
+                        <td colspan="2">
+                            <details open="true">
+                                <summary>Services supported by the peer.</summary>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td>serviceID</td>
+                                        <td>ByteArray[32]</td>
+                                        <td>The service ID (e.g., autopeering, gossip, fpc).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>network</td>
+                                        <td>string</td>
+                                        <td>The string form of the network (e.g., udp, tcp).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>port</td>
+                                        <td>uint32</td>
+                                        <td>The listening port of the service.</td>
+                                    </tr>
+                                </table>
+                            </details>
+                        </td>
+                  </tr>
+                  <tr>
+                 </table>
+             </details>
+         </td>
+     </tr>
+ </table>
+<h3 id="3326-denial-of-service"><a class="header" href="#3326-denial-of-service">3.3.2.6 Denial of Service</a></h3>
+<p>All the requests and responses exchanged during the Peer Discovery protocol are sent via UDP. As such, any UDP based Denial of Service attack could harm the normal functionality of the protocol. To limit this, hardware based protection such as Firewall or alternatively, rate limiting the incoming requests and responses via leaky/token buckets based techniques could be used.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="2.4 Data flow.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="3.4 Neighbor Selection.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="2.4 Data flow.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="3.4 Neighbor Selection.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

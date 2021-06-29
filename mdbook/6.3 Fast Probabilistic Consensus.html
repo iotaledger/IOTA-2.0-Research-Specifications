@@ -1,0 +1,502 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>FPC - IOTA 2.0 Research Specifications</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0.0 Preface.html">Preface</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Control Files</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="1.1 Introduction.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.</strong> Table of Contents</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Terminology</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Index of parameters</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.5.</strong> References</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Structure</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Data Types</div></li><li class="chapter-item expanded "><a href="2.2 Message Layout.html"><strong aria-hidden="true">2.2.</strong> Message Layout</a></li><li class="chapter-item expanded "><a href="2.3 Standard Payloads Layout.html"><strong aria-hidden="true">2.3.</strong> Payloads Layout</a></li><li class="chapter-item expanded "><a href="2.4 Data flow.html"><strong aria-hidden="true">2.4.</strong> Data Flow</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Network Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Communication Models</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Bootstrapping</div></li><li class="chapter-item expanded "><a href="3.3 Peer Discovery.html"><strong aria-hidden="true">3.3.</strong> Peer Discovery</a></li><li class="chapter-item expanded "><a href="3.4 Neighbor Selection.html"><strong aria-hidden="true">3.4.</strong> Neighbor Selection</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Manual Peering</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Communication Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1 The Tangle.html"><strong aria-hidden="true">4.1.</strong> The Tangle</a></li><li class="chapter-item expanded "><a href="4.2 Timestamps.html"><strong aria-hidden="true">4.2.</strong> Timestamps</a></li><li class="chapter-item expanded "><a href="4.3 Tip Selection Algorithm.html"><strong aria-hidden="true">4.3.</strong> Tip Selection Algorithm</a></li><li class="chapter-item expanded "><a href="4.4 Solidification.html"><strong aria-hidden="true">4.4.</strong> Solidification</a></li><li class="chapter-item expanded "><a href="4.5 Rate Control.html"><strong aria-hidden="true">4.5.</strong> Rate Control</a></li><li class="chapter-item expanded "><a href="4.6 Congestion Control.html"><strong aria-hidden="true">4.6.</strong> Congestion Control</a></li><li class="chapter-item expanded "><a href="4.7 Markers.html"><strong aria-hidden="true">4.7.</strong> Markers</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.8.</strong> Message Creation</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Value Transfer Application</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1 UTXO.html"><strong aria-hidden="true">5.1.</strong> UTXO</a></li><li class="chapter-item expanded "><a href="5.2 Ledger State.html"><strong aria-hidden="true">5.2.</strong> Ledger State</a></li><li class="chapter-item expanded "><a href="5.3 Mana.html"><strong aria-hidden="true">5.3.</strong> Mana</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Consensus Applications</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="6.1 Objects of Consensus.html"><strong aria-hidden="true">6.1.</strong> Object of Consensus</a></li><li class="chapter-item expanded "><a href="6.2 Opinion Setting.html"><strong aria-hidden="true">6.2.</strong> Opinion Setting</a></li><li class="chapter-item expanded "><a href="6.3 Fast Probabilistic Consensus.html" class="active"><strong aria-hidden="true">6.3.</strong> FPC</a></li><li class="chapter-item expanded "><a href="6.4 Finalization.html"><strong aria-hidden="true">6.4.</strong> Finalization</a></li><li class="chapter-item expanded "><a href="6.5 dRNG.html"><strong aria-hidden="true">6.5.</strong> dRNG</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><div>Appendix</div></li><li class="chapter-item expanded affix "><div>Snapshots</div></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">IOTA 2.0 Research Specifications</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="63-fast-probabilistic-consensus"><a class="header" href="#63-fast-probabilistic-consensus">6.3 Fast Probabilistic Consensus</a></h1>
+<h2 id="631-introduction"><a class="header" href="#631-introduction">6.3.1 Introduction</a></h2>
+<p>The functionality defined in this part of the specification allows nodes to find consensus on whether a given object is elgible or not. This protocol, called Fast Probabilistic Consensus (FPC), is triggered if the eligibility of an object is uncertain. These objects can be messages or transactions. Please refer to <a href="./6.1%20Objects%20of%20Consensus.html">Section 6.1 - Object of Consensus</a> for details on the object of consensus and to <a href="./6.2%20Opinion%20Setting.html">Section 6.2 - Opinion Setting</a> for more details how initial opinions on the objects are formed.</p>
+<p>Once FPC is triggered every node must establish an initial opinion on the eligibility of the object, as described in Section 6.1. The node must then start to query other nodes about their opinions on the given object and must update its opinion according to the rules specified in this section. </p>
+<p>This procedure shall terminate locally if a node has not changed its opinion over a specified period of time or if some maximal amount of rounds is reached. </p>
+<p>Unlike other voting-based consensus protocols, FPC uses a sequence of global random thresholds. This randomness makes FPC robust even in Byzantine environments. We refer to <a href="https://arxiv.org/abs/1905.10895">FPC-BI: Fast Probabilistic Consensus within Byzantine Infrastructures</a>, <a href="https://arxiv.org/abs/1911.08787">Robustness and efficiency of leaderless probabilistic consensus protocols within Byzantine infrastructures</a>, and <a href="https://link.springer.com/chapter/10.1007/978-3-030-63089-8_24">Fast Probabilistic Consensus with Weighted Votes</a> for more details on FPC.</p>
+<h2 id="632-fpc-protocol"><a class="header" href="#632-fpc-protocol">6.3.2 FPC Protocol</a></h2>
+<p>The FPC protocol attempts to determine consensus on the eligibility of an object <code>objectID</code>. Every node has an initial opinion <code>opinion</code> on this object. These opinions are updated in rounds until the protocol terminates using a local stopping rule. </p>
+<h3 id="6321-fpc-parameters"><a class="header" href="#6321-fpc-parameters">6.3.2.1 FPC parameters</a></h3>
+<p>Table 5.1.1 gives a list of all parameters required for FPC.</p>
+<p><strong>Table 6.3.1 Parameters Required for FPC</strong></p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>TOTAL_ROUNDS_FINALIZATION</code></td><td>integer</td><td>Number of consecutive rounds before FPC auto-terminates</td></tr>
+<tr><td><code>TOTAL_ROUNDS_ENDING_THRESHOLD</code></td><td>integer</td><td>Number of consecutive rounds with non-random threshold</td></tr>
+<tr><td><code>FIRST_ROUND_THRESHOLD</code></td><td>double</td><td>Threshold of the proportion of opinions in the first round</td></tr>
+<tr><td><code>SUBSEQUENT_LOWER_THRESHOLD</code></td><td>double</td><td>Lower random threshold bound in subsequent rounds</td></tr>
+<tr><td><code>SUBSEQUENT_UPPER_THRESHOLD</code></td><td>double</td><td>Upper random threshold bound in subsequent rounds</td></tr>
+<tr><td><code>ENDING_THRESHOLD</code></td><td>double</td><td>Threshold for termination phase</td></tr>
+<tr><td><code>DRNG_WAITING_TIME</code></td><td>duration</td><td>Maximal waiting time (in seconds) to receive dRNG number</td></tr>
+<tr><td><code>MAX_ROUND</code></td><td>integer</td><td>Maximum number of rounds before querying stops</td></tr>
+<tr><td><code>QUERY_SIZE</code></td><td>integer</td><td>Quorum size, number of nodes that are queried</td></tr>
+<tr><td><code>ROUND_LENGTH</code></td><td>double</td><td>Duration (in seconds) of a round</td></tr>
+<tr><td><code>TIME_OUT</code></td><td>duration</td><td>Maximal waiting time (in seconds) to receive answers for FPC queries</td></tr>
+<tr><td><code>MIN_MANA_PROPORTION</code></td><td>double</td><td>Minimal amount of mana of received answers that allow to update opinion. If this amount is not reached the current round is not counted.</td></tr>
+<tr><td><code>MAX_SAMPLE_SIZE</code></td><td>integer</td><td>Maximal size of sample.</td></tr>
+</tbody></table>
+<p>The proposed values of the parameters are (Table 5.1.2):</p>
+<p><strong>Table 6.3.2 FPC Parameter Default Values</strong></p>
+<table><thead><tr><th>Parameter</th><th align="center">Value</th></tr></thead><tbody>
+<tr><td><code>TOTAL_ROUNDS_FINALIZATION</code></td><td align="center">10</td></tr>
+<tr><td><code>TOTAL_ROUNDS_ENDING_THRESHOLD</code></td><td align="center">3</td></tr>
+<tr><td><code>FIRST_ROUND_THRESHOLD</code></td><td align="center">0.67</td></tr>
+<tr><td><code>SUBSEQUENT_LOWER_THRESHOLD</code></td><td align="center">0.50</td></tr>
+<tr><td><code>SUBSEQUENT_UPPER_THRESHOLD</code></td><td align="center">0.67</td></tr>
+<tr><td><code>ENDING_THRESHOLD</code></td><td align="center">0.50</td></tr>
+<tr><td><code>DRNG_WAITING_TIME</code></td><td align="center">0.20</td></tr>
+<tr><td><code>MAX_ROUND</code></td><td align="center">100</td></tr>
+<tr><td><code> QUERY_SIZE</code></td><td align="center">21</td></tr>
+<tr><td><code>ROUND_LENGTH</code></td><td align="center">10</td></tr>
+<tr><td><code>TIME_OUT</code></td><td align="center">6.5</td></tr>
+<tr><td><code>MIN_MANA_PROPORTION</code></td><td align="center">0.50</td></tr>
+<tr><td><code>MAX_SAMPLE_SIZE</code></td><td align="center">100</td></tr>
+</tbody></table>
+<h3 id="6322-local-variables"><a class="header" href="#6322-local-variables">6.3.2.2 Local variables</a></h3>
+<p>Local variables are those which may be defined at the application developer's discretion and do not form a mandatory part of the protocol. They are included here to assist in understanding the protocol defined in this section. The kind of information described for these variables must be handled by the node application in some form.</p>
+<p>Every node shall keep the following variables (Table 5.1.3):</p>
+<p><strong>Table 6.3.3 Required Node Variables</strong></p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>nodeList</code></td><td>list of nodeIDs</td><td>List of known nodes</td></tr>
+<tr><td><code>consensusManaList</code></td><td>list of nodeIDs</td><td>List of active consensus mana of known nodes</td></tr>
+<tr><td><code>ownMana</code></td><td>double</td><td>Active consensus mana of <code>ownNode</code></td></tr>
+<tr><td><code>rn</code></td><td>double</td><td>Random number provided by dRNG module</td></tr>
+<tr><td><code>rnCycle</code></td><td>double</td><td>Random number instance</td></tr>
+<tr><td><code>queryList</code></td><td>list of nodeIDs</td><td>List of nodes to query</td></tr>
+<tr><td><code>queryMax</code></td><td>integer</td><td>Maximal number of queries per round</td></tr>
+<tr><td><code>opinionQuery</code></td><td>list of Opinions</td><td>List of opinions of nodes in <code>queryList</code>, non-replies are encoded with <code>NA</code></td></tr>
+<tr><td><code>objectIDs</code></td><td>list of objectIDs</td><td>List of objectIDs that are under vote</td></tr>
+</tbody></table>
+<p>Note that <code>consensusManaList</code> is a list of active consensus Mana of all known nodes. As this Mana changes over time this list has to be updated over time. Such an update is expressed with the function <code>GetActiveConsensusMana(time)</code> that returns the list of active consensus Mana at time <code>time</code>.</p>
+<p>For each <code>objectID</code> that is under vote a node shall keep the following variables (Table 5.1.4):</p>
+<p><strong>Table 6.3.4 Variables Required for objectID Under Vote</strong></p>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>opinion</code></td><td>nulled boolean</td><td>Opinion of the eligibility the <code>objectID</code>; <code>TRUE</code> corresponds to <code>LIKE</code> and <code>FALSE</code> to <code>DISLIKE</code></td></tr>
+<tr><td><code>cnt</code></td><td>integer</td><td>Counter of the number of consecutive rounds with unchanged opinion</td></tr>
+<tr><td><code>queryStatus</code></td><td>boolean</td><td>Status if actively querying</td></tr>
+<tr><td><code>answerStatus</code></td><td>boolean</td><td><code>TRUE</code> if answering queries, otherwise <code>FALSE</code></td></tr>
+<tr><td><code>round</code></td><td>integer</td><td>Counter for the number of rounds in FPC</td></tr>
+<tr><td><code>reachedMaxRound</code></td><td>boolean</td><td>Indicator whether protocol reached <code>MAX_ROUND</code> before auto-termination, default value <code>FALSE</code></td></tr>
+</tbody></table>
+<h3 id="6323-fpc-protocol-description"><a class="header" href="#6323-fpc-protocol-description">6.3.2.3 FPC protocol description</a></h3>
+<h4 id="fpc-protocol-operation-for-one-object-id"><a class="header" href="#fpc-protocol-operation-for-one-object-id">FPC Protocol Operation for One Object ID</a></h4>
+<p>This section describes how FPC works for one <code>objectID</code>. Once FPC is triggered on the eligibility of the object <code>objectID</code> a node establishes an initial opinion <code>opinion</code> on <code>objectID</code>, see <a href="./6.2%20Opinion%20Setting.html">Section 6.2 Opinion Setting</a>. In particular, the variables <code>queryStatus</code> and <code>answerStatus</code> must be affected using the functions  <code>QueryStatus</code> and <code>AnswerStatus</code>.
+The exchange and update of opinions must be done in rounds of length <code>ROUND_LENGTH</code>. Rounds end and start at times (in seconds) that are multiple of <code>ROUND_LENGTH</code>. </p>
+<ol>
+<li>At the beginning of each round a node must select a random sample of the other nodes and either send a query request or check if the sampled nodes published their opinions on the Tangle. </li>
+<li>After <code>TIME_OUT</code> the node must calculate the proportion of the <code>LIKE</code>s in the received opinions. </li>
+<li>At the end of the round it must set a threshold to confirm or modify its own opinion. In the first round this threshold is <code>FIRST_ROUND_THRESHOLD</code> while in the subsequent rounds a node must retrieve a random threshold from the dRNG. If the random threshold from the dRNG is not available a node must use 
+(<code>SUBSEQUENT_LOWER_THRESHOLD</code>+ <code>SUBSEQUENT_UPPER_THRESHOLD</code>)/2 as threshold.
+If the proportion is below this obtained threshold it must set its opinion to <code>DISLIKE</code>, otherwise it must set its opinion to <code>LIKE</code>. In the case that the opinion did not change, the variable <code>cnt</code> must be incremented by 1, otherwise it must be set to 0. If a node did not receive enough answers, i.e., the proportion of mana of the received opinions is less than <code>MIN_MANA_PROPORTION</code> of the total mana of the queried nodes, the round is not counted, i.e., neither opinion nor <code>cnt</code> are changed. </li>
+<li>This continues until <code>cnt</code>=<code>TOTAL_ROUNDS_FINALIZATION</code>-<code>TOTAL_ROUNDS_ENDING_THRESHOLD</code>. FPC then enters in the &quot;termination phase&quot; and continues for <code>TOTAL_ROUNDS_ENDING_THRESHOLD</code> rounds using the <code>ENDING_THRESHOLD</code> instead of the random threshold. If during this phase a node changes its opinion it must set <code>cnt</code>=0 and use the random threshold again. The node shall stop querying if <code>cnt</code>=<code>TOTAL_ROUNDS_ENDING_THRESHOLD</code> or <code>cnt</code>=<code>reachedMaxRound</code>. In case that <code>cnt</code>=<code>reachedMaxRound</code> a node must set the final opinion to <code>DISLIKE</code>. </li>
+<li>Once FPC terminates (for the given <code>objectID</code>) a node must update the metadata <code>opinionField</code> of <code>objectID</code> with the outcome of FPC as <code>opinion</code> and <code>level=2</code>.</li>
+<li>A node must continue to respond to queries as long as <code>AnswerStatus(type, objectID)=TRUE</code>, where <code>type</code> is the type of the <code>objectID</code>. If <code>AnswerStatus(type, objectID)=FALSE</code> the variable <code>answerStatus</code> must be updated accordingly.</li>
+</ol>
+<p>High consensus Mana nodes will be queried more often than nodes with low consensus Mana, since the sampling using consensus Mana as weights. Every node is given the possibility to publish their opinions in a statement on the Tangle. These messages are called FPC statements. Nodes who decide to issue FPC statements may close the port reserved for FPC queries. A close port can therefore be an indication that a node decided to disseminate its opinions through statements. Every node shall keep a list of nodes that are not answering direct queries but publish their opinions on the Tangle. If a node issues two or more conflicting FPC statements in a round, every other node shall not take these messages into account, i.e., they do not count for the Mana of received opinions neither are used for the calculation of the proportion.</p>
+<h4 id="fpc-protocol-operation-for-multiple-object-ids"><a class="header" href="#fpc-protocol-operation-for-multiple-object-ids">FPC Protocol Operation for Multiple Object IDs</a></h4>
+<p>It is possible that there are more than one object to vote on. In this case, a node shall sample once per round and obtain the opinions for all objects from this one sample. Malicious or faulty nodes may not respond in a consistent way. In particular, in the case of a double-spending, a malicious node may respond <code>LIKE</code> for two or more conflicting objects. These malicious messages shall be filtered after having received the responses of the queries. Therefore, upon receival of the opinions, a node shall check for every sampled node if its answers are consistent, i.e., all liked objects must form a valid ledger state. Nodes that replied inconsistently shall be filtered out and their answer shall be considered as not received, i.e., they do not count for the Mana of received opinions neither are used for the calculation of the proportion. </p>
+<p>Note that since consensus Mana changes over time, FPC may use different consensus Mana values for different <code>objectID</code>s that are voted on at the same time. For an <code>objectID</code>, FPC must use the active consensus Mana of epoch <code>Epoch X-2</code>, where <code>Epoch X</code> contains the timestamp of the <code>objectID</code>. We refer to <a href="./5.3%20Mana.html">Section 5.3 -  Mana</a> for the specification of active consensus Mana. We use a generic function <code>GetActiveConsensusMana(time)</code> that retrieves the active consensus Mana with respect to a given timestamp <code>time</code>.</p>
+<h3 id="6324-fpc-pseudocode-description"><a class="header" href="#6324-fpc-pseudocode-description">6.3.2.4 FPC Pseudocode Description</a></h3>
+<p>The following presents some pseudo-code for a better understanding of the details of the FPC protocol. </p>
+<p>The function <code>GetRN(a, b, time)</code> retrieves a uniform random number between a and b from the dRNG module of a given time <code>time</code>.
+If the  dRNG is not retrieved in time a node must use (<code>SUBSEQUENT_LOWER_THRESHOLD</code> <code>SUBSEQUENT_UPPER_THRESHOLD</code>)/2 instead.</p>
+<p>In each round a node must query a random sample of other nodes. The random sample is obtained using weighted (by active consensus Mana) sampling with replacement until <code>QUERY_SIZE</code> distinct elements are chosen, or until a maximum sample size of <code>MAX_SAMPLE_SIZE</code> is reached.</p>
+<h4 id="getsample"><a class="header" href="#getsample"><code>GetSample</code></a></h4>
+<p>This function chooses a sample of nodeIDs for FPC queries.</p>
+<pre><code class="language-vbnet">FUNCTION queryList = GetSample(nodeList, manaList)
+queryList = []
+WHILE (queryList does not contain QUERY_SIZE different elements)
+    newSample = SAMPLE(nodeList, weight=manaList)
+    queryList = APPEND(queryList, newSample)
+RETURN queryList
+</code></pre>
+<p>The function <code>SAMPLE(nodeList, weight=manaList)</code> chooses a random element from <code>nodeList</code> with weights corresponding to their Mana, i.e., the probability that a <code>nodeID</code> is chosen is proportional to <code>manaList[nodeID]</code>. </p>
+<p>Once the list <code>queryList</code> of nodes to query is chosen a node must obtain their opinions about the objects under voting. As there are two possibilities for nodes to communicate their opinions, via direct answers or via FPC statements, a node shall keep information on this behavior up to date. The message layout of the FPC statements is specified in <a href="./2.3%20Standard%20Payloads%20Layout.html#2.3.5.3-fpc-statement">Section 2.3 - Standard Payloads Layout</a>.</p>
+<p>At the beginning of each round every node must prepare a query and send it to those nodes in <code>queryList</code> that replies directly (i.e., do not publish FPC statements). </p>
+<p>The queries must follow the layout that follows. </p>
+<h4 id="queryrequest"><a class="header" href="#queryrequest">QueryRequest</a></h4>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Version</td>
+        <td>uint8</td>
+        <td>The message version. The schema specified in this RFC is for version <strong>1</strong> only. </td>
+    </tr>
+    <tr>
+        <td>Tx count</td>
+        <td>uint8</td>
+        <td>The number of TransactionIDs.</td>
+    </tr>
+    <tr>
+        <td colspan="1">
+            TransactionIDs <code>Tx count</code>
+        </td>
+        <td colspan="2">
+            <details open="true">
+                <summary>TransactionID, ordered by hash ASC</summary>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>TransactionID</td>
+                        <td>ByteArray[32]</td>
+                        <td>The ID of the transaction</i>.</td>
+                    </tr>
+                </table>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>Msg count</td>
+        <td>uint8</td>
+        <td>The number of MessageIDs.</td>
+    </tr>
+    <tr>
+        <td colspan="1">
+            MessageIDs <code>Msg count</code>
+        </td>
+        <td colspan="2">
+            <details open="true">
+                <summary>MessageID, ordered by hash ASC</summary>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>MessageID</td>
+                        <td>ByteArray[32]</td>
+                        <td>The ID of the message</i>.</td>
+                    </tr>
+                </table>
+            </details>
+        </td>
+    </tr>
+</table>
+<p>The respond to a QueryRequest must take follow the following form </p>
+<h4 id="queryresponse"><a class="header" href="#queryresponse">QueryResponse</a></h4>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Version</td>
+        <td>uint8</td>
+        <td>The message version. The schema specified in this RFC is for version <strong>1</strong> only. </td>
+    </tr>
+    <tr>
+        <td>Obj count</td>
+        <td>uint8</td>
+        <td>The number of objectIDs. Must equal to <code> Tx count + Msg count</code> of the received QueryRequest</td>
+    </tr>
+    <tr>
+        <td colspan="1">
+            Opinions <code>Obj count</code>
+        </td>
+        <td colspan="2">
+            <details open="true">
+                <summary>ObjectIDs, in the same order as in received QueryRequest</summary>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Opinion</td>
+                        <td>Byte    </td>
+                        <td>The opinion on objectID</i>.</td>
+                    </tr>
+                </table>
+            </details>
+        </td>
+    </tr>
+</table>
+<p>In the case that a certain <code>objectID</code> is unknwon to the node, it must respond with <code>NULL</code>. If the <code>objectID</code> is currently treated by FPC a node must respond with the current opinion, otherwise, retrieve the <code>opinion</code> from the <code>opinionField</code> of the <code>objectID</code>. If the <code>opinionField</code> is <code>NULL</code> the node must respond with <code>NULL</code>.</p>
+<p>Note that since the order of the opinions in <code>QueryResponse</code> is important a node may have to produce different messages QueryResponse for different querying nodes.   QueryRequest and QueryResponse must be signed by the sending node. The communication channel for these messages is specified in the field &quot;services&quot; in the DiscoveryRequest, see <a href="./3.1%20Communication%20Models.html">Section 3.1 - Communication Models</a>. We write <code>respond[node, objectIDs]</code> for the respond, per direct QueryResponse or FPC statement, of the <code>node</code> on the <code>objectID</code>s.
+A node shall only respond to queries if all included <code>objectsID</code> have status <code>answerQuery=TRUE</code>.</p>
+<h4 id="getopinion"><a class="header" href="#getopinion"><code>GetOpinion</code></a></h4>
+<p>This function sends queries to all nodes of <code>queryList</code> and obtains their opinion either through QueryResponse messages of from FPC statements on the Tangle. </p>
+<pre><code class="language-vbnet">FUNCTION opinionQuery = GetOpinion(objectIDs, queryList)
+SEND QueryRequest messages
+WAIT UNTIL TIME_OUT  
+FOR (node IN queryList)
+    IF (node replied) 
+        opinionQuery[node, objectIDs] = respond[node, objectIDs]
+    ELSE IF (node publishes on Tangle)
+        opinionQuery[node, objectIDs] = GetOpinionFromTangle[node, objectID]
+    ELSE opinionQuery[node, objectIDs] = NA
+RETURN (opinionQuery)
+</code></pre>
+<p>A node must receive a sufficient amount of replies to validate a given round; otherwise the ongoing FPC round is skipped. More precisely, the consensus Mana of the received opinions must be larger than <code>MIN_MANA_PROPORTION</code> times the sum of the consensus Mana of the sampled nodes. </p>
+<p>Once a node receives a FPC query it must prepare a response message as specified above, and shall sent the response as soon as possible. If a node decides to publish its opinions on the Tangle, it must create a so-called FPC statement message and issue it on the Tangle at the beginning of each round. </p>
+<p>At the end of each round, i.e., after the <code>TIME_OUT</code> expires, a node must update its opinion if <code>CheckQuerySuccessful</code> is TRUE. The node must calculate the proportion of the <code>LIKE</code>s in the obtained opinions and compare it to a certain threshold. The value of the threshold depends on the phase FPC is in. In the first round, a node must use <code>FIRST_ROUND_THRESHOLD</code> as a threshold, while in the subsequent rounds the node must use a random threshold obtained by <code>GetRN()</code>. Moreover, if <code>cnt</code> &gt; <code>TOTAL_ROUNDS_FINALIZATION</code>-<code>TOTAL_ROUNDS_ENDING_THRESHOLD</code> the node must use <code>ENDING_THRESHOLD</code> for the threshold. 
+The following pseudo-code describes the update of the opinion of one given <code>objectID</code>. It uses <code>queryList</code> and <code>opinionQuery</code> obtained by the functions <code>GetSample</code> and <code>GetOpinion</code>. The variable <code>opinion</code> describes the current opinion on <code>objectID</code>.</p>
+<h4 id="opinionupdate"><a class="header" href="#opinionupdate"><code>OpinionUpdate</code></a></h4>
+<p>This function updates the opinion of a node on <code>objectID</code>.</p>
+<pre><code class="language-vbnet">FUNCTION opinion = OpinionUpdate(objectID, opinion, queryList, opinionQuery, round)
+manaList = GetActiveConsensusMana(timeObjectID)
+answerMana = ownMana
+queriedMana
+etaStar = 0
+FOR node in queryList
+    queriedMana += manaList[node]
+    IF opinionQuery[node, objectID] != NA
+        answerMana += manaList[node]
+    IF  opinionQuery[node, objectID] = LIKE
+            etaStar++
+IF answerMana &lt;= MIN_MANA_PROPORTION * queriedMana
+    opinionNew = opinion # 
+ELSE 
+    eta = etaStar / LENGTH(queryList)
+    IF opinion = LIKE
+        eta = (ownMana + etaStar*(answerMana-ownMana))/answerMana    
+    ELSE IF opinion = DISLIKE
+         eta = (etaStar*(answerMana-ownMana))/answerMana 
+    WAIT UNTIL CurrentTime/ROUND_LENGTH IS INTEGER
+    IF round = 1  
+        threshold = FIRST_ROUND_THRESHOLD
+    ELSE IF round &lt;= TOTAL_ROUNDS_FINALIZATION-TOTAL_ROUNDS_ENDING_THRESHOLD 
+        WAIT DRNG_WAITING_TIME
+        threshold = getRN(SUBSEQUENT_LOWER_THRESHOLD, SUBSEQUENT_UPPER_THRESHOLD, CurrentTime)  
+        IF threshold = NIL
+            threshold = (SUBSEQUENT_LOWER_THRESHOLD + SUBSEQUENT_UPPER_THRESHOLD)/2
+    ELSE 
+        threshold = ENDING_THRESHOLD
+    IF eta &lt; threshold
+        opinionNew = DISLIKE
+    ELSE
+        opinionNew = LIKE
+RETURN opinioNew
+</code></pre>
+<h4 id="mainfpc"><a class="header" href="#mainfpc"><code>MainFPC</code></a></h4>
+<p>This function describes the FPC for one <code>objectID</code>. It is triggered once  <code>queryStatus</code> of an object is set to <code>TRUE</code>.</p>
+<pre><code class="language-vbnet">FUNCTION opinion = MainFPC(objectId, queryStatus)
+IF queryStatus = TRUE  
+    opinion = GetInitialOpinion(objectID)
+    cnt = 0
+}
+WAIT UNTIL CurrentTime/ROUND_LENGTH IS INTEGER
+round = 1 
+WHILE queryStatus = TRUE
+    queryList = GetSample(nodeList, manaList)
+    opinionQuery = GetOpinion(objectID, queryList) 
+    opinionNew = OpinionUpdate(objectID, opinion, queryList, opinionQuery, round)
+    IF opinion = opinionNew 
+        cnt++
+    ELSE 
+        cnt=1
+    opinion = opinionNew
+    round++
+    IF cnt = TOTAL_ROUNDS_FINALIZATION 
+        queryStatus = FALSE
+    IF round &gt;= MAX_ROUND 
+        queryStatus = FALSE
+        opinion = 1
+RETURN opinion
+</code></pre>
+<h1 id="633-optimizations-suggestions"><a class="header" href="#633-optimizations-suggestions">6.3.3 Optimizations Suggestions</a></h1>
+<p>The design given above exemplifies all the mandatory elements of the FPC protocol.</p>
+<p>There are several possible ways to optimize the performance of FPC. For example:</p>
+<ul>
+<li>FPC possibly exposes the public IP adresses of all the IOTA nodes. This can be limited by publishing statements on Tangle. However, if all nodes decide to publish their statements this may have a negative effect on the scalability of the protocol. Please refer to <a href="https://link.springer.com/chapter/10.1007/978-3-030-63089-8_24">Fast Probabilistic Consensus with Weighted Votes</a> for more discussions on how to optimize the message overhead.</li>
+<li>Monotonicity and  consistency rules may be applied to reduce the sizes of the messages.</li>
+<li>The choice of the FPC parameters could be optimized. The optimal choice depends on the actual mana distribution and network latency. </li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="6.2 Opinion Setting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="6.4 Finalization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="6.2 Opinion Setting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="6.4 Finalization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

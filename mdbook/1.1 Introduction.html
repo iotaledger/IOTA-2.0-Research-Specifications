@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction - IOTA 2.0 Research Specifications</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0.0 Preface.html">Preface</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Control Files</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="1.1 Introduction.html" class="active"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.</strong> Table of Contents</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Terminology</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Index of parameters</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.5.</strong> References</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Structure</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Data Types</div></li><li class="chapter-item expanded "><a href="2.2 Message Layout.html"><strong aria-hidden="true">2.2.</strong> Message Layout</a></li><li class="chapter-item expanded "><a href="2.3 Standard Payloads Layout.html"><strong aria-hidden="true">2.3.</strong> Payloads Layout</a></li><li class="chapter-item expanded "><a href="2.4 Data flow.html"><strong aria-hidden="true">2.4.</strong> Data Flow</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Network Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Communication Models</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Bootstrapping</div></li><li class="chapter-item expanded "><a href="3.3 Peer Discovery.html"><strong aria-hidden="true">3.3.</strong> Peer Discovery</a></li><li class="chapter-item expanded "><a href="3.4 Neighbor Selection.html"><strong aria-hidden="true">3.4.</strong> Neighbor Selection</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Manual Peering</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Communication Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1 The Tangle.html"><strong aria-hidden="true">4.1.</strong> The Tangle</a></li><li class="chapter-item expanded "><a href="4.2 Timestamps.html"><strong aria-hidden="true">4.2.</strong> Timestamps</a></li><li class="chapter-item expanded "><a href="4.3 Tip Selection Algorithm.html"><strong aria-hidden="true">4.3.</strong> Tip Selection Algorithm</a></li><li class="chapter-item expanded "><a href="4.4 Solidification.html"><strong aria-hidden="true">4.4.</strong> Solidification</a></li><li class="chapter-item expanded "><a href="4.5 Rate Control.html"><strong aria-hidden="true">4.5.</strong> Rate Control</a></li><li class="chapter-item expanded "><a href="4.6 Congestion Control.html"><strong aria-hidden="true">4.6.</strong> Congestion Control</a></li><li class="chapter-item expanded "><a href="4.7 Markers.html"><strong aria-hidden="true">4.7.</strong> Markers</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.8.</strong> Message Creation</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Value Transfer Application</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1 UTXO.html"><strong aria-hidden="true">5.1.</strong> UTXO</a></li><li class="chapter-item expanded "><a href="5.2 Ledger State.html"><strong aria-hidden="true">5.2.</strong> Ledger State</a></li><li class="chapter-item expanded "><a href="5.3 Mana.html"><strong aria-hidden="true">5.3.</strong> Mana</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Consensus Applications</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="6.1 Objects of Consensus.html"><strong aria-hidden="true">6.1.</strong> Object of Consensus</a></li><li class="chapter-item expanded "><a href="6.2 Opinion Setting.html"><strong aria-hidden="true">6.2.</strong> Opinion Setting</a></li><li class="chapter-item expanded "><a href="6.3 Fast Probabilistic Consensus.html"><strong aria-hidden="true">6.3.</strong> FPC</a></li><li class="chapter-item expanded "><a href="6.4 Finalization.html"><strong aria-hidden="true">6.4.</strong> Finalization</a></li><li class="chapter-item expanded "><a href="6.5 dRNG.html"><strong aria-hidden="true">6.5.</strong> dRNG</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><div>Appendix</div></li><li class="chapter-item expanded affix "><div>Snapshots</div></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">IOTA 2.0 Research Specifications</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>These specifications are for a research prototype and are a work in progress, thus they may change.  Please refer to the preface for a description of their exact status. </p>
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>These are the research specifications for the IOTA 2.0 protocol. To orientate the reader, we provide a brief summary of their contents along with an overview of the protocol. </p>
+<p>The first chapter of these specifications contains control files to help the reader navigate these pages. The second chapter of these specifications outlines the general structure of the protocol, including the layouts of messages and their payloads and how messages are processed.</p>
+<p>Chapter 3 discusses the networking layer. This layer maintains the underlying IOTA network and includes the gossip protocol, managing connections with peers, and bootstrapping while joining the network.  The networking layer largely functions independently from the rest of the protocol, allowing the other modules to abstract these components to sending and receiving messages in gossip.</p>
+<p>Chapters 4, 5, and 6 include the bulk of the protocol.  Chapter 4 describes the communication layer, which manages the information transmitted through the networking layer.</p>
+<p>Running on top of the communication layer, the application layer provides actual services to clients. Anybody can develop applications, and nodes can choose which applications to run. Of course, these applications can also be dependent on each other. While third-party applications are clearly out of the realm of this document, there are several core applications which must be run by all nodes.  The core applications are split into two groups: the value transfer application and the consensus applications, which are discussed in Chapters 5 and 6 respectively.</p>
+<p><img src="https://i.imgur.com/qiZtuon.png" alt="" /></p>
+<h2 id="the-communication-layer"><a class="header" href="#the-communication-layer">The communication layer</a></h2>
+<p>The communication layer manages the information communicated through the network layer, including processing information received from the gossip, storing information, checking various validity conditions, and deciding what information to send to neighbors. </p>
+<p>All the data and transactions exchanged in IOTA 2.0 protocol is contained in objects called messages. All messages are stored in a data structure called the Tangle.  Since each message contains the hash of at least two other messages, the Tangle has a DAG structure which secures all the data, making the history of each message immutable. We refer to these references as &quot;approval&quot; since a message should only reference another if it approves of its history.</p>
+<p>Each message contains a timestamp, and the protocol enforces various objective and subjective rules regarding them.</p>
+<p>When nodes create new messages,  they must decide which messages their new message should reference.  To do this, the node uses the tip selection algorithm to select tips, messages which are not yet referenced.  Since references denote approval, tip selection algorithm ultimately decides which transactions and data will be included into the ledger.  The node uses flags managed by the consensus applications to maintain a pool of tips with a &quot;correct&quot; history.  The tip selection algorithm just randomly selects tips from this pool.</p>
+<p>To prevent the network from being overloaded, the rate control uses adaptive PoW to coarsely limit the messages created during a spam attack while keeping the network usable for honest nodes.  The congestion control module manages fine grained access, using a <a href="https://en.wikipedia.org/wiki/Deficit_round_robin">deficit round robin scheduler</a> to decide which messages are added to the ledger and gossiped.  The scheduler is designed to have the following properties:</p>
+<ol>
+<li>Consistency: all honest nodes will schedule the same messages</li>
+<li>Fair access: the nodes' messages will be scheduled at a fair rate according to their access mana (explained below)</li>
+<li>Utilisation: when there is demand, the entire throughput will be used</li>
+<li>Bounded latency: network delay of all messages will be bounded</li>
+<li>Security: these properties hold even in the presence of an attacker
+Lastly, the congestion control module includes a rate setter for honest nodes to use which allows them to determine the proper rate they can issue messages.</li>
+</ol>
+<h2 id="the-value-transfer-application"><a class="header" href="#the-value-transfer-application">The Value Transfer Application</a></h2>
+<p>The Value Transfer Application maintains the ledger state and a quantity called mana which is held by each node. Changes to the ledger are made through objects called transactions submitted to the Tangle via messages. Transactions are dependent on each other, and these dependencies are tracked in the UTXO DAG.  By monitoring the UTXO DAG, a node can easily detect when two transactions intend to make conflicting changes to the ledger.</p>
+<p>Once conflicts are detected, they are tracked in a sophisticated data structure called the Branch DAG.  Each branch represents a valid and monotonic choice of conflicts.  These choices, and hence the branches, are naturally partially ordered by inclusion, and thus the branches have a DAG structure.  Each message and transaction is flagged with a branch, indicating the conflicts that each transaction or message depends upon. Since each message and transaction must have a valid history, these dependencies always form a branch. </p>
+<p>The consensus applications choose which branches are correct, resolving the conflicts,  and which transactions are finalised,  deciding how to mutate the balances of the ledger. </p>
+<p>The value transfer application also manages the mana state, which is the IOTA 2.0 Sybil protection mechanism. Every node has holds two quantities: access mana and consensus mana. Every time a transaction moves funds, a roughly equal amount of consensus mana and access mana are pledged to two nodes. Thus mana is an extension  of the ledger state.</p>
+<p>The amount of mana a node has determines how it can interact with certain modules.  For example, the congestion control algorithm schedules messages according to access mana.  The consensus applications dRNG, FPC, approval weight and autopeering all use consensus mana.</p>
+<h2 id="the-consensus-applications"><a class="header" href="#the-consensus-applications">The consensus applications</a></h2>
+<p>The consensus applications allow the network to come to consensus on which messages have accurate timestamps and which conflicts should be accepted and which rejected. These questions are decided through the binary voting protocol Fast Probabilistic Consensus, or FPC for short.  This binary voting protocol exchanges opinions with randomly selected nodes to come to consensus on  a bit.  To prevent an attacker from maintaining a metastable state, FPC effectively breaks &quot;ties&quot; of opinions using a random number generated by the dRNG module.</p>
+<p>Using the outcomes of FPC, nodes come to consensus on which branches new messages should be attached.  The approval weight essentially tracks how many nodes have issued a message in a future cone of a message, weighted by their consensus mana.   After the approval weight of a message (or a branch) becomes large enough, the branch is considered finalised.</p>
+<p>Some nodes may miss certain instances of FPC voting, because they are either new or they temporarily lost connectivity. These nodes may come to the wrong conclusions using FPC voting. </p>
+<p>However, such nodes will always compute the approval weight correctly. Thus, if a conflict approved by FPC conflicts with a branch finalised by approval weight, the node will always default to the approval weight.  In this way, FPC provides an initial round of consensus for nodes which are active in the network, and then the approval weight provides the final consensus.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="0.0 Preface.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="2.2 Message Layout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="0.0 Preface.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="2.2 Message Layout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

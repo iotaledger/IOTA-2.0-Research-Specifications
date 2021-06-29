@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Timestamps - IOTA 2.0 Research Specifications</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="0.0 Preface.html">Preface</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Control Files</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="1.1 Introduction.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.2.</strong> Table of Contents</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.3.</strong> Terminology</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.4.</strong> Index of parameters</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.5.</strong> References</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Structure</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">2.1.</strong> Data Types</div></li><li class="chapter-item expanded "><a href="2.2 Message Layout.html"><strong aria-hidden="true">2.2.</strong> Message Layout</a></li><li class="chapter-item expanded "><a href="2.3 Standard Payloads Layout.html"><strong aria-hidden="true">2.3.</strong> Payloads Layout</a></li><li class="chapter-item expanded "><a href="2.4 Data flow.html"><strong aria-hidden="true">2.4.</strong> Data Flow</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Network Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.</strong> Communication Models</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.2.</strong> Bootstrapping</div></li><li class="chapter-item expanded "><a href="3.3 Peer Discovery.html"><strong aria-hidden="true">3.3.</strong> Peer Discovery</a></li><li class="chapter-item expanded "><a href="3.4 Neighbor Selection.html"><strong aria-hidden="true">3.4.</strong> Neighbor Selection</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.5.</strong> Manual Peering</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Communication Layer</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1 The Tangle.html"><strong aria-hidden="true">4.1.</strong> The Tangle</a></li><li class="chapter-item expanded "><a href="4.2 Timestamps.html" class="active"><strong aria-hidden="true">4.2.</strong> Timestamps</a></li><li class="chapter-item expanded "><a href="4.3 Tip Selection Algorithm.html"><strong aria-hidden="true">4.3.</strong> Tip Selection Algorithm</a></li><li class="chapter-item expanded "><a href="4.4 Solidification.html"><strong aria-hidden="true">4.4.</strong> Solidification</a></li><li class="chapter-item expanded "><a href="4.5 Rate Control.html"><strong aria-hidden="true">4.5.</strong> Rate Control</a></li><li class="chapter-item expanded "><a href="4.6 Congestion Control.html"><strong aria-hidden="true">4.6.</strong> Congestion Control</a></li><li class="chapter-item expanded "><a href="4.7 Markers.html"><strong aria-hidden="true">4.7.</strong> Markers</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.8.</strong> Message Creation</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Value Transfer Application</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1 UTXO.html"><strong aria-hidden="true">5.1.</strong> UTXO</a></li><li class="chapter-item expanded "><a href="5.2 Ledger State.html"><strong aria-hidden="true">5.2.</strong> Ledger State</a></li><li class="chapter-item expanded "><a href="5.3 Mana.html"><strong aria-hidden="true">5.3.</strong> Mana</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Consensus Applications</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="6.1 Objects of Consensus.html"><strong aria-hidden="true">6.1.</strong> Object of Consensus</a></li><li class="chapter-item expanded "><a href="6.2 Opinion Setting.html"><strong aria-hidden="true">6.2.</strong> Opinion Setting</a></li><li class="chapter-item expanded "><a href="6.3 Fast Probabilistic Consensus.html"><strong aria-hidden="true">6.3.</strong> FPC</a></li><li class="chapter-item expanded "><a href="6.4 Finalization.html"><strong aria-hidden="true">6.4.</strong> Finalization</a></li><li class="chapter-item expanded "><a href="6.5 dRNG.html"><strong aria-hidden="true">6.5.</strong> dRNG</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><div>Appendix</div></li><li class="chapter-item expanded affix "><div>Snapshots</div></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">IOTA 2.0 Research Specifications</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="42-timestamps"><a class="header" href="#42-timestamps">4.2 Timestamps</a></h1>
+<h2 id="421-motivation"><a class="header" href="#421-motivation">4.2.1 Motivation</a></h2>
+<p>In order to enable snapshotting based on time constraints rather than special messages in the Tangle (e.g. checkpoints), nodes need to share the same perception of time. Specifically, they need to have consensus on the <em>age of messages</em>. This is one of the reasons that messages must contain a field <code>timestamp</code> which represents the creation time of the message and is signed by the issuing node. </p>
+<p>Having consensus on the creation time of messages enables not only total ordering but also new applications that require certain guarantees regarding time. Specifically, we use message timestamps to enforce timestamps in transactions, which may also be used in computing the Mana associated to a particular node ID. </p>
+<p>In this document, we propose a mechanism to achieve consensus on message timestamps by combining a synchronous and an asynchronous approach. While online nodes may leverage FPC to vote on timestamps, nodes that join the network at a later time use an approach based on the <em>approval weight</em> (described in <a href="./6.4%20Finalization.html">Section 6.4 - Approval Weight and Finality</a>) to determine the validity of timestamps. </p>
+<p>This specification also outlines a tool called &quot;Epochs&quot;, which groups messages into different objective periods.  This tool may be used for the following purposes:</p>
+<ul>
+<li><strong>finality and approval weight:</strong>  the activity of certain nodes within an epoch can be recorded, and then the approval weight (i.e. the number of nodes, weighted by consensus, which issued a message referencing a particular message) can then be measured as a percentage of &quot;active consensus mana&quot;.</li>
+<li><strong>committee selection:</strong> a committee elected as the highest active consensus mana holders can be easily and objectively formed for the DRNG committee. </li>
+</ul>
+<h2 id="422-preliminaries"><a class="header" href="#422-preliminaries">4.2.2 Preliminaries</a></h2>
+<h3 id="4221-requirements"><a class="header" href="#4221-requirements">4.2.2.1 Requirements</a></h3>
+<p>In DLTs, there are many ways to potentially introduce timestamps.  Any useful timestamping scheme however must satisfy the following requirements.</p>
+<ol>
+<li>Nodes must have consensus on the timestamp associated to each message.</li>
+<li>For every time <code>t</code>, there is a <code>t_1&gt;t</code> such that any new message issued with timestamp <code>t</code> and received by a node after <code>t_1</code> (measured by its local clock) will be considered too far in the past and will be orphaned. </li>
+</ol>
+<h3 id="4222-dependencies"><a class="header" href="#4222-dependencies">4.2.2.2 Dependencies</a></h3>
+<ul>
+<li>Opinion Setting</li>
+<li>FPC: used to perform voting on timestamps.</li>
+<li>Approval weight: corrects opinions on timestamps when out of sync.</li>
+</ul>
+<h3 id="4233-modules-dependent-on-timestamps"><a class="header" href="#4233-modules-dependent-on-timestamps">4.2.3.3 Modules dependent on timestamps</a></h3>
+<ul>
+<li>Tip selection: only messages with correct timestamps will be eligible for tip selection.</li>
+<li>Active Consensus Mana in approval weight uses epochs.</li>
+<li>DRNG uses Epochs.</li>
+<li>The Congestion control orders messages by timestamps, and only processes messages whose timestamp is close to the current time.</li>
+<li>The rate control system uses timestamps to compute the correct PoWs.</li>
+<li>The snapshotting uses timestamps to determine which messages to prune from the tangle.</li>
+</ul>
+<h3 id="4224-parameters"><a class="header" href="#4224-parameters">4.2.2.4 Parameters</a></h3>
+<table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>DLARGE</code></td><td>duration</td><td>Gratuitous network delay estimate~ 15 s</td></tr>
+<tr><td><code>W</code></td><td>duration</td><td>window ~1 minute. Require W&gt;2DLARGE</td></tr>
+<tr><td><code>DELTA</code></td><td>duration</td><td>Maximal difference between a message timestamp and its parents' message timestamp. Require DELTA&gt;W+DLARGE</td></tr>
+<tr><td><code>TW</code></td><td>duration</td><td>Maximal difference between message timestamp and transaction timestamp</td></tr>
+<tr><td><code>EPOCHLENGTH</code></td><td>duration</td><td>Length of each epoch = 1 hour</td></tr>
+<tr><td><code>SYNCH_THRESHOLD</code></td><td>duration</td><td>the max difference between <code>CurrentTime</code> and <code>TangleTime</code> in which we consider our node in sync</td></tr>
+<tr><td><code>TIMESTAMP_CUTOFF</code></td><td>duration</td><td>messages with timestamp older than this will be disliked with level 3 knowledge</td></tr>
+</tbody></table>
+<h3 id="4225-clock-synchronization"><a class="header" href="#4225-clock-synchronization">4.2.2.5 Clock synchronization</a></h3>
+<p>Nodes need to share a reasonably similar perception of time in order to effectively judge the accuracy of timestamps. Therefore, we propose that nodes synchronize their clock on startup and resynchronize periodically every <code>60min</code> to counter <a href="https://en.wikipedia.org/wiki/Clock_drift">drift</a> of local clocks. Instead of changing a nodes' system clock, we introduce an <code>offset</code> parameter to adjust for differences between <em>network time</em> and local time of a node. Initially, the <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">Network Time Protocol (NTP)</a> (<a href="https://github.com/beevik/ntp">Go implementation</a>) may be used to achieve this task. </p>
+<p>We gracefully shut down the node if:</p>
+<ul>
+<li>initial synchronization of time fails</li>
+<li>resynchronization fails for more than <code>maxSyncAttempts</code> times </li>
+</ul>
+<h2 id="423-general-timestamp-rules"><a class="header" href="#423-general-timestamp-rules">4.2.3 General Timestamp rules</a></h2>
+<p>Every message contains a timestamp, which is signed by the issuing node.  Thus the timestamp itself is objective and immutable.  Furthermore, transactions will also contain a timestamp, which will be also signed and thus immutable.  We first discuss the rules regarding message timestamps.</p>
+<p>In order for a message to be eligible for tip selection, the timestamp of every message in its past cone (both weak and strong) must satisfy certain requirements. These requirements fall into two categories: objective and subjective. The objective criteria only depend on information written directly in the Tangle and are applied immediately upon solidification.  Thus all nodes immediately have consensus on the objective criteria.  In this section, we will discuss these objective criteria.</p>
+<p>The quality of the timestamp is a subjective criterion since it is based on the solidification time of the message.  Thus, nodes must use a consensus algorithm, e.g. FPC, to decide which messages should be rejected based on subjective criteria. Specifically, nodes will use FPC to vote on whether or not a timestamp plus <code>W</code> is before the arrival time. </p>
+<p>Consensus matters are not discussed in this document: see sections <a href="./6.1%20Objects%20of%20Consensus.html">6.1</a>, <a href="./6.2%20Opinion%20Setting.html">6.2</a> and <a href="./6.3%20Fast%20Probabilistic%20Consensus.html">6.3</a> to discuss how FPC votes on timestamps. </p>
+<p>Lastly, for any time <code>t</code>, a node is sure that it has received all the messages with timestamp less than <code>t</code> which will be finalized when
++ <code>CurrentTime &gt;= t + TIMESTAMP_CUTOFF = t + W + 2*DLARGE</code>, i.e. wait ~1.5 minutes
++ <code>SyncStatus = TRUE</code>
+Indeed, after <code>TIMESTAMP_CUTOFF = W + 2*DLARGE</code> all messages which arrive will be considered bad with level of knowledge 3: see <a href="/6.1%20Objects%20of%20Consensus.html">Section 6.1 - Object of Consensus</a>. If the node is in sync, then it will have received all old messages which will be confirmed. </p>
+<h3 id="4231-age-of-parents"><a class="header" href="#4231-age-of-parents">4.2.3.1 Age of parents</a></h3>
+<p>It is problematic when incoming messages reference extremely old messages. If any new message may reference any message in the Tangle, then a node will need to keep all messages readily available, precluding snapshotting. For this reason, we require that the difference between the timestamp of a message and the timestamp of its parents must be at most <code>DELTA</code> units of time. Additionally, we require that timestamps are monotonic, i.e. parents must have a timestamp smaller than their children's timestamps.</p>
+<h3 id="4232-message-timestamp-vs-transaction-timestamp"><a class="header" href="#4232-message-timestamp-vs-transaction-timestamp">4.2.3.2 Message timestamp vs transaction timestamp</a></h3>
+<p>Transactions contain a timestamp that is signed by the user when creating the transaction. It is thus different from the timestamp in the message which is created and signed by the node. We require </p>
+<pre><code>transaction.timestamp+TW &gt;= message.timestamp &gt;= transaction.timestamp
+</code></pre>
+<p>where <code>TW</code> defines the maximum allowed difference between both timestamps.</p>
+<p>If a node receives a transaction from a user with an invalid timestamp it does not create a message but discards the transaction with a corresponding error message to the user. To prevent a user's local clock differences causing issues the node should offer an API endpoint to retrieve its <code>SyncedTime</code> according to the network time. </p>
+<h3 id="4233-reattachments"><a class="header" href="#4233-reattachments">4.2.3.3 Reattachments</a></h3>
+<p>Reattachments of a transaction are possible during the time window <code>TW</code>. Specifically, a transaction may be reattached in a new message as long as the condition <code>message.timestamp-TW &gt;= transaction.timestamp</code> is fulfilled. If for some reason a transaction is not <em>picked up</em> (even after reattachment) and thus being orphaned, the user needs to create a new transaction with a current timestamp. </p>
+<h3 id="4234-age-of-utxo"><a class="header" href="#4234-age-of-utxo">4.2.3.4 Age of UTXO</a></h3>
+<p>Inputs to a transaction (unspent outputs) inherit their spent time from the transaction timestamp. Similarly, unspent outputs inherit their creation time from the transaction timestamp as well. For a transaction to be considered valid we require</p>
+<pre><code>transaction.timestamp &gt;= inputs.timestamp
+</code></pre>
+<p>In other words, all inputs to a transaction need to have a smaller or equal timestamp than the transaction. In turn, all created unspent outputs will have a greater or equal timestamp than all inputs.</p>
+<h2 id="424-consensus-on-timestamps"><a class="header" href="#424-consensus-on-timestamps">4.2.4 Consensus on timestamps</a></h2>
+<p>The accuracy of the timestamps will be enforced through FPC voting.  Specifically, FPC will allow nodes to come to consensus on whether or not <code>timestamp+W</code> is greater than the arrival time: see <a href="./6.2%20Opinion%20Setting.html">Section 6.2 - Opinion Setting</a>. Messages which are deemed to fail this criterion will be rejected. Messages whose entire past cone is both valid, and satisfies this criterion, will be flagged as <code>eligible</code> and can be referenced messages selected by the Tip Selection Algorithm: see <a href="./4.3%20Tip%20Selection%20Algorithm.html">Section 4.3 - Tip Selection Algorithm</a>.</p>
+<h3 id="4241-not-in-sync"><a class="header" href="#4241-not-in-sync">4.2.4.1 Not in Sync</a></h3>
+<p>Any node not in sync will receive messages much later than the rest of the network.  Thus, all messages will appear to have inaccurate timestamps and will be wrongfully rejected by the algorithms in <a href="./6.2%20Opinion%20Setting.html">Section 6.2 - Opinion Setting</a>. Thus nodes will not actively participate in any voting until their status is in sync, see Section 4.2.5. </p>
+<p>In general, a node that just completed the syncing phase must check, for each message, how much mana is in its future cone and set the opinion accordingly.</p>
+<p>More specifically:</p>
+<ol>
+<li>Run the solidification up to being in sync (by following beacons)</li>
+<li>Derive local markers</li>
+<li>Decide eligibility for every message (5-10% mana min threshold)</li>
+</ol>
+<p>Clearly this synchronization procedure may only work to make an apparently bad timestamp reset to be a good timestamp.  For example, if a node receives a message one day later than the rest of the network, the node will initially reject the timestamp. However, the resync mechanism will recognize the message is correct because it is buried under an entire day's worth of messages. </p>
+<p>What about the converse situation? Being out of sync will only delay the arrival of a message.  If a node receives a message with a timestamp satisfying <code>timestamp+W&gt;arrivalTime</code>, this condition would also be satisfied for all nodes which received the message earlier.  Thus, if a node is out of sync and is receiving messages later than everyone else, if this node likes a timestamp, all other notes will have already liked it. Therefore, nodes will not like timestamps which were previously rejected by most of the network.</p>
+<h3 id="4242-future-timestamps"><a class="header" href="#4242-future-timestamps">4.2.4.2 Future Timestamps</a></h3>
+<p>Note that the resync mechanism only works because we only dislike a message if it is too old.  If we disliked messages whose timestamps were in the future, then it is possible that some nodes would like it, and others disliked it.  Suppose for example at 11:00:00 a node issues a message <code>X</code> with timestamp 12:00:00, and that then all nodes rejected this timestamp for being too far in the future.  Now suppose at 12:00:00 a new node <code>N</code> joins the network at receives <code>X</code>.  According to node <code>N</code>, the timestamp of <code>X</code> is accurate, and will accept it, while other nodes will reject it.  The resynchronization mechanism fails in this case.</p>
+<p>To protect against messages with a timestamp that is issued in the future, the <a href="./4.6%20Congestion%20Control.html">congestion control algorithm</a> does not schedule the message until the timestamp is less than or equal to <code>CurrentTime</code>. Thus messages from the future will not be added to the Tangle until the appropriate time. If an attacker sends too many future messages, these messages may overload the scheduler's queues. However, this is a standard type of attack that the congestion control algorithm is prepared to handle.</p>
+<h2 id="425-tangle-time"><a class="header" href="#425-tangle-time">4.2.5 Tangle Time</a></h2>
+<h3 id="4251-motivation"><a class="header" href="#4251-motivation">4.2.5.1 Motivation</a></h3>
+<p>For a variety of reasons, a node needs to be able to determine if it is in sync with the rest of the network, including the following:
++ to signal to clients that its perception is healthy,
++ to know when to issue messages (nodes out of sync should not issue messages, lest they are added to the wrong part of the Tangle),
++ to schedule messages at the correct rate: out of sync nodes should schedule faster in order to catch up with the network,
++  and to optimize FPC: nodes should not query while syncing, but instead rely on the approval weight. </p>
+<h3 id="4252-tangle-time"><a class="header" href="#4252-tangle-time">4.2.5.2 Tangle Time</a></h3>
+<p>Every DLT is a clock, or more specifically a network of synchronized clocks. This clock has a natural correspondence with &quot;real time&quot;. If the DLT clock differs significantly from local time, then the we can conclude that our DLT clock is off from all the other clocks, and thus the node is out of sync.</p>
+<p>For IOTA 2.0, we make precise the meaning of the DLT clock with what we dub &quot;Tangle time&quot;.</p>
+<pre><code class="language-vbnet">FUNCTION Time = TangleTime
+ RETURN largest timestamp of all grade 3 final messages
+</code></pre>
+<p>Thus Tangle time is the last timestamp in a message which was been confirmed. Tangle time cannot be attacked without controlling enough mana to accept incorrect timestamps, making it a reliable, attack-resistant quantity.</p>
+<p>Typically speaking, <code>CurrentTime - TangleTime</code> is, on average, the  approximate confirmation time of messages.  Thus, if this difference is too far off, then we can conclude that we do not know which messages are confirmed and thus we are out of sync.  In this spirit, we are able to define the following two functions. </p>
+<pre><code class="language-vbnet">FUNCTION Time = SyncAmount
+RETURN CurrentTime - TangleTime
+</code></pre>
+<pre><code class="language-vbnet">FUNCTION bool = SyncStatus
+IF SyncAmount &lt;= SYNCH_THRESHOLD
+    RETURN TRUE
+ELSE
+    RETURN FALSE
+</code></pre>
+<p><img src="https://i.imgur.com/rndN8qc.jpg" alt="" /></p>
+<h2 id="426-epochs"><a class="header" href="#426-epochs">4.2.6 Epochs</a></h2>
+<p>Epochs are universal time intervals that group messages in the Tangle based on their timestamps.</p>
+<ul>
+<li>An epoch is identified by its unique epoch index. Epoch indices are strictly increasing with respect to time.</li>
+<li>Every time interval <code>EPOCHLENGTH</code>, a new epoch is started and the previous ends.</li>
+<li>A message <code>M</code> or a transaction belongs to an <code>Epoch X</code>, if its timestamp falls into the time window of 
+<code>Epoch X</code> such that T(<code>M</code>)∈ [t<sub>X-1</sub>, t<sub>X</sub>), where
+<ul>
+<li>T(<code>M</code>) is the timestamp of message <code>M</code>,</li>
+<li>t<sub>x-1</sub> is the end of the previous epoch,</li>
+<li>and t<sub>x</sub> is the end of <code>Epoch X</code>.</li>
+</ul>
+</li>
+<li>A transaction might not be in the same epoch as the message containing it. </li>
+<li>The start of the network corresponds to t<sub>1</sub>, that is the end of <code>Epoch 1</code>.</li>
+<li><code>Epoch 0</code> and <code>Epoch 1</code> are special epochs, since they only contain the genesis message(s), and their content is defined before starting the network. These two epochs might be used to initialize the network and active consensus mana states to a desired values.</li>
+<li>For every network, the end of <code>Epoch 0</code> is defined as an arbitrary point in time, similarly to how <a href="https://en.wikipedia.org/wiki/Unix_time">Unix epoch time</a> is defined as 00:00:00 UTC on 1 January 1970.</li>
+<li>Epoch interval <code>EPOCHLENGTH</code> cannot be chosen arbitrarily: it must be much larger than <code>DELTA</code>.  Furthermore, short epochs can potentially cause make certain calculations involving the approval wait more complicated.</li>
+</ul>
+<p>Figure 1 gives a brief overview of how the Tangle is divided into epochs:</p>
+<p><img src="https://i.imgur.com/5mZYAO8.png" alt="" /></p>
+<p><code>Epoch 0</code> contains the genesis message(s), that hold the genesis output(s). By allowing multiple outputs to exist before the start of the network, a desired initial state for the network can be set.
+<code>Epoch 2</code> is the first epoch after the start of the network, when nodes may start issuing messages. Note, that a message can be valid with one strong parent only.</p>
+<p>Upon processing a message and verifying its timestamp as described in <a href="./6.2%20Opinion%20Setting.html">Opinion Setting Specification</a>, the message is solidified and can be added to the epoch. 
+<code>Epoch 2</code> ends at t<sub>2</sub>, but it can happen that a message is issued just before t<sub>2</sub>, therefore it reaches most nodes and gets solidified during <code>Epoch 3</code>. In this case, the node can still determine the correct epoch the message belongs to due to the consensus on the message timestamp. This also means, that finalizing an epoch (declaring that no more messages can be added to it) is delayed after the end of the epoch by at least <code>W</code> time.</p>
+<h2 id="426-limitations"><a class="header" href="#426-limitations">4.2.6 Limitations</a></h2>
+<ul>
+<li>When not in sync, a different behavior is required which complicates the protocol.</li>
+<li>Using NTP as clock synchronization mechanism as proposed is a single point of failure. It can only be considered as an initial implementation into GoShimmer and needs to be replaced by a decentralized alternative.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="4.1 The Tangle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="4.3 Tip Selection Algorithm.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="4.1 The Tangle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="4.3 Tip Selection Algorithm.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
