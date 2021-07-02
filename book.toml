@@ -1,0 +1,11 @@
+[book]
+authors = ["IOTA Research Department"]
+language = "en"
+multilingual = false
+src = "src"
+title = "IOTA 2.0 Research Specifications"
+
+[preprocessor.katex]
+
+[output.html]
+mathjax-support = true
