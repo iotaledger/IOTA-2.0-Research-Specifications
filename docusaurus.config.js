@@ -6,7 +6,7 @@ module.exports = {
   title: 'IOTA-2.0-Research-Specifications',
   tagline: 'The research specifications of the IOTA 2.0 protocol.',
   url: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications',
-  baseUrl: '/',
+  baseUrl: '/IOTA-2.0-Research-Specifications/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
