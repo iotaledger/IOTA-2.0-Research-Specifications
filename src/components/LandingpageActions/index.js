@@ -5,29 +5,29 @@ import styles from './styles.module.css';
 
 const ActionList = [
   {
-    title: 'Learn',
-    link: 'docs/intro',
+    title: 'Decentral',
+    link: 'docs/preface',
     description: (
       <>
-        Learn the Basics about the IOTA Identity Framework and the concepts behind the Digital Identifier W3C standard. 
+        Based on a leaderless consensus protocol, IOTA 2.0 is the most decentralized distributed ledger protocol able to handle more than just payments. 
       </>
     ),
   },
   {
-    title: 'Build',
-    link: '/',
+    title: 'Fast',
+    link: 'docs/preface',
     description: (
       <>
-        Follow our tutorial to build your own application. IOTA Identity supports Rust and Javascript (with WASM).
+        You can witness the Tangle network running with all of the new cutting-edge Nectar features.
       </>
     ),
   },
   {
-    title: 'Participate',
-    link: '/',
+    title: 'Feeless',
+    link: 'docs/preface',
     description: (
       <>
-        You want to be a part of the IOTA mission? Join the IOTA community or join the IOTA Identity X-Team.
+        IOTA 2.0 enables the secure transfer of data and value between humans and machines, opening up new business models based on micro-payments.
       </>
     ),
   },

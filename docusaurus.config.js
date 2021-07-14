@@ -42,7 +42,7 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Specification',
           items: [
             {
               label: 'Specification',
