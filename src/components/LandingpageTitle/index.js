@@ -10,7 +10,7 @@ function LandingpageTitle() {
 
   return (
     <div className={clsx(styles.heading)}>
-      <img className={clsx(styles.headingImage)} src={useBaseUrl('/img/iota-php-circle.png')} />
+      <img className={clsx(styles.headingImage)} src={useBaseUrl('/img/logo.svg')} />
       <div>
         <h1 className={clsx(styles.headingTitle)}>{siteConfig.title}</h1>
         <span className={clsx('grey', 'section-header')}>{siteConfig.tagline}</span>

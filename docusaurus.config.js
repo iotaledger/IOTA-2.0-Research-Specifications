@@ -16,6 +16,9 @@ module.exports = {
     'https://fonts.googleapis.com/css?family=Material+Icons',
   ],
   themeConfig: {
+    colorMode: {
+      defaultMode: "dark"
+    },
     navbar: {
       logo: {
         alt: 'IOTA-2.0-Research-Specifications',
@@ -26,9 +29,8 @@ module.exports = {
           type: 'doc',
           docId: 'preface',
           position: 'left',
-          label: 'Specifications',
+          label: 'Specification',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications',
           label: 'GitHub',
@@ -43,7 +45,7 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Documentation',
+              label: 'Specification',
               to: '/docs/preface',
             },
           ],
@@ -68,10 +70,6 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications',
             },
@@ -94,12 +92,6 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/iotaledger/IOTA-2.0-Research-Specifications/edit/master/website/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/iotaledger/IOTA-2.0-Research-Specifications/edit/master/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
