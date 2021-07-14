@@ -29,8 +29,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`IOTA Identity Documentation`}
-      description="Providing Trust between Individuals, Organizations and Things.
+      title={`IOTA v2 Specification`}
+      description="The research specifications of the IOTA 2.0 protocol..
       ">
       {/* <HomepageHeader /> */}
       <LandingpageHeader />
