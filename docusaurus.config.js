@@ -1,6 +1,9 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const math = require('remark-math');
+const katex = require('rehype-katex');
+
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'IOTA-2.0-Research-Specifications',
@@ -14,6 +17,11 @@ module.exports = {
   projectName: 'iota-v2', // Usually your repo name.
   stylesheets: [
     'https://fonts.googleapis.com/css?family=Material+Icons',
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css",
+      integrity: "sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc",
+      crossorigin: "anonymous",
+    }
   ],
   themeConfig: {
     colorMode: {
@@ -87,7 +95,11 @@ module.exports = {
     [
       '@docusaurus/preset-classic',
       {
+        // Documentation settings
         docs: {
+          // Latex renderer settings
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
@@ -98,5 +110,6 @@ module.exports = {
         },
       },
     ],
+    
   ],
 };
