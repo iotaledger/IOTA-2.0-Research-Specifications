@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`IOTA v2 Specification`}
-      description="The research specifications of the IOTA 2.0 protocol..
+      description={tagline}>
       ">
       {/* <HomepageHeader /> */}
       <LandingpageHeader />
