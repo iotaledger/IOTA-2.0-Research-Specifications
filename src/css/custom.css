@@ -201,7 +201,7 @@
 }
 
 :root {
---ifm-color-primary: #06E89D;
+--ifm-color-primary: #00E0CA;
 --ifm-color-success: #0FC1B7;
 --ifm-color-info: #2E8698;
 --ifm-color-warning: #e5a23e;
@@ -496,4 +496,3 @@ width: 32px;
 .headline-stick.size-m {
 width: 48px;
 }
-{"mode":"full","isActive":false}

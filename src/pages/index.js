@@ -8,8 +8,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={title}
-      description={tagline}>
+      title={siteConfig.title}
+      description={siteConfig.tagline}>
       <LandingpageHeader />
     </Layout>
   );
