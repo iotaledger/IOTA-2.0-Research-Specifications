@@ -6,15 +6,15 @@ const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'IOTA-2.0-Research-Specifications',
+  title: 'Research Specifications',
   tagline: 'The research specifications of the IOTA 2.0 protocol.',
   url: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications',
   baseUrl: '/IOTA-2.0-Research-Specifications/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: '/img/logo/favicon.ico',
   organizationName: 'iotaledger', // Usually your GitHub org/user name.
-  projectName: 'iota-v2', // Usually your repo name.
+  projectName: 'IOTA-2.0-Research-Specifications', // Usually your repo name.
   stylesheets: [
     'https://fonts.googleapis.com/css?family=Material+Icons',
     {
@@ -29,8 +29,8 @@ module.exports = {
     },
     navbar: {
       logo: {
-        alt: 'IOTA-2.0-Research-Specifications',
-        src: 'img/logo.svg',
+        alt: 'IOTA',
+        src: '/img/logo/Logo_Swirl_Dark.png',
       },
       items: [
         {
