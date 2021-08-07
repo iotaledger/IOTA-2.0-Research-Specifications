@@ -2,9 +2,9 @@ name: deploy
 
 on:
   pull_request:
-    branches: [feat/add-docusaurus]
+    branches: [main]
   push:
-    branches: [feat/add-docusaurus]
+    branches: [main]
 
 jobs:
   checks:
@@ -48,3 +48,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          cname: v2.docs.iota.org

@@ -8,8 +8,8 @@ const katex = require('rehype-katex');
 module.exports = {
   title: 'Research Specifications',
   tagline: 'The research specifications of the IOTA 2.0 protocol.',
-  url: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications',
-  baseUrl: '/IOTA-2.0-Research-Specifications/',
+  url: 'https://v2.docs.iota.org',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: '/img/logo/favicon.ico',
