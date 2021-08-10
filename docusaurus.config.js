@@ -10,7 +10,7 @@ module.exports = {
   tagline: 'The research specifications of the IOTA 2.0 protocol.',
   url: 'https://v2.docs.iota.org',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: '/img/logo/favicon.ico',
   organizationName: 'iotaledger', // Usually your GitHub org/user name.
