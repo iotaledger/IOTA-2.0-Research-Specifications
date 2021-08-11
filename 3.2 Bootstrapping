@@ -1,0 +1,18 @@
+# 3.2 Bootstrapping
+
+The module presented in this specification, bootstrapping, allows a new node to join the network. 
+This process is the first action undertaken by the node and includes:
+finding other nodes in the network; obtaining the ledger; obtaining information needed to find neighbors; and identify the dRNG committee.
+To do so the new nodes rely on the entry nodes.
+
+
+
+The bootstrapping process has the following phases: 
+
+1. Entry information gathering
+
+2. Neighbor selection
+
+3. Ledger
+
+  
