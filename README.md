@@ -1,6 +1,6 @@
 # About
 
-These are the research specifications of the IOTA 2.0 protocol.  To put these in context, consult the [Preface](./0.0%20Preface.md).
+These are the research specifications of the IOTA 2.0 protocol.  To put these in context, consult the [Preface](./docs/0.0%20Preface.md).
 
 ## Table of Contents
 
