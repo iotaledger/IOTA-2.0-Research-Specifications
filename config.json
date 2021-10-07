@@ -1,0 +1,6 @@
+{
+    "repoName": "IOTA-2.0-Research-Specifications",
+    "contentFolder": "IOTA-2.0-Research-Specifications",
+    "localWikiFolder": "local-wiki",
+    "excludeList": ["node_modules", "target", ".git/", "local-wiki"]
+}

@@ -1,0 +1,6 @@
+{
+  label: "Coordicide Specs",
+  to: "IOTA-2.0-Research-Specifications/Preface",
+  className: "icon-iota-20",
+  activeBaseRegex: 'IOTA-2.0-Research-Specifications/.*'
+},
