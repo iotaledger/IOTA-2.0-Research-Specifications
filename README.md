@@ -16,7 +16,7 @@ These are the research specifications of the IOTA 2.0 protocol.  To put these in
 	- 2.1	Data Types
 	- [2.2	Message Layout](./2.2%20Message%20Layout.md)
 	- [2.3	Payloads Layout](./2.3%20Standard%20Payloads%20Layout.md)
-	- [2.4	Data Flow](./2.4%20Data%20flow.md)
+	- [2.4	Data Flow](./2.4%20Data%20Flow.md)
 - **3. Network Layer**
 	- 3.1	Communication Models
 	- 3.2	Bootstrapping
