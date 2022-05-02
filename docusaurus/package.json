@@ -1,0 +1,20 @@
+{
+  "name": "iota-2.0-specifications",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "docusaurus start"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=14.14.0"
+  },
+  "dependencies": {
+    "rehype-katex": "4",
+    "remark-math": "3"
+  },
+  "devDependencies": {
+    "iota-wiki-cli": "iota-community/iota-wiki-cli#v2"
+  },
+  "packageManager": "yarn@3.2.0"
+}
