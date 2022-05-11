@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-    onBrokenLinks: 'warn',
     title: 'IOTA 2.0 Research Specifications',
     url: '/',
     baseUrl: '/',
