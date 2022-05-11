@@ -25,9 +25,8 @@ module.exports = {
                 sidebarPath: path.resolve(__dirname, '../sidebars.js'),
                 editUrl: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications/edit/main',
                 remarkPlugins: [require('remark-math'), require('rehype-katex')],
-                exclude: [
-                    '**/docusaurus',
-                ],
+                include: ['*.md'],
+                exclude: ['README.md'],
             }
         ],
     ],
