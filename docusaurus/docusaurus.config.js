@@ -9,7 +9,7 @@ module.exports = {
                 path: path.resolve(__dirname, '../'),
                 routeBasePath: 'IOTA-2.0-Research-Specifications',
                 sidebarPath: path.resolve(__dirname, '../sidebars.js'),
-                editUrl: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications/edit/main',
+                editUrl: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications/edit/main/docusaurus',
                 remarkPlugins: [require('remark-math'), require('rehype-katex')],
                 include: ['*.md'],
                 exclude: ['README.md'],
