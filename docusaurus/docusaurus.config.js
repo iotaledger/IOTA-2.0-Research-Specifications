@@ -1,4 +1,6 @@
 const path = require('path');
+const math = require('remark-math');
+const katex = require('rehype-katex');
 
 module.exports = {
     plugins: [
@@ -10,7 +12,8 @@ module.exports = {
                 routeBasePath: 'IOTA-2.0-Research-Specifications',
                 sidebarPath: path.resolve(__dirname, '../sidebars.js'),
                 editUrl: 'https://github.com/iotaledger/IOTA-2.0-Research-Specifications/edit/main/docusaurus',
-                remarkPlugins: [require('remark-math'), require('rehype-katex')],
+                remarkPlugins: [math],
+                rehypePlugins: [katex],
                 include: ['*.md'],
                 exclude: ['README.md'],
             }
