@@ -1,11 +1,11 @@
 # About
 
-These are the research specifications of the IOTA 2.0 protocol.  To put these in context, consult the [Preface](./0.0%20Preface.md).
+These are the research specifications of the IOTA 2.0 protocol.  To put these in context, consult the [Preface](./0.0_preface.md).
 
 ## Table of Contents
 
 - **0. Front Matter**
-	- [0.0 Preface](./0.0%20Preface.md)
+	- [0.0 Preface](./0.0_preface.md)
 - **1. Control Files**
 	- [1.1	Introduction](./1.1_introduction.md)
 	- 1.2	Table of Contents
